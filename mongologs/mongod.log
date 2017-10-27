@@ -1,0 +1,1142 @@
+2017-10-08T17:39:57.614+0300 I CONTROL  [initandlisten] MongoDB starting : pid=94517 port=27017 dbpath=./data 64-bit host=MacBook-Pro-4.local
+2017-10-08T17:39:57.614+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-08T17:39:57.614+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-08T17:39:57.614+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-08T17:39:57.614+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-08T17:39:57.614+0300 I CONTROL  [initandlisten] modules: none
+2017-10-08T17:39:57.614+0300 I CONTROL  [initandlisten] build environment:
+2017-10-08T17:39:57.614+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-08T17:39:57.614+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-08T17:39:57.614+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "./data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-08T17:39:57.615+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-08T17:39:57.740+0300 I CONTROL  [initandlisten] 
+2017-10-08T17:39:57.740+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-08T17:39:57.740+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-08T17:39:57.740+0300 I CONTROL  [initandlisten] 
+2017-10-08T17:39:57.779+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory './data/diagnostic.data'
+2017-10-08T17:39:57.842+0300 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+2017-10-08T17:39:57.842+0300 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2017-10-08T17:39:57.850+0300 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+2017-10-08T17:39:57.850+0300 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+2017-10-08T17:39:57.851+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-08T17:39:58.632+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:56574 #1 (1 connection now open)
+2017-10-08T17:39:58.638+0300 I NETWORK  [conn1] received client metadata from 127.0.0.1:56574 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.0.0, LE, mongodb-core: 2.1.15" }
+2017-10-08T17:40:15.662+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-08T17:40:15.663+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-08T17:40:15.663+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-08T17:40:15.663+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-08T17:40:15.663+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-08T17:40:15.667+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-08T17:40:15.667+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-08T17:40:15.671+0300 I -        [conn1] end connection 127.0.0.1:56574 (1 connection now open)
+2017-10-08T17:40:15.676+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-08T17:40:15.787+0300 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-10-08T17:40:15.787+0300 I CONTROL  [signalProcessingThread] now exiting
+2017-10-08T17:40:15.787+0300 I CONTROL  [signalProcessingThread] shutting down with code:0
+2017-10-08T17:40:15.787+0300 I CONTROL  [initandlisten] shutting down with code:0
+2017-10-08T20:32:25.903+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-08T20:32:25.965+0300 I CONTROL  [initandlisten] MongoDB starting : pid=73993 port=27017 dbpath=./data 64-bit host=MacBook-Pro-4.local
+2017-10-08T20:32:25.965+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-08T20:32:25.965+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-08T20:32:25.965+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-08T20:32:25.965+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-08T20:32:25.965+0300 I CONTROL  [initandlisten] modules: none
+2017-10-08T20:32:25.965+0300 I CONTROL  [initandlisten] build environment:
+2017-10-08T20:32:25.965+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-08T20:32:25.965+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-08T20:32:25.965+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "./data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-08T20:32:25.968+0300 I -        [initandlisten] Detected data files in ./data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-10-08T20:32:25.968+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-08T20:32:26.032+0300 I CONTROL  [initandlisten] 
+2017-10-08T20:32:26.032+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-08T20:32:26.032+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-08T20:32:26.032+0300 I CONTROL  [initandlisten] 
+2017-10-08T20:32:26.037+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory './data/diagnostic.data'
+2017-10-08T20:32:26.038+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-08T20:32:26.805+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:62615 #1 (1 connection now open)
+2017-10-08T20:32:26.812+0300 I NETWORK  [conn1] received client metadata from 127.0.0.1:62615 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.0.0, LE, mongodb-core: 2.1.15" }
+2017-10-08T20:32:32.554+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:62637 #2 (2 connections now open)
+2017-10-08T20:32:32.565+0300 I NETWORK  [conn2] received client metadata from 127.0.0.1:62637 conn2: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.0.0, LE, mongodb-core: 2.1.15" }
+2017-10-08T20:32:44.898+0300 I COMMAND  [conn2] command databnb.propertydatas command: insert { insert: "propertydatas", documents: [ { calendar_last_updated_at: new Date(1507161600000), superhost: true, _id: ObjectId('59da613c4aee9f22c7cc7b08'), price_per_day: 188, calendar_updated_ago: 264259.912546086, response_time: 1515.5, lng: -0.1993959186560227, lat: 51.53785099162204, min_stay: 3, extra_people_fee: 0, cleaning_fee: 0, monthly_discount: 0, weekly_discount: 0, security_deposit: 0, cancelation_policy: null, ranking: 5, city: "London", country: "United Kingdom", listing_type: "Entire home/apt", listing_title: "Light &amp; Spacious Garden Flat London", host_id: "2758778", prop_id: "2354700", __v: 0 } ], ordered: false } ninserted:1 keysInserted:1 numYields:0 reslen:44 locks:{ Global: { acquireCount: { r: 3, w: 3 } }, Database: { acquireCount: { w: 2, W: 1 } }, Collection: { acquireCount: { w: 2 } } } protocol:op_query 106ms
+2017-10-08T20:36:41.559+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:64403 #3 (3 connections now open)
+2017-10-08T20:36:41.559+0300 I NETWORK  [conn3] received client metadata from 127.0.0.1:64403 conn3: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-08T20:38:05.357+0300 I -        [conn2] end connection 127.0.0.1:62637 (3 connections now open)
+2017-10-08T20:40:05.004+0300 I -        [conn1] end connection 127.0.0.1:62615 (2 connections now open)
+2017-10-08T20:40:05.608+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:65265 #4 (2 connections now open)
+2017-10-08T20:40:05.615+0300 I NETWORK  [conn4] received client metadata from 127.0.0.1:65265 conn4: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.0.0, LE, mongodb-core: 2.1.15" }
+2017-10-08T20:40:18.879+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:65312 #5 (3 connections now open)
+2017-10-08T20:40:18.891+0300 I NETWORK  [conn5] received client metadata from 127.0.0.1:65312 conn5: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.0.0, LE, mongodb-core: 2.1.15" }
+2017-10-08T20:42:43.656+0300 I -        [conn5] end connection 127.0.0.1:65312 (3 connections now open)
+2017-10-08T20:43:26.857+0300 I -        [conn3] end connection 127.0.0.1:64403 (2 connections now open)
+2017-10-08T20:43:36.745+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-08T20:43:36.746+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-08T20:43:36.746+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-08T20:43:36.746+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-08T20:43:36.746+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-08T20:43:36.750+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-08T20:43:36.753+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-08T20:43:36.759+0300 I -        [conn4] end connection 127.0.0.1:65265 (1 connection now open)
+2017-10-08T20:43:36.759+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-08T20:43:36.801+0300 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-10-08T20:43:36.801+0300 I CONTROL  [signalProcessingThread] now exiting
+2017-10-08T20:43:36.801+0300 I CONTROL  [signalProcessingThread] shutting down with code:0
+2017-10-12T23:32:02.636+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-12T23:32:02.669+0300 I CONTROL  [initandlisten] MongoDB starting : pid=83378 port=27017 dbpath=./data 64-bit host=MacBook-Pro-4.local
+2017-10-12T23:32:02.669+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-12T23:32:02.670+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-12T23:32:02.670+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-12T23:32:02.670+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-12T23:32:02.670+0300 I CONTROL  [initandlisten] modules: none
+2017-10-12T23:32:02.670+0300 I CONTROL  [initandlisten] build environment:
+2017-10-12T23:32:02.670+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-12T23:32:02.670+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-12T23:32:02.670+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "./data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-12T23:32:02.671+0300 I -        [initandlisten] Detected data files in ./data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-10-12T23:32:02.671+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-12T23:32:02.772+0300 I CONTROL  [initandlisten] 
+2017-10-12T23:32:02.772+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-12T23:32:02.772+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-12T23:32:02.772+0300 I CONTROL  [initandlisten] 
+2017-10-12T23:32:02.778+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory './data/diagnostic.data'
+2017-10-12T23:32:02.778+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-12T23:32:03.818+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:61818 #1 (1 connection now open)
+2017-10-12T23:32:03.835+0300 I NETWORK  [conn1] received client metadata from 127.0.0.1:61818 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-12T23:32:09.760+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:61822 #2 (2 connections now open)
+2017-10-12T23:32:09.761+0300 I NETWORK  [conn2] received client metadata from 127.0.0.1:61822 conn2: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-12T23:33:53.141+0300 I COMMAND  [conn2] dropDatabase databnb starting
+2017-10-12T23:33:53.234+0300 I COMMAND  [conn2] dropDatabase databnb finished
+2017-10-12T23:35:36.776+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:61884 #3 (3 connections now open)
+2017-10-12T23:35:36.799+0300 I NETWORK  [conn3] received client metadata from 127.0.0.1:61884 conn3: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-12T23:37:59.404+0300 I -        [conn3] end connection 127.0.0.1:61884 (3 connections now open)
+2017-10-12T23:38:51.584+0300 I -        [conn1] end connection 127.0.0.1:61818 (2 connections now open)
+2017-10-12T23:38:52.189+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:62604 #4 (2 connections now open)
+2017-10-12T23:38:52.205+0300 I NETWORK  [conn4] received client metadata from 127.0.0.1:62604 conn4: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-12T23:39:05.432+0300 I -        [conn4] end connection 127.0.0.1:62604 (2 connections now open)
+2017-10-12T23:39:05.841+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:62610 #5 (2 connections now open)
+2017-10-12T23:39:05.858+0300 I NETWORK  [conn5] received client metadata from 127.0.0.1:62610 conn5: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:08:08.139+0300 I -        [conn5] end connection 127.0.0.1:62610 (2 connections now open)
+2017-10-13T00:08:08.734+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:63192 #6 (2 connections now open)
+2017-10-13T00:08:08.750+0300 I NETWORK  [conn6] received client metadata from 127.0.0.1:63192 conn6: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:16:30.405+0300 I -        [conn6] end connection 127.0.0.1:63192 (2 connections now open)
+2017-10-13T00:16:30.963+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:65265 #7 (2 connections now open)
+2017-10-13T00:16:30.983+0300 I NETWORK  [conn7] received client metadata from 127.0.0.1:65265 conn7: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:22:59.853+0300 I -        [conn7] end connection 127.0.0.1:65265 (2 connections now open)
+2017-10-13T00:23:00.423+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:50487 #8 (2 connections now open)
+2017-10-13T00:23:00.439+0300 I NETWORK  [conn8] received client metadata from 127.0.0.1:50487 conn8: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:27:20.274+0300 I -        [conn8] end connection 127.0.0.1:50487 (2 connections now open)
+2017-10-13T00:27:20.861+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51330 #9 (2 connections now open)
+2017-10-13T00:27:20.880+0300 I NETWORK  [conn9] received client metadata from 127.0.0.1:51330 conn9: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:32:11.538+0300 I -        [conn9] end connection 127.0.0.1:51330 (2 connections now open)
+2017-10-13T00:32:12.138+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51519 #10 (2 connections now open)
+2017-10-13T00:32:12.154+0300 I NETWORK  [conn10] received client metadata from 127.0.0.1:51519 conn10: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:32:38.830+0300 I -        [conn10] end connection 127.0.0.1:51519 (2 connections now open)
+2017-10-13T00:32:39.427+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51531 #11 (2 connections now open)
+2017-10-13T00:32:39.444+0300 I NETWORK  [conn11] received client metadata from 127.0.0.1:51531 conn11: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:34:01.589+0300 I -        [conn11] end connection 127.0.0.1:51531 (2 connections now open)
+2017-10-13T00:34:02.194+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51567 #12 (2 connections now open)
+2017-10-13T00:34:02.209+0300 I NETWORK  [conn12] received client metadata from 127.0.0.1:51567 conn12: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:48:58.980+0300 I -        [conn12] end connection 127.0.0.1:51567 (2 connections now open)
+2017-10-13T00:48:59.578+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51873 #13 (2 connections now open)
+2017-10-13T00:48:59.593+0300 I NETWORK  [conn13] received client metadata from 127.0.0.1:51873 conn13: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:49:09.463+0300 I -        [conn13] end connection 127.0.0.1:51873 (2 connections now open)
+2017-10-13T00:49:10.048+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51878 #14 (2 connections now open)
+2017-10-13T00:49:10.065+0300 I NETWORK  [conn14] received client metadata from 127.0.0.1:51878 conn14: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:49:31.793+0300 I -        [conn14] end connection 127.0.0.1:51878 (2 connections now open)
+2017-10-13T00:49:32.443+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51888 #15 (2 connections now open)
+2017-10-13T00:49:32.458+0300 I NETWORK  [conn15] received client metadata from 127.0.0.1:51888 conn15: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:50:14.622+0300 I -        [conn15] end connection 127.0.0.1:51888 (2 connections now open)
+2017-10-13T00:50:14.996+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51905 #16 (2 connections now open)
+2017-10-13T00:50:15.012+0300 I NETWORK  [conn16] received client metadata from 127.0.0.1:51905 conn16: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:50:31.829+0300 I -        [conn16] end connection 127.0.0.1:51905 (2 connections now open)
+2017-10-13T00:50:32.195+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51912 #17 (2 connections now open)
+2017-10-13T00:50:32.212+0300 I NETWORK  [conn17] received client metadata from 127.0.0.1:51912 conn17: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:51:08.638+0300 I COMMAND  [conn2] dropDatabase databnb starting
+2017-10-13T00:51:08.639+0300 I COMMAND  [conn2] dropDatabase databnb finished
+2017-10-13T00:51:38.744+0300 I -        [conn17] end connection 127.0.0.1:51912 (2 connections now open)
+2017-10-13T00:51:39.139+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51934 #18 (2 connections now open)
+2017-10-13T00:51:39.155+0300 I NETWORK  [conn18] received client metadata from 127.0.0.1:51934 conn18: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:51:53.764+0300 I -        [conn18] end connection 127.0.0.1:51934 (2 connections now open)
+2017-10-13T00:51:54.258+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51942 #19 (2 connections now open)
+2017-10-13T00:51:54.281+0300 I NETWORK  [conn19] received client metadata from 127.0.0.1:51942 conn19: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:51:56.729+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:51943 #20 (3 connections now open)
+2017-10-13T00:51:56.757+0300 I NETWORK  [conn20] received client metadata from 127.0.0.1:51943 conn20: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:52:26.270+0300 I -        [conn20] end connection 127.0.0.1:51943 (3 connections now open)
+2017-10-13T00:54:17.258+0300 I -        [conn19] end connection 127.0.0.1:51942 (2 connections now open)
+2017-10-13T00:54:17.853+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:52054 #21 (2 connections now open)
+2017-10-13T00:54:17.868+0300 I NETWORK  [conn21] received client metadata from 127.0.0.1:52054 conn21: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:54:27.725+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:52059 #22 (3 connections now open)
+2017-10-13T00:54:27.725+0300 I NETWORK  [conn22] received client metadata from 127.0.0.1:52059 conn22: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-13T00:54:28.468+0300 I -        [conn22] end connection 127.0.0.1:52059 (3 connections now open)
+2017-10-13T00:54:30.712+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:52060 #23 (3 connections now open)
+2017-10-13T00:54:30.734+0300 I NETWORK  [conn23] received client metadata from 127.0.0.1:52060 conn23: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T00:56:31.343+0300 I -        [conn23] end connection 127.0.0.1:52060 (3 connections now open)
+2017-10-13T01:27:23.517+0300 I -        [conn21] end connection 127.0.0.1:52054 (2 connections now open)
+2017-10-13T01:27:24.121+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:54786 #24 (2 connections now open)
+2017-10-13T01:27:24.136+0300 I NETWORK  [conn24] received client metadata from 127.0.0.1:54786 conn24: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T01:27:25.098+0300 I -        [conn24] end connection 127.0.0.1:54786 (2 connections now open)
+2017-10-13T01:27:25.532+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:54793 #25 (2 connections now open)
+2017-10-13T01:27:25.554+0300 I NETWORK  [conn25] received client metadata from 127.0.0.1:54793 conn25: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T01:27:32.684+0300 I COMMAND  [conn2] dropDatabase databnb starting
+2017-10-13T01:27:32.685+0300 I COMMAND  [conn2] dropDatabase databnb finished
+2017-10-13T01:27:37.544+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:54848 #26 (3 connections now open)
+2017-10-13T01:27:37.567+0300 I NETWORK  [conn26] received client metadata from 127.0.0.1:54848 conn26: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T01:29:57.326+0300 I -        [conn26] end connection 127.0.0.1:54848 (3 connections now open)
+2017-10-13T01:39:48.671+0300 I -        [conn25] end connection 127.0.0.1:54793 (2 connections now open)
+2017-10-13T01:39:49.331+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58516 #27 (2 connections now open)
+2017-10-13T01:39:49.347+0300 I NETWORK  [conn27] received client metadata from 127.0.0.1:58516 conn27: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T01:39:56.669+0300 I -        [conn27] end connection 127.0.0.1:58516 (2 connections now open)
+2017-10-13T01:39:57.347+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58553 #28 (2 connections now open)
+2017-10-13T01:39:57.376+0300 I NETWORK  [conn28] received client metadata from 127.0.0.1:58553 conn28: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T01:40:00.927+0300 I COMMAND  [conn2] dropDatabase databnb starting
+2017-10-13T01:40:00.928+0300 I COMMAND  [conn2] dropDatabase databnb finished
+2017-10-13T01:40:05.621+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58589 #29 (3 connections now open)
+2017-10-13T01:40:05.658+0300 I NETWORK  [conn29] received client metadata from 127.0.0.1:58589 conn29: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-13T01:42:23.172+0300 I -        [conn29] end connection 127.0.0.1:58589 (3 connections now open)
+2017-10-13T01:46:22.161+0300 I -        [conn2] end connection 127.0.0.1:61822 (2 connections now open)
+2017-10-13T01:46:40.174+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60627 #30 (2 connections now open)
+2017-10-13T01:46:40.174+0300 I NETWORK  [conn30] received client metadata from 127.0.0.1:60627 conn30: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-13T10:07:24.449+0300 I -        [conn30] end connection 127.0.0.1:60627 (2 connections now open)
+2017-10-13T10:07:27.880+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-13T10:07:27.881+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-13T10:07:27.881+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-13T10:07:27.881+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-13T10:07:27.881+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-13T10:07:27.882+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-13T10:07:27.883+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-13T10:07:27.887+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-13T10:07:27.891+0300 I -        [conn28] end connection 127.0.0.1:58553 (1 connection now open)
+2017-10-13T10:07:27.954+0300 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-10-13T10:07:27.954+0300 I CONTROL  [signalProcessingThread] now exiting
+2017-10-13T10:07:27.954+0300 I CONTROL  [signalProcessingThread] shutting down with code:0
+2017-10-26T00:29:26.782+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-26T00:29:26.860+0300 I CONTROL  [initandlisten] MongoDB starting : pid=35330 port=27017 dbpath=/Volumes/My Passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-26T00:29:26.860+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-26T00:29:26.860+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-26T00:29:26.860+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-26T00:29:26.860+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-26T00:29:26.860+0300 I CONTROL  [initandlisten] modules: none
+2017-10-26T00:29:26.860+0300 I CONTROL  [initandlisten] build environment:
+2017-10-26T00:29:26.860+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-26T00:29:26.860+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-26T00:29:26.860+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/My Passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-26T00:29:26.862+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-26T00:29:27.263+0300 I CONTROL  [initandlisten] 
+2017-10-26T00:29:27.263+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-26T00:29:27.263+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-26T00:29:27.263+0300 I CONTROL  [initandlisten] 
+2017-10-26T00:29:27.297+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Volumes/My Passport/data/diagnostic.data'
+2017-10-26T00:29:27.341+0300 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+2017-10-26T00:29:27.341+0300 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2017-10-26T00:29:27.347+0300 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+2017-10-26T00:29:27.348+0300 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+2017-10-26T00:29:27.348+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-26T00:29:27.614+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:52074 #1 (1 connection now open)
+2017-10-26T00:29:27.631+0300 I NETWORK  [conn1] received client metadata from 127.0.0.1:52074 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T00:32:35.933+0300 I -        [conn1] end connection 127.0.0.1:52074 (1 connection now open)
+2017-10-26T00:32:36.540+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:52886 #2 (1 connection now open)
+2017-10-26T00:32:36.584+0300 I NETWORK  [conn2] received client metadata from 127.0.0.1:52886 conn2: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T00:34:23.958+0300 I -        [conn2] end connection 127.0.0.1:52886 (1 connection now open)
+2017-10-26T00:34:24.888+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:53367 #3 (1 connection now open)
+2017-10-26T00:34:24.903+0300 I NETWORK  [conn3] received client metadata from 127.0.0.1:53367 conn3: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T00:35:18.993+0300 I -        [conn3] end connection 127.0.0.1:53367 (1 connection now open)
+2017-10-26T00:35:19.407+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:53539 #4 (1 connection now open)
+2017-10-26T00:35:19.423+0300 I NETWORK  [conn4] received client metadata from 127.0.0.1:53539 conn4: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T00:39:10.569+0300 I -        [conn4] end connection 127.0.0.1:53539 (1 connection now open)
+2017-10-26T00:39:11.148+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:54410 #5 (1 connection now open)
+2017-10-26T00:39:11.170+0300 I NETWORK  [conn5] received client metadata from 127.0.0.1:54410 conn5: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T00:42:48.150+0300 I -        [conn5] end connection 127.0.0.1:54410 (1 connection now open)
+2017-10-26T00:42:48.795+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:55189 #6 (1 connection now open)
+2017-10-26T00:42:48.817+0300 I NETWORK  [conn6] received client metadata from 127.0.0.1:55189 conn6: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T00:42:53.997+0300 I -        [conn6] end connection 127.0.0.1:55189 (1 connection now open)
+2017-10-26T00:42:54.383+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:55214 #7 (1 connection now open)
+2017-10-26T00:42:54.399+0300 I NETWORK  [conn7] received client metadata from 127.0.0.1:55214 conn7: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T00:44:04.796+0300 I -        [conn7] end connection 127.0.0.1:55214 (1 connection now open)
+2017-10-26T00:44:05.416+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:55468 #8 (1 connection now open)
+2017-10-26T00:44:05.441+0300 I NETWORK  [conn8] received client metadata from 127.0.0.1:55468 conn8: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T00:46:06.382+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:56292 #9 (2 connections now open)
+2017-10-26T00:46:06.383+0300 I NETWORK  [conn9] received client metadata from 127.0.0.1:56292 conn9: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-26T00:46:25.858+0300 I -        [conn9] end connection 127.0.0.1:56292 (2 connections now open)
+2017-10-26T00:46:28.400+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:56456 #10 (2 connections now open)
+2017-10-26T00:46:28.400+0300 I NETWORK  [conn10] received client metadata from 127.0.0.1:56456 conn10: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-26T00:49:15.823+0300 I -        [conn10] end connection 127.0.0.1:56456 (2 connections now open)
+2017-10-26T00:50:00.424+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57982 #11 (2 connections now open)
+2017-10-26T00:50:00.424+0300 I NETWORK  [conn11] received client metadata from 127.0.0.1:57982 conn11: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-26T00:51:24.834+0300 I -        [conn11] end connection 127.0.0.1:57982 (2 connections now open)
+2017-10-26T09:28:34.509+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59662 #12 (2 connections now open)
+2017-10-26T09:28:34.510+0300 I NETWORK  [conn12] received client metadata from 127.0.0.1:59662 conn12: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-26T09:28:47.426+0300 I -        [conn12] end connection 127.0.0.1:59662 (2 connections now open)
+2017-10-26T09:30:48.124+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-26T09:30:48.124+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-26T09:30:48.124+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-26T09:30:48.124+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-26T09:30:48.128+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-26T09:30:48.130+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-26T09:30:48.130+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-26T09:30:48.135+0300 I -        [conn8] end connection 127.0.0.1:55468 (1 connection now open)
+2017-10-26T09:30:48.172+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-26T09:30:48.450+0300 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-10-26T09:30:48.450+0300 I CONTROL  [signalProcessingThread] now exiting
+2017-10-26T09:30:48.450+0300 I CONTROL  [signalProcessingThread] shutting down with code:0
+2017-10-26T23:02:52.201+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-26T23:02:52.286+0300 I CONTROL  [initandlisten] MongoDB starting : pid=16496 port=27017 dbpath=/Volumes/my_passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-26T23:02:52.286+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-26T23:02:52.287+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-26T23:02:52.287+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-26T23:02:52.287+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-26T23:02:52.287+0300 I CONTROL  [initandlisten] modules: none
+2017-10-26T23:02:52.287+0300 I CONTROL  [initandlisten] build environment:
+2017-10-26T23:02:52.287+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-26T23:02:52.287+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-26T23:02:52.287+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/my_passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-26T23:02:52.290+0300 I STORAGE  [initandlisten] exception in initAndListen: 29 Data directory /Volumes/my_passport/data not found., terminating
+2017-10-26T23:02:52.290+0300 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-10-26T23:02:52.290+0300 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-10-26T23:02:52.290+0300 I CONTROL  [initandlisten] now exiting
+2017-10-26T23:02:52.290+0300 I CONTROL  [initandlisten] shutting down with code:100
+2017-10-26T23:03:02.368+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-26T23:03:02.389+0300 I CONTROL  [initandlisten] MongoDB starting : pid=16690 port=27017 dbpath=/Volumes/my_passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-26T23:03:02.390+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-26T23:03:02.390+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-26T23:03:02.390+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-26T23:03:02.390+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-26T23:03:02.390+0300 I CONTROL  [initandlisten] modules: none
+2017-10-26T23:03:02.390+0300 I CONTROL  [initandlisten] build environment:
+2017-10-26T23:03:02.390+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-26T23:03:02.390+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-26T23:03:02.390+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/my_passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-26T23:03:02.390+0300 I STORAGE  [initandlisten] exception in initAndListen: 29 Data directory /Volumes/my_passport/data not found., terminating
+2017-10-26T23:03:02.390+0300 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-10-26T23:03:02.390+0300 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-10-26T23:03:02.390+0300 I CONTROL  [initandlisten] now exiting
+2017-10-26T23:03:02.390+0300 I CONTROL  [initandlisten] shutting down with code:100
+2017-10-26T23:03:38.901+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten] MongoDB starting : pid=17267 port=27017 dbpath=/Volumes/my_passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten] modules: none
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten] build environment:
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/my_passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-26T23:03:38.926+0300 I STORAGE  [initandlisten] exception in initAndListen: 29 Data directory /Volumes/my_passport/data not found., terminating
+2017-10-26T23:03:38.926+0300 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-10-26T23:03:38.926+0300 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten] now exiting
+2017-10-26T23:03:38.926+0300 I CONTROL  [initandlisten] shutting down with code:100
+2017-10-26T23:04:52.622+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten] MongoDB starting : pid=18850 port=27017 dbpath=/data 64-bit host=MacBook-Pro-4.local
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten] modules: none
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten] build environment:
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-26T23:04:52.642+0300 I STORAGE  [initandlisten] exception in initAndListen: 20 Attempted to create a lock file on a read-only directory: /data, terminating
+2017-10-26T23:04:52.642+0300 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-10-26T23:04:52.642+0300 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten] now exiting
+2017-10-26T23:04:52.642+0300 I CONTROL  [initandlisten] shutting down with code:100
+2017-10-26T23:05:39.286+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten] MongoDB starting : pid=19592 port=27017 dbpath=/data 64-bit host=MacBook-Pro-4.local
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten] modules: none
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten] build environment:
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-26T23:05:39.315+0300 I STORAGE  [initandlisten] exception in initAndListen: 20 Attempted to create a lock file on a read-only directory: /data, terminating
+2017-10-26T23:05:39.315+0300 I NETWORK  [initandlisten] shutdown: going to close listening sockets...
+2017-10-26T23:05:39.315+0300 I NETWORK  [initandlisten] shutdown: going to flush diaglog...
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten] now exiting
+2017-10-26T23:05:39.315+0300 I CONTROL  [initandlisten] shutting down with code:100
+2017-10-26T23:05:53.663+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-26T23:05:53.686+0300 I CONTROL  [initandlisten] MongoDB starting : pid=19966 port=27017 dbpath=./data 64-bit host=MacBook-Pro-4.local
+2017-10-26T23:05:53.686+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-26T23:05:53.686+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-26T23:05:53.686+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-26T23:05:53.686+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-26T23:05:53.686+0300 I CONTROL  [initandlisten] modules: none
+2017-10-26T23:05:53.686+0300 I CONTROL  [initandlisten] build environment:
+2017-10-26T23:05:53.686+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-26T23:05:53.686+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-26T23:05:53.686+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "./data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-26T23:05:53.687+0300 I -        [initandlisten] Detected data files in ./data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-10-26T23:05:53.687+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-26T23:05:53.809+0300 I CONTROL  [initandlisten] 
+2017-10-26T23:05:53.809+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-26T23:05:53.809+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-26T23:05:53.809+0300 I CONTROL  [initandlisten] 
+2017-10-26T23:05:53.813+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory './data/diagnostic.data'
+2017-10-26T23:05:53.814+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-26T23:06:01.148+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-26T23:06:01.148+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-26T23:06:01.148+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-26T23:06:01.149+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-26T23:06:01.149+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-26T23:06:01.149+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-26T23:06:01.149+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-26T23:06:01.152+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-26T23:06:01.205+0300 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-10-26T23:06:01.205+0300 I CONTROL  [signalProcessingThread] now exiting
+2017-10-26T23:06:01.205+0300 I CONTROL  [signalProcessingThread] shutting down with code:0
+2017-10-26T23:06:20.015+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-26T23:06:20.037+0300 I CONTROL  [initandlisten] MongoDB starting : pid=20342 port=27017 dbpath=./data 64-bit host=MacBook-Pro-4.local
+2017-10-26T23:06:20.037+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-26T23:06:20.037+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-26T23:06:20.037+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-26T23:06:20.037+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-26T23:06:20.037+0300 I CONTROL  [initandlisten] modules: none
+2017-10-26T23:06:20.037+0300 I CONTROL  [initandlisten] build environment:
+2017-10-26T23:06:20.037+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-26T23:06:20.037+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-26T23:06:20.037+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "./data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-26T23:06:20.038+0300 I -        [initandlisten] Detected data files in ./data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-10-26T23:06:20.038+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-26T23:06:20.106+0300 I CONTROL  [initandlisten] 
+2017-10-26T23:06:20.106+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-26T23:06:20.106+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-26T23:06:20.106+0300 I CONTROL  [initandlisten] 
+2017-10-26T23:06:20.109+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory './data/diagnostic.data'
+2017-10-26T23:06:20.109+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-26T23:06:20.942+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:56838 #1 (1 connection now open)
+2017-10-26T23:06:20.957+0300 I NETWORK  [conn1] received client metadata from 127.0.0.1:56838 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T23:06:29.280+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:56859 #2 (2 connections now open)
+2017-10-26T23:06:29.280+0300 I NETWORK  [conn2] received client metadata from 127.0.0.1:56859 conn2: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-26T23:09:19.691+0300 I COMMAND  [conn2] dropDatabase databnb starting
+2017-10-26T23:09:19.747+0300 I COMMAND  [conn2] dropDatabase databnb finished
+2017-10-26T23:09:26.942+0300 I -        [conn2] end connection 127.0.0.1:56859 (2 connections now open)
+2017-10-26T23:09:35.946+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-26T23:09:35.946+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-26T23:09:35.946+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-26T23:09:35.946+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-26T23:09:35.947+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-26T23:09:35.947+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-26T23:09:35.947+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-26T23:09:35.958+0300 I -        [conn1] end connection 127.0.0.1:56838 (1 connection now open)
+2017-10-26T23:09:35.960+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-26T23:09:36.009+0300 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-10-26T23:09:36.009+0300 I CONTROL  [signalProcessingThread] now exiting
+2017-10-26T23:09:36.009+0300 I CONTROL  [signalProcessingThread] shutting down with code:0
+2017-10-26T23:12:08.928+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-26T23:12:08.949+0300 I CONTROL  [initandlisten] MongoDB starting : pid=26705 port=27017 dbpath=/Volumes/my_passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-26T23:12:08.949+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-26T23:12:08.949+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-26T23:12:08.949+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-26T23:12:08.949+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-26T23:12:08.949+0300 I CONTROL  [initandlisten] modules: none
+2017-10-26T23:12:08.949+0300 I CONTROL  [initandlisten] build environment:
+2017-10-26T23:12:08.949+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-26T23:12:08.949+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-26T23:12:08.949+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/my_passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-26T23:12:08.950+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-26T23:12:09.359+0300 I CONTROL  [initandlisten] 
+2017-10-26T23:12:09.359+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-26T23:12:09.359+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-26T23:12:09.359+0300 I CONTROL  [initandlisten] 
+2017-10-26T23:12:09.389+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Volumes/my_passport/data/diagnostic.data'
+2017-10-26T23:12:09.432+0300 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+2017-10-26T23:12:09.432+0300 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2017-10-26T23:12:09.438+0300 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+2017-10-26T23:12:09.439+0300 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+2017-10-26T23:12:09.439+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-26T23:12:09.857+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58052 #1 (1 connection now open)
+2017-10-26T23:12:09.874+0300 I NETWORK  [conn1] received client metadata from 127.0.0.1:58052 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T23:12:25.034+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58113 #2 (2 connections now open)
+2017-10-26T23:12:25.042+0300 I NETWORK  [conn2] received client metadata from 127.0.0.1:58113 conn2: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T23:12:49.582+0300 I -        [conn2] end connection 127.0.0.1:58113 (2 connections now open)
+2017-10-26T23:12:52.441+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58318 #3 (2 connections now open)
+2017-10-26T23:12:52.442+0300 I NETWORK  [conn3] received client metadata from 127.0.0.1:58318 conn3: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-26T23:14:15.411+0300 I COMMAND  [conn3] dropDatabase databnb starting
+2017-10-26T23:14:15.412+0300 I COMMAND  [conn3] dropDatabase databnb finished
+2017-10-26T23:14:18.306+0300 I -        [conn3] end connection 127.0.0.1:58318 (2 connections now open)
+2017-10-26T23:15:38.089+0300 I -        [conn1] end connection 127.0.0.1:58052 (1 connection now open)
+2017-10-26T23:15:38.726+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58981 #4 (1 connection now open)
+2017-10-26T23:15:38.741+0300 I NETWORK  [conn4] received client metadata from 127.0.0.1:58981 conn4: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T23:15:49.359+0300 I -        [conn4] end connection 127.0.0.1:58981 (1 connection now open)
+2017-10-26T23:15:49.726+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59029 #5 (1 connection now open)
+2017-10-26T23:15:49.742+0300 I NETWORK  [conn5] received client metadata from 127.0.0.1:59029 conn5: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T23:22:08.952+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60509 #6 (2 connections now open)
+2017-10-26T23:22:08.952+0300 I NETWORK  [conn6] received client metadata from 127.0.0.1:60509 conn6: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-26T23:23:38.386+0300 I -        [conn6] end connection 127.0.0.1:60509 (2 connections now open)
+2017-10-26T23:25:38.124+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-26T23:25:38.133+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-26T23:25:38.133+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-26T23:25:38.133+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-26T23:25:38.134+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-26T23:25:38.134+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-26T23:25:38.134+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-26T23:25:38.134+0300 I -        [conn5] end connection 127.0.0.1:59029 (1 connection now open)
+2017-10-26T23:25:38.183+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-26T23:25:38.228+0300 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-10-26T23:25:38.228+0300 I CONTROL  [signalProcessingThread] now exiting
+2017-10-26T23:25:38.228+0300 I CONTROL  [signalProcessingThread] shutting down with code:0
+2017-10-26T23:26:24.326+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-26T23:26:24.346+0300 I CONTROL  [initandlisten] MongoDB starting : pid=41654 port=27017 dbpath=/Volumes/my_passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-26T23:26:24.346+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-26T23:26:24.346+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-26T23:26:24.346+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-26T23:26:24.346+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-26T23:26:24.346+0300 I CONTROL  [initandlisten] modules: none
+2017-10-26T23:26:24.346+0300 I CONTROL  [initandlisten] build environment:
+2017-10-26T23:26:24.346+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-26T23:26:24.346+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-26T23:26:24.346+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/my_passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-26T23:26:24.641+0300 I -        [initandlisten] Detected data files in /Volumes/my_passport/data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-10-26T23:26:24.642+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-26T23:26:24.760+0300 I CONTROL  [initandlisten] 
+2017-10-26T23:26:24.760+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-26T23:26:24.760+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-26T23:26:24.760+0300 I CONTROL  [initandlisten] 
+2017-10-26T23:26:24.822+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Volumes/my_passport/data/diagnostic.data'
+2017-10-26T23:26:24.822+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-26T23:26:25.231+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:61595 #1 (1 connection now open)
+2017-10-26T23:26:25.247+0300 I NETWORK  [conn1] received client metadata from 127.0.0.1:61595 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T23:26:29.556+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:61616 #2 (2 connections now open)
+2017-10-26T23:26:29.556+0300 I NETWORK  [conn2] received client metadata from 127.0.0.1:61616 conn2: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-26T23:26:55.016+0300 W FTDC     [ftdc] Uncaught exception in 'FileNotOpen: Failed to open interim file /Volumes/my_passport/data/diagnostic.data/metrics.interim.temp' in full-time diagnostic data capture subsystem. Shutting down the full-time diagnostic data capture subsystem.
+2017-10-26T23:27:01.337+0300 I -        [conn2] end connection 127.0.0.1:61616 (2 connections now open)
+2017-10-26T23:27:09.375+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-26T23:27:09.376+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-26T23:27:09.376+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-26T23:27:09.376+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-26T23:27:09.376+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-26T23:27:09.376+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-26T23:27:09.376+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-26T23:27:09.380+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-26T23:27:09.386+0300 I -        [conn1] end connection 127.0.0.1:61595 (1 connection now open)
+2017-10-26T23:27:09.412+0300 E STORAGE  [signalProcessingThread] WiredTiger error (2) [1509049629:412660][41654:0x700001fb4000], file:WiredTiger.wt, WT_CONNECTION.close: /Volumes/my_passport/data/WiredTiger.turtle.set: handle-open: open: No such file or directory
+2017-10-26T23:27:09.412+0300 E STORAGE  [signalProcessingThread] WiredTiger error (2) [1509049629:412747][41654:0x700001fb4000], file:WiredTiger.wt, WT_CONNECTION.close: Final close of file:WiredTiger.wt failed: No such file or directory
+2017-10-26T23:27:09.415+0300 E STORAGE  [signalProcessingThread] WiredTiger error (0) [1509049629:415717][41654:0x700001fb4000], WT_CONNECTION.close: Connection has open file handles: WiredTiger.wt
+2017-10-26T23:27:09.424+0300 I -        [signalProcessingThread] Invariant failure: _conn->close(_conn, config) resulted in status UnknownError: 2: No such file or directory at src/mongo/db/storage/wiredtiger/wiredtiger_kv_engine.cpp 347
+2017-10-26T23:27:09.424+0300 I -        [signalProcessingThread] 
+
+***aborting after invariant() failure
+
+
+2017-10-26T23:27:09.441+0300 F -        [signalProcessingThread] Got signal: 6 (Abort trap: 6).
+
+ 0x1093fe039 0x1093fd85d 0x7fffac0f1b3a 0x502921d1 0x7fffabf76420 0x1093765a7 0x109180238 0x1090bd85b 0x10891f0fc 0x109385419 0x10891f429 0x1093fcf5a 0x108f2de4d 0x7fffac0fb93b 0x7fffac0fb887 0x7fffac0fb08d
+----- BEGIN BACKTRACE -----
+{"backtrace":[{"b":"10891D000","o":"AE1039","s":"_ZN5mongo15printStackTraceERNSt3__113basic_ostreamIcNS0_11char_traitsIcEEEE"},{"b":"10891D000","o":"AE085D","s":"_ZN5mongo12_GLOBAL__N_110abruptQuitEi"},{"b":"7FFFAC0EF000","o":"2B3A","s":"_sigtramp"},{"b":"0","o":"502921D1"},{"b":"7FFFABF17000","o":"5F420","s":"abort"},{"b":"10891D000","o":"A595A7","s":"_ZN5mongo17invariantOKFailedEPKcRKNS_6StatusES1_j"},{"b":"10891D000","o":"863238","s":"_ZN5mongo18WiredTigerKVEngine13cleanShutdownEv"},{"b":"10891D000","o":"7A085B","s":"_ZN5mongo20ServiceContextMongoD34shutdownGlobalStorageEngineCleanlyEv"},{"b":"10891D000","o":"20FC","s":"_ZL12shutdownTaskv"},{"b":"10891D000","o":"A68419","s":"_ZN5mongo8shutdownENS_8ExitCodeE"},{"b":"10891D000","o":"2429","s":"_ZN5mongo11exitCleanlyENS_8ExitCodeE"},{"b":"10891D000","o":"ADFF5A","s":"_ZN5mongo12_GLOBAL__N_122signalProcessingThreadEv"},{"b":"10891D000","o":"610E4D","s":"_ZNSt3__114__thread_proxyINS_5tupleIJPFvvEEEEEEPvS5_"},{"b":"7FFFAC0F8000","o":"393B","s":"_pthread_body"},{"b":"7FFFAC0F8000","o":"3887","s":"_pthread_body"},{"b":"7FFFAC0F8000","o":"308D","s":"thread_start"}],"processInfo":{ "mongodbVersion" : "3.4.9", "gitVersion" : "876ebee8c7dd0e2d992f36a848ff4dc50ee6603e", "compiledModules" : [], "uname" : { "sysname" : "Darwin", "release" : "16.7.0", "version" : "Darwin Kernel Version 16.7.0: Thu Jun 15 17:36:27 PDT 2017; root:xnu-3789.70.16~2/RELEASE_X86_64", "machine" : "x86_64" }, "somap" : [ { "path" : "/usr/local/bin/mongod", "machType" : 2, "b" : "10891D000", "vmaddr" : "100000000", "buildId" : "64C979E981303489B65E49819147DBE2" }, { "path" : "/usr/local/opt/openssl/lib/libssl.1.0.0.dylib", "machType" : 6, "b" : "10BCD1000", "vmaddr" : "0", "buildId" : "35C152E071683B9994ABECA04D3B3DB5" }, { "path" : "/usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib", "machType" : 6, "b" : "10BD33000", "vmaddr" : "0", "buildId" : "11B495A9782C3FB09729ACFCD9F4F53E" }, { "path" : "/usr/lib/libSystem.B.dylib", "machType" : 6, "b" : "7FFFAA938000", "vmaddr" : "7FFF895DC000", "buildId" : "F18AC1E7C6F134B18069BE571B3231D4" }, { "path" : "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation", "machType" : 6, "b" : "7FFF966D3000", "vmaddr" : "7FFF75377000", "buildId" : "09ED473E5DE8307FB55C16F6419236D5" }, { "path" : "/System/Library/Frameworks/Security.framework/Versions/A/Security", "machType" : 6, "b" : "7FFF9C9E0000", "vmaddr" : "7FFF7B684000", "buildId" : "005E8C9640B635E3B58B888A5F5957C2" }, { "path" : "/usr/lib/libc++.1.dylib", "machType" : 6, "b" : "7FFFAAA72000", "vmaddr" : "7FFF89716000", "buildId" : "0B43BB5DE6EB34648DE9B41AC8ED9D1C" }, { "path" : "/usr/lib/system/libcache.dylib", "machType" : 6, "b" : "7FFFABE06000", "vmaddr" : "7FFF8AAAA000", "buildId" : "093A4DAB83853D47A350E20CB7CCF7BF" }, { "path" : "/usr/lib/system/libcommonCrypto.dylib", "machType" : 6, "b" : "7FFFABE0B000", "vmaddr" : "7FFF8AAAF000", "buildId" : "8A64D1B0C70E385C92F0E669079FDA90" }, { "path" : "/usr/lib/system/libcompiler_rt.dylib", "machType" : 6, "b" : "7FFFABE16000", "vmaddr" : "7FFF8AABA000", "buildId" : "55D47421772A32ABB5291A46C2F43B4D" }, { "path" : "/usr/lib/system/libcopyfile.dylib", "machType" : 6, "b" : "7FFFABE1E000", "vmaddr" : "7FFF8AAC2000", "buildId" : "819BEA3CDF113E3DA1A15A51C5BF1961" }, { "path" : "/usr/lib/system/libcorecrypto.dylib", "machType" : 6, "b" : "7FFFABE27000", "vmaddr" : "7FFF8AACB000", "buildId" : "65D7165E2E71335DA2D633F78E2DF0C1" }, { "path" : "/usr/lib/system/libdispatch.dylib", "machType" : 6, "b" : "7FFFABEAB000", "vmaddr" : "7FFF8AB4F000", "buildId" : "6582BAD6ED273B30B62090B1C5A4AE3C" }, { "path" : "/usr/lib/system/libdyld.dylib", "machType" : 6, "b" : "7FFFABEDD000", "vmaddr" : "7FFF8AB81000", "buildId" : "9B2AC56D107C3541A1279094A751F2C9" }, { "path" : "/usr/lib/system/libkeymgr.dylib", "machType" : 6, "b" : "7FFFABEE3000", "vmaddr" : "7FFF8AB87000", "buildId" : "7AA011A9DC213488BF733B5B14D1FDD6" }, { "path" : "/usr/lib/system/liblaunch.dylib", "machType" : 6, "b" : "7FFFABEF1000", "vmaddr" : "7FFF8AB95000", "buildId" : "B856ABD2896E3DE0B2C8146A6AF8E2A7" }, { "path" : "/usr/lib/system/libmacho.dylib", "machType" : 6, "b" : "7FFFABEF2000", "vmaddr" : "7FFF8AB96000", "buildId" : "17D5D855F6C33B04B680E9BF02EF8AED" }, { "path" : "/usr/lib/system/libquarantine.dylib", "machType" : 6, "b" : "7FFFABEF8000", "vmaddr" : "7FFF8AB9C000", "buildId" : "12448CC2378E35F3BE339DC395A5B970" }, { "path" : "/usr/lib/system/libremovefile.dylib", "machType" : 6, "b" : "7FFFABEFB000", "vmaddr" : "7FFF8AB9F000", "buildId" : "38D4CB9C10CD30D38B7BA515EC75FE85" }, { "path" : "/usr/lib/system/libsystem_asl.dylib", "machType" : 6, "b" : "7FFFABEFD000", "vmaddr" : "7FFF8ABA1000", "buildId" : "096E42283B7C30A68B13EC909A64499A" }, { "path" : "/usr/lib/system/libsystem_blocks.dylib", "machType" : 6, "b" : "7FFFABF16000", "vmaddr" : "7FFF8ABBA000", "buildId" : "10DC540473AB35B3A277A8AFECB476EB" }, { "path" : "/usr/lib/system/libsystem_c.dylib", "machType" : 6, "b" : "7FFFABF17000", "vmaddr" : "7FFF8ABBB000", "buildId" : "E5AE52447D0C36AC8BB6C7AE7EA52A4B" }, { "path" : "/usr/lib/system/libsystem_configuration.dylib", "machType" : 6, "b" : "7FFFABFA5000", "vmaddr" : "7FFF8AC49000", "buildId" : "BECC01A2CA8D31E6BCDFD452965FA976" }, { "path" : "/usr/lib/system/libsystem_coreservices.dylib", "machType" : 6, "b" : "7FFFABFA9000", "vmaddr" : "7FFF8AC4D000", "buildId" : "7D26DE79B424345085E1F7FAB32714AB" }, { "path" : "/usr/lib/system/libsystem_coretls.dylib", "machType" : 6, "b" : "7FFFABFAD000", "vmaddr" : "7FFF8AC51000", "buildId" : "EC6FCF07DCFB3A039CC96DD3709974C6" }, { "path" : "/usr/lib/system/libsystem_dnssd.dylib", "machType" : 6, "b" : "7FFFABFC6000", "vmaddr" : "7FFF8AC6A000", "buildId" : "CC9602150B1B3822A13A3DDE96FA796F" }, { "path" : "/usr/lib/system/libsystem_info.dylib", "machType" : 6, "b" : "7FFFABFCD000", "vmaddr" : "7FFF8AC71000", "buildId" : "611DB84CBF703F928702B9F28A900920" }, { "path" : "/usr/lib/system/libsystem_kernel.dylib", "machType" : 6, "b" : "7FFFABFF7000", "vmaddr" : "7FFF8AC9B000", "buildId" : "34B1F16CBC9C3C5F90450CAE91CB5914" }, { "path" : "/usr/lib/system/libsystem_m.dylib", "machType" : 6, "b" : "7FFFAC01A000", "vmaddr" : "7FFF8ACBE000", "buildId" : "86D499B5BBDC3D3B8A4E97AE8E6672A4" }, { "path" : "/usr/lib/system/libsystem_malloc.dylib", "machType" : 6, "b" : "7FFFAC062000", "vmaddr" : "7FFF8AD06000", "buildId" : "A3D15F1799A633678C7E4280E8619C95" }, { "path" : "/usr/lib/system/libsystem_network.dylib", "machType" : 6, "b" : "7FFFAC081000", "vmaddr" : "7FFF8AD25000", "buildId" : "369D022156CA3C3E9EDE94B41CAE77B7" }, { "path" : "/usr/lib/system/libsystem_networkextension.dylib", "machType" : 6, "b" : "7FFFAC0DB000", "vmaddr" : "7FFF8AD7F000", "buildId" : "B021F2B38A753633ABB0FC012B8E9B0C" }, { "path" : "/usr/lib/system/libsystem_notify.dylib", "machType" : 6, "b" : "7FFFAC0E5000", "vmaddr" : "7FFF8AD89000", "buildId" : "B8160190A0693B3ABDF62AA408221FAE" }, { "path" : "/usr/lib/system/libsystem_platform.dylib", "machType" : 6, "b" : "7FFFAC0EF000", "vmaddr" : "7FFF8AD93000", "buildId" : "897462FDB318321BA554E61982630F7E" }, { "path" : "/usr/lib/system/libsystem_pthread.dylib", "machType" : 6, "b" : "7FFFAC0F8000", "vmaddr" : "7FFF8AD9C000", "buildId" : "B8FB5E20329539E2B5EBB464D1D4B104" }, { "path" : "/usr/lib/system/libsystem_sandbox.dylib", "machType" : 6, "b" : "7FFFAC103000", "vmaddr" : "7FFF8ADA7000", "buildId" : "4B92EC49ACD036AEB07AA2B8152EAF9D" }, { "path" : "/usr/lib/system/libsystem_secinit.dylib", "machType" : 6, "b" : "7FFFAC107000", "vmaddr" : "7FFF8ADAB000", "buildId" : "F78B847B35653E4B98A6F7AD40392E2D" }, { "path" : "/usr/lib/system/libsystem_symptoms.dylib", "machType" : 6, "b" : "7FFFAC109000", "vmaddr" : "7FFF8ADAD000", "buildId" : "3390E07CC1CE348FADBD2C5440B45EAA" }, { "path" : "/usr/lib/system/libsystem_trace.dylib", "machType" : 6, "b" : "7FFFAC111000", "vmaddr" : "7FFF8ADB5000", "buildId" : "AC63A7FE50D93A3096E6F6B7FF16E465" }, { "path" : "/usr/lib/system/libunwind.dylib", "machType" : 6, "b" : "7FFFAC125000", "vmaddr" : "7FFF8ADC9000", "buildId" : "3D50D8A8C460334DA5192DA841102C6B" }, { "path" : "/usr/lib/system/libxpc.dylib", "machType" : 6, "b" : "7FFFAC12B000", "vmaddr" : "7FFF8ADCF000", "buildId" : "BF896DF0D8E931A8A4B301120BFEEE52" }, { "path" : "/usr/lib/libobjc.A.dylib", "machType" : 6, "b" : "7FFFAB5E7000", "vmaddr" : "7FFF8A28B000", "buildId" : "70614861034032E285EDFE65759CDFFA" }, { "path" : "/usr/lib/libc++abi.dylib", "machType" : 6, "b" : "7FFFAAAC9000", "vmaddr" : "7FFF8976D000", "buildId" : "BC271AD3831B362A9DA7E8C51F285FE4" }, { "path" : "/usr/lib/libDiagnosticMessagesClient.dylib", "machType" : 6, "b" : "7FFFAA6F9000", "vmaddr" : "7FFF8939D000", "buildId" : "84A04D240E603810A8C090A65E2DF61A" }, { "path" : "/usr/lib/libicucore.A.dylib", "machType" : 6, "b" : "7FFFAB033000", "vmaddr" : "7FFF89CD7000", "buildId" : "CCD2ED243071383B925D8D763BB12A6F" }, { "path" : "/usr/lib/libz.1.dylib", "machType" : 6, "b" : "7FFFABDE6000", "vmaddr" : "7FFF8AA8A000", "buildId" : "46E3FFA24328327A8D34A03E20BFFB8E" }, { "path" : "/usr/lib/libcoretls.dylib", "machType" : 6, "b" : "7FFFAAB1B000", "vmaddr" : "7FFF897BF000", "buildId" : "64B1001E10F63542A3B2C4B49F51817F" }, { "path" : "/usr/lib/libcoretls_cfhelpers.dylib", "machType" : 6, "b" : "7FFFAAB1C000", "vmaddr" : "7FFF897C0000", "buildId" : "1A10303E5EB03C7C9165021FCDFD934D" }, { "path" : "/usr/lib/libOpenScriptingUtil.dylib", "machType" : 6, "b" : "7FFFAA932000", "vmaddr" : "7FFF895D6000", "buildId" : "90743888C1E834E3924E1A754B2B63B9" }, { "path" : "/usr/lib/libauto.dylib", "machType" : 6, "b" : "7FFFAAA51000", "vmaddr" : "7FFF896F5000", "buildId" : "34388D0BC5393C1B94082BC152162E43" }, { "path" : "/usr/lib/libbsm.0.dylib", "machType" : 6, "b" : "7FFFAAA52000", "vmaddr" : "7FFF896F6000", "buildId" : "20084796B04D3B35A003EA11459557A9" }, { "path" : "/usr/lib/libpam.2.dylib", "machType" : 6, "b" : "7FFFAB9BC000", "vmaddr" : "7FFF8A660000", "buildId" : "71EB0D88DE843C8DA2C558AA282BC5BC" }, { "path" : "/usr/lib/libsqlite3.dylib", "machType" : 6, "b" : "7FFFABA7B000", "vmaddr" : "7FFF8A71F000", "buildId" : "1ECF7DF77A073B4BA63BF4EFF6BC7ACF" }, { "path" : "/usr/lib/libxar.1.dylib", "machType" : 6, "b" : "7FFFABCBE000", "vmaddr" : "7FFF8A962000", "buildId" : "69547C64E811326FBBED490C6361BDCB" }, { "path" : "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit", "machType" : 6, "b" : "7FFF986B2000", "vmaddr" : "7FFF77356000", "buildId" : "7CE4C98B107C3AAAB49AF2ACFCBBF526" }, { "path" : "/usr/lib/libbz2.1.0.dylib", "machType" : 6, "b" : "7FFFAAA63000", "vmaddr" : "7FFF89707000", "buildId" : "ADFA329ADCE7356D8F09A3168DFC6610" }, { "path" : "/usr/lib/libxml2.2.dylib", "machType" : 6, "b" : "7FFFABCCC000", "vmaddr" : "7FFF8A970000", "buildId" : "D4C3E46737C634DE8A1BE7BFC29985E9" }, { "path" : "/usr/lib/liblzma.5.dylib", "machType" : 6, "b" : "7FFFAB260000", "vmaddr" : "7FFF89F04000", "buildId" : "44BD027999DD36B58A6EC11432E2098D" }, { "path" : "/usr/lib/libenergytrace.dylib", "machType" : 6, "b" : "7FFFAAF2A000", "vmaddr" : "7FFF89BCE000", "buildId" : "A1B040A2797730979ADF34FF181EB970" }, { "path" : "/usr/lib/system/libkxld.dylib", "machType" : 6, "b" : "7FFFABEE4000", "vmaddr" : "7FFF8AB88000", "buildId" : "BD02EF3F6E093A64AB21553D5B1D2859" } ] }}
+ mongod(_ZN5mongo15printStackTraceERNSt3__113basic_ostreamIcNS0_11char_traitsIcEEEE+0x39) [0x1093fe039]
+ mongod(_ZN5mongo12_GLOBAL__N_110abruptQuitEi+0xBD) [0x1093fd85d]
+ libsystem_platform.dylib(_sigtramp+0x1A) [0x7fffac0f1b3a]
+ ??? [0x502921d1]
+ libsystem_c.dylib(abort+0x81) [0x7fffabf76420]
+ mongod(_ZN5mongo17invariantOKFailedEPKcRKNS_6StatusES1_j+0x2F7) [0x1093765a7]
+ mongod(_ZN5mongo18WiredTigerKVEngine13cleanShutdownEv+0x1B8) [0x109180238]
+ mongod(_ZN5mongo20ServiceContextMongoD34shutdownGlobalStorageEngineCleanlyEv+0x1B) [0x1090bd85b]
+ mongod(_ZL12shutdownTaskv+0x38C) [0x10891f0fc]
+ mongod(_ZN5mongo8shutdownENS_8ExitCodeE+0x1C9) [0x109385419]
+ mongod(_ZN5mongo11exitCleanlyENS_8ExitCodeE+0x9) [0x10891f429]
+ mongod(_ZN5mongo12_GLOBAL__N_122signalProcessingThreadEv+0x1FA) [0x1093fcf5a]
+ mongod(_ZNSt3__114__thread_proxyINS_5tupleIJPFvvEEEEEEPvS5_+0x5D) [0x108f2de4d]
+ libsystem_pthread.dylib(_pthread_body+0xB4) [0x7fffac0fb93b]
+ libsystem_pthread.dylib(_pthread_body+0x0) [0x7fffac0fb887]
+ libsystem_pthread.dylib(thread_start+0xD) [0x7fffac0fb08d]
+-----  END BACKTRACE  -----
+2017-10-26T23:27:10.848+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-26T23:27:10.879+0300 I CONTROL  [initandlisten] MongoDB starting : pid=42701 port=27017 dbpath=/Volumes/my_passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-26T23:27:10.879+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-26T23:27:10.879+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-26T23:27:10.879+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-26T23:27:10.879+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-26T23:27:10.879+0300 I CONTROL  [initandlisten] modules: none
+2017-10-26T23:27:10.879+0300 I CONTROL  [initandlisten] build environment:
+2017-10-26T23:27:10.880+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-26T23:27:10.880+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-26T23:27:10.880+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/my_passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-26T23:27:10.881+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-26T23:27:11.011+0300 I CONTROL  [initandlisten] 
+2017-10-26T23:27:11.011+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-26T23:27:11.011+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-26T23:27:11.011+0300 I CONTROL  [initandlisten] 
+2017-10-26T23:27:11.037+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Volumes/my_passport/data/diagnostic.data'
+2017-10-26T23:27:11.112+0300 I INDEX    [initandlisten] build index on: admin.system.version properties: { v: 2, key: { version: 1 }, name: "incompatible_with_version_32", ns: "admin.system.version" }
+2017-10-26T23:27:11.112+0300 I INDEX    [initandlisten] 	 building index using bulk method; build may temporarily use up to 500 megabytes of RAM
+2017-10-26T23:27:11.116+0300 I INDEX    [initandlisten] build index done.  scanned 0 total records. 0 secs
+2017-10-26T23:27:11.117+0300 I COMMAND  [initandlisten] setting featureCompatibilityVersion to 3.4
+2017-10-26T23:27:11.117+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-26T23:27:11.627+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:61779 #1 (1 connection now open)
+2017-10-26T23:27:11.645+0300 I NETWORK  [conn1] received client metadata from 127.0.0.1:61779 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-26T23:27:38.699+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:61889 #2 (2 connections now open)
+2017-10-26T23:27:38.707+0300 I NETWORK  [conn2] received client metadata from 127.0.0.1:61889 conn2: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T00:20:55.988+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:54362 #3 (3 connections now open)
+2017-10-27T02:12:44.994+0300 I -        [conn2] end connection 127.0.0.1:61889 (3 connections now open)
+2017-10-27T02:12:44.994+0300 I -        [conn3] end connection 127.0.0.1:54362 (3 connections now open)
+2017-10-27T09:44:57.243+0300 I -        [conn1] end connection 127.0.0.1:61779 (1 connection now open)
+2017-10-27T09:44:57.901+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58432 #4 (1 connection now open)
+2017-10-27T09:44:57.931+0300 I NETWORK  [conn4] received client metadata from 127.0.0.1:58432 conn4: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T09:45:55.206+0300 I -        [conn4] end connection 127.0.0.1:58432 (1 connection now open)
+2017-10-27T09:45:55.814+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58588 #5 (1 connection now open)
+2017-10-27T09:45:55.830+0300 I NETWORK  [conn5] received client metadata from 127.0.0.1:58588 conn5: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T09:46:01.541+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58602 #6 (2 connections now open)
+2017-10-27T09:46:01.541+0300 I NETWORK  [conn6] received client metadata from 127.0.0.1:58602 conn6: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-27T09:48:20.882+0300 I -        [conn5] end connection 127.0.0.1:58588 (2 connections now open)
+2017-10-27T09:48:21.556+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58963 #7 (2 connections now open)
+2017-10-27T09:48:21.573+0300 I NETWORK  [conn7] received client metadata from 127.0.0.1:58963 conn7: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T09:49:36.017+0300 I -        [conn7] end connection 127.0.0.1:58963 (2 connections now open)
+2017-10-27T09:49:36.612+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59153 #8 (2 connections now open)
+2017-10-27T09:49:36.628+0300 I NETWORK  [conn8] received client metadata from 127.0.0.1:59153 conn8: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T09:49:46.999+0300 I -        [conn8] end connection 127.0.0.1:59153 (2 connections now open)
+2017-10-27T09:49:47.373+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59183 #9 (2 connections now open)
+2017-10-27T09:49:47.396+0300 I NETWORK  [conn9] received client metadata from 127.0.0.1:59183 conn9: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T09:50:16.154+0300 I -        [conn9] end connection 127.0.0.1:59183 (2 connections now open)
+2017-10-27T09:50:16.613+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59262 #10 (2 connections now open)
+2017-10-27T09:50:16.634+0300 I NETWORK  [conn10] received client metadata from 127.0.0.1:59262 conn10: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T09:50:20.644+0300 I -        [conn10] end connection 127.0.0.1:59262 (2 connections now open)
+2017-10-27T09:50:21.042+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59275 #11 (2 connections now open)
+2017-10-27T09:50:21.094+0300 I NETWORK  [conn11] received client metadata from 127.0.0.1:59275 conn11: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T10:25:36.009+0300 W FTDC     [ftdc] Uncaught exception in 'FileNotOpen: Failed to open interim file /Volumes/my_passport/data/diagnostic.data/metrics.interim.temp' in full-time diagnostic data capture subsystem. Shutting down the full-time diagnostic data capture subsystem.
+2017-10-27T10:41:25.858+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-27T10:41:25.868+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-27T10:41:25.868+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-27T10:41:25.869+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-27T10:41:25.869+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-27T10:41:25.871+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-27T10:41:25.872+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-27T10:41:25.872+0300 I -        [conn11] end connection 127.0.0.1:59275 (2 connections now open)
+2017-10-27T10:41:25.874+0300 I FTDC     [signalProcessingThread] Failed to close full-time diagnostic data capture file manager: FileStreamFailed: Failed to write to archive file buffer for full-time diagnostic data capture: /Volumes/my_passport/data/diagnostic.data/metrics.2017-10-26T20-27-12Z-00000
+2017-10-27T10:41:25.875+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877196][42701:0x700003630000], file:index-6-4331842072256948561.wt, WT_CONNECTION.close: /Volumes/my_passport/data/index-6-4331842072256948561.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877350][42701:0x700003630000], file:index-6-4331842072256948561.wt, WT_CONNECTION.close: Final close of file:index-6-4331842072256948561.wt failed: Bad file descriptor
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877509][42701:0x700003630000], file:collection-5-4331842072256948561.wt, WT_CONNECTION.close: /Volumes/my_passport/data/collection-5-4331842072256948561.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877587][42701:0x700003630000], file:collection-5-4331842072256948561.wt, WT_CONNECTION.close: Final close of file:collection-5-4331842072256948561.wt failed: Bad file descriptor
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877661][42701:0x700003630000], file:index-4-4331842072256948561.wt, WT_CONNECTION.close: /Volumes/my_passport/data/index-4-4331842072256948561.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877730][42701:0x700003630000], file:index-4-4331842072256948561.wt, WT_CONNECTION.close: Final close of file:index-4-4331842072256948561.wt failed: Bad file descriptor
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877771][42701:0x700003630000], file:index-3-4331842072256948561.wt, WT_CONNECTION.close: /Volumes/my_passport/data/index-3-4331842072256948561.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877802][42701:0x700003630000], file:index-3-4331842072256948561.wt, WT_CONNECTION.close: Final close of file:index-3-4331842072256948561.wt failed: Bad file descriptor
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877836][42701:0x700003630000], file:collection-2-4331842072256948561.wt, WT_CONNECTION.close: /Volumes/my_passport/data/collection-2-4331842072256948561.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877886][42701:0x700003630000], file:collection-2-4331842072256948561.wt, WT_CONNECTION.close: Final close of file:collection-2-4331842072256948561.wt failed: Bad file descriptor
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877921][42701:0x700003630000], file:index-1-4331842072256948561.wt, WT_CONNECTION.close: /Volumes/my_passport/data/index-1-4331842072256948561.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T10:41:25.877+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:877993][42701:0x700003630000], file:index-1-4331842072256948561.wt, WT_CONNECTION.close: Final close of file:index-1-4331842072256948561.wt failed: Bad file descriptor
+2017-10-27T10:41:25.878+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:878030][42701:0x700003630000], file:collection-0-4331842072256948561.wt, WT_CONNECTION.close: /Volumes/my_passport/data/collection-0-4331842072256948561.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T10:41:25.878+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:878068][42701:0x700003630000], file:collection-0-4331842072256948561.wt, WT_CONNECTION.close: Final close of file:collection-0-4331842072256948561.wt failed: Bad file descriptor
+2017-10-27T10:41:25.878+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:878115][42701:0x700003630000], file:_mdb_catalog.wt, WT_CONNECTION.close: /Volumes/my_passport/data/_mdb_catalog.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T10:41:25.878+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:878187][42701:0x700003630000], file:_mdb_catalog.wt, WT_CONNECTION.close: Final close of file:_mdb_catalog.wt failed: Bad file descriptor
+2017-10-27T10:41:25.878+0300 E STORAGE  [signalProcessingThread] WiredTiger error (5) [1509090085:878330][42701:0x700003630000], file:sizeStorer.wt, WT_CONNECTION.close: /Volumes/my_passport/data/sizeStorer.wt: handle-write: pwrite: failed to write 4096 bytes at offset 16384: Input/output error
+2017-10-27T10:41:25.878+0300 E STORAGE  [signalProcessingThread] WiredTiger error (5) [1509090085:878376][42701:0x700003630000], file:sizeStorer.wt, WT_CONNECTION.close: Final close of file:sizeStorer.wt failed: Input/output error
+2017-10-27T10:41:25.878+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:878422][42701:0x700003630000], file:WiredTigerLAS.wt, WT_CONNECTION.close: /Volumes/my_passport/data/WiredTigerLAS.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T10:41:25.878+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:878473][42701:0x700003630000], file:WiredTigerLAS.wt, WT_CONNECTION.close: Final close of file:WiredTigerLAS.wt failed: Bad file descriptor
+2017-10-27T10:41:25.878+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:878514][42701:0x700003630000], file:WiredTiger.wt, WT_CONNECTION.close: /Volumes/my_passport/data/WiredTiger.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T10:41:25.878+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509090085:878622][42701:0x700003630000], file:WiredTiger.wt, WT_CONNECTION.close: Final close of file:WiredTiger.wt failed: Bad file descriptor
+2017-10-27T10:41:25.879+0300 E STORAGE  [signalProcessingThread] WiredTiger error (0) [1509090085:878994][42701:0x700003630000], WT_CONNECTION.close: cache server: exiting with 24 pages in memory and 22 pages evicted
+2017-10-27T10:41:25.879+0300 E STORAGE  [signalProcessingThread] WiredTiger error (0) [1509090085:879034][42701:0x700003630000], WT_CONNECTION.close: cache server: exiting with 1517 bytes in memory
+2017-10-27T10:41:25.879+0300 E STORAGE  [signalProcessingThread] WiredTiger error (0) [1509090085:879059][42701:0x700003630000], WT_CONNECTION.close: cache server: exiting with 1517 bytes dirty and 2 pages dirty
+2017-10-27T10:41:25.879+0300 E STORAGE  [signalProcessingThread] WiredTiger error (0) [1509090085:879153][42701:0x700003630000], WT_CONNECTION.close: Connection has open file handles: sizeStorer.wt
+2017-10-27T10:41:25.881+0300 I -        [signalProcessingThread] Invariant failure: _conn->close(_conn, config) resulted in status UnknownError: 9: Bad file descriptor at src/mongo/db/storage/wiredtiger/wiredtiger_kv_engine.cpp 347
+2017-10-27T10:41:25.881+0300 I -        [signalProcessingThread] 
+
+***aborting after invariant() failure
+
+
+2017-10-27T10:41:25.900+0300 F -        [signalProcessingThread] Got signal: 6 (Abort trap: 6).
+
+ 0x10d3de039 0x10d3dd85d 0x7fffac0f1b3a 0x9674cd32 0x7fffabf76420 0x10d3565a7 0x10d160238 0x10d09d85b 0x10c8ff0fc 0x10d365419 0x10c8ff429 0x10d3dcf5a 0x10cf0de4d 0x7fffac0fb93b 0x7fffac0fb887 0x7fffac0fb08d
+----- BEGIN BACKTRACE -----
+{"backtrace":[{"b":"10C8FD000","o":"AE1039","s":"_ZN5mongo15printStackTraceERNSt3__113basic_ostreamIcNS0_11char_traitsIcEEEE"},{"b":"10C8FD000","o":"AE085D","s":"_ZN5mongo12_GLOBAL__N_110abruptQuitEi"},{"b":"7FFFAC0EF000","o":"2B3A","s":"_sigtramp"},{"b":"0","o":"9674CD32"},{"b":"7FFFABF17000","o":"5F420","s":"abort"},{"b":"10C8FD000","o":"A595A7","s":"_ZN5mongo17invariantOKFailedEPKcRKNS_6StatusES1_j"},{"b":"10C8FD000","o":"863238","s":"_ZN5mongo18WiredTigerKVEngine13cleanShutdownEv"},{"b":"10C8FD000","o":"7A085B","s":"_ZN5mongo20ServiceContextMongoD34shutdownGlobalStorageEngineCleanlyEv"},{"b":"10C8FD000","o":"20FC","s":"_ZL12shutdownTaskv"},{"b":"10C8FD000","o":"A68419","s":"_ZN5mongo8shutdownENS_8ExitCodeE"},{"b":"10C8FD000","o":"2429","s":"_ZN5mongo11exitCleanlyENS_8ExitCodeE"},{"b":"10C8FD000","o":"ADFF5A","s":"_ZN5mongo12_GLOBAL__N_122signalProcessingThreadEv"},{"b":"10C8FD000","o":"610E4D","s":"_ZNSt3__114__thread_proxyINS_5tupleIJPFvvEEEEEEPvS5_"},{"b":"7FFFAC0F8000","o":"393B","s":"_pthread_body"},{"b":"7FFFAC0F8000","o":"3887","s":"_pthread_body"},{"b":"7FFFAC0F8000","o":"308D","s":"thread_start"}],"processInfo":{ "mongodbVersion" : "3.4.9", "gitVersion" : "876ebee8c7dd0e2d992f36a848ff4dc50ee6603e", "compiledModules" : [], "uname" : { "sysname" : "Darwin", "release" : "16.7.0", "version" : "Darwin Kernel Version 16.7.0: Thu Jun 15 17:36:27 PDT 2017; root:xnu-3789.70.16~2/RELEASE_X86_64", "machine" : "x86_64" }, "somap" : [ { "path" : "/usr/local/bin/mongod", "machType" : 2, "b" : "10C8FD000", "vmaddr" : "100000000", "buildId" : "64C979E981303489B65E49819147DBE2" }, { "path" : "/usr/local/opt/openssl/lib/libssl.1.0.0.dylib", "machType" : 6, "b" : "10FCB7000", "vmaddr" : "0", "buildId" : "35C152E071683B9994ABECA04D3B3DB5" }, { "path" : "/usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib", "machType" : 6, "b" : "10FD1A000", "vmaddr" : "0", "buildId" : "11B495A9782C3FB09729ACFCD9F4F53E" }, { "path" : "/usr/lib/libSystem.B.dylib", "machType" : 6, "b" : "7FFFAA938000", "vmaddr" : "7FFF895DC000", "buildId" : "F18AC1E7C6F134B18069BE571B3231D4" }, { "path" : "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation", "machType" : 6, "b" : "7FFF966D3000", "vmaddr" : "7FFF75377000", "buildId" : "09ED473E5DE8307FB55C16F6419236D5" }, { "path" : "/System/Library/Frameworks/Security.framework/Versions/A/Security", "machType" : 6, "b" : "7FFF9C9E0000", "vmaddr" : "7FFF7B684000", "buildId" : "005E8C9640B635E3B58B888A5F5957C2" }, { "path" : "/usr/lib/libc++.1.dylib", "machType" : 6, "b" : "7FFFAAA72000", "vmaddr" : "7FFF89716000", "buildId" : "0B43BB5DE6EB34648DE9B41AC8ED9D1C" }, { "path" : "/usr/lib/system/libcache.dylib", "machType" : 6, "b" : "7FFFABE06000", "vmaddr" : "7FFF8AAAA000", "buildId" : "093A4DAB83853D47A350E20CB7CCF7BF" }, { "path" : "/usr/lib/system/libcommonCrypto.dylib", "machType" : 6, "b" : "7FFFABE0B000", "vmaddr" : "7FFF8AAAF000", "buildId" : "8A64D1B0C70E385C92F0E669079FDA90" }, { "path" : "/usr/lib/system/libcompiler_rt.dylib", "machType" : 6, "b" : "7FFFABE16000", "vmaddr" : "7FFF8AABA000", "buildId" : "55D47421772A32ABB5291A46C2F43B4D" }, { "path" : "/usr/lib/system/libcopyfile.dylib", "machType" : 6, "b" : "7FFFABE1E000", "vmaddr" : "7FFF8AAC2000", "buildId" : "819BEA3CDF113E3DA1A15A51C5BF1961" }, { "path" : "/usr/lib/system/libcorecrypto.dylib", "machType" : 6, "b" : "7FFFABE27000", "vmaddr" : "7FFF8AACB000", "buildId" : "65D7165E2E71335DA2D633F78E2DF0C1" }, { "path" : "/usr/lib/system/libdispatch.dylib", "machType" : 6, "b" : "7FFFABEAB000", "vmaddr" : "7FFF8AB4F000", "buildId" : "6582BAD6ED273B30B62090B1C5A4AE3C" }, { "path" : "/usr/lib/system/libdyld.dylib", "machType" : 6, "b" : "7FFFABEDD000", "vmaddr" : "7FFF8AB81000", "buildId" : "9B2AC56D107C3541A1279094A751F2C9" }, { "path" : "/usr/lib/system/libkeymgr.dylib", "machType" : 6, "b" : "7FFFABEE3000", "vmaddr" : "7FFF8AB87000", "buildId" : "7AA011A9DC213488BF733B5B14D1FDD6" }, { "path" : "/usr/lib/system/liblaunch.dylib", "machType" : 6, "b" : "7FFFABEF1000", "vmaddr" : "7FFF8AB95000", "buildId" : "B856ABD2896E3DE0B2C8146A6AF8E2A7" }, { "path" : "/usr/lib/system/libmacho.dylib", "machType" : 6, "b" : "7FFFABEF2000", "vmaddr" : "7FFF8AB96000", "buildId" : "17D5D855F6C33B04B680E9BF02EF8AED" }, { "path" : "/usr/lib/system/libquarantine.dylib", "machType" : 6, "b" : "7FFFABEF8000", "vmaddr" : "7FFF8AB9C000", "buildId" : "12448CC2378E35F3BE339DC395A5B970" }, { "path" : "/usr/lib/system/libremovefile.dylib", "machType" : 6, "b" : "7FFFABEFB000", "vmaddr" : "7FFF8AB9F000", "buildId" : "38D4CB9C10CD30D38B7BA515EC75FE85" }, { "path" : "/usr/lib/system/libsystem_asl.dylib", "machType" : 6, "b" : "7FFFABEFD000", "vmaddr" : "7FFF8ABA1000", "buildId" : "096E42283B7C30A68B13EC909A64499A" }, { "path" : "/usr/lib/system/libsystem_blocks.dylib", "machType" : 6, "b" : "7FFFABF16000", "vmaddr" : "7FFF8ABBA000", "buildId" : "10DC540473AB35B3A277A8AFECB476EB" }, { "path" : "/usr/lib/system/libsystem_c.dylib", "machType" : 6, "b" : "7FFFABF17000", "vmaddr" : "7FFF8ABBB000", "buildId" : "E5AE52447D0C36AC8BB6C7AE7EA52A4B" }, { "path" : "/usr/lib/system/libsystem_configuration.dylib", "machType" : 6, "b" : "7FFFABFA5000", "vmaddr" : "7FFF8AC49000", "buildId" : "BECC01A2CA8D31E6BCDFD452965FA976" }, { "path" : "/usr/lib/system/libsystem_coreservices.dylib", "machType" : 6, "b" : "7FFFABFA9000", "vmaddr" : "7FFF8AC4D000", "buildId" : "7D26DE79B424345085E1F7FAB32714AB" }, { "path" : "/usr/lib/system/libsystem_coretls.dylib", "machType" : 6, "b" : "7FFFABFAD000", "vmaddr" : "7FFF8AC51000", "buildId" : "EC6FCF07DCFB3A039CC96DD3709974C6" }, { "path" : "/usr/lib/system/libsystem_dnssd.dylib", "machType" : 6, "b" : "7FFFABFC6000", "vmaddr" : "7FFF8AC6A000", "buildId" : "CC9602150B1B3822A13A3DDE96FA796F" }, { "path" : "/usr/lib/system/libsystem_info.dylib", "machType" : 6, "b" : "7FFFABFCD000", "vmaddr" : "7FFF8AC71000", "buildId" : "611DB84CBF703F928702B9F28A900920" }, { "path" : "/usr/lib/system/libsystem_kernel.dylib", "machType" : 6, "b" : "7FFFABFF7000", "vmaddr" : "7FFF8AC9B000", "buildId" : "34B1F16CBC9C3C5F90450CAE91CB5914" }, { "path" : "/usr/lib/system/libsystem_m.dylib", "machType" : 6, "b" : "7FFFAC01A000", "vmaddr" : "7FFF8ACBE000", "buildId" : "86D499B5BBDC3D3B8A4E97AE8E6672A4" }, { "path" : "/usr/lib/system/libsystem_malloc.dylib", "machType" : 6, "b" : "7FFFAC062000", "vmaddr" : "7FFF8AD06000", "buildId" : "A3D15F1799A633678C7E4280E8619C95" }, { "path" : "/usr/lib/system/libsystem_network.dylib", "machType" : 6, "b" : "7FFFAC081000", "vmaddr" : "7FFF8AD25000", "buildId" : "369D022156CA3C3E9EDE94B41CAE77B7" }, { "path" : "/usr/lib/system/libsystem_networkextension.dylib", "machType" : 6, "b" : "7FFFAC0DB000", "vmaddr" : "7FFF8AD7F000", "buildId" : "B021F2B38A753633ABB0FC012B8E9B0C" }, { "path" : "/usr/lib/system/libsystem_notify.dylib", "machType" : 6, "b" : "7FFFAC0E5000", "vmaddr" : "7FFF8AD89000", "buildId" : "B8160190A0693B3ABDF62AA408221FAE" }, { "path" : "/usr/lib/system/libsystem_platform.dylib", "machType" : 6, "b" : "7FFFAC0EF000", "vmaddr" : "7FFF8AD93000", "buildId" : "897462FDB318321BA554E61982630F7E" }, { "path" : "/usr/lib/system/libsystem_pthread.dylib", "machType" : 6, "b" : "7FFFAC0F8000", "vmaddr" : "7FFF8AD9C000", "buildId" : "B8FB5E20329539E2B5EBB464D1D4B104" }, { "path" : "/usr/lib/system/libsystem_sandbox.dylib", "machType" : 6, "b" : "7FFFAC103000", "vmaddr" : "7FFF8ADA7000", "buildId" : "4B92EC49ACD036AEB07AA2B8152EAF9D" }, { "path" : "/usr/lib/system/libsystem_secinit.dylib", "machType" : 6, "b" : "7FFFAC107000", "vmaddr" : "7FFF8ADAB000", "buildId" : "F78B847B35653E4B98A6F7AD40392E2D" }, { "path" : "/usr/lib/system/libsystem_symptoms.dylib", "machType" : 6, "b" : "7FFFAC109000", "vmaddr" : "7FFF8ADAD000", "buildId" : "3390E07CC1CE348FADBD2C5440B45EAA" }, { "path" : "/usr/lib/system/libsystem_trace.dylib", "machType" : 6, "b" : "7FFFAC111000", "vmaddr" : "7FFF8ADB5000", "buildId" : "AC63A7FE50D93A3096E6F6B7FF16E465" }, { "path" : "/usr/lib/system/libunwind.dylib", "machType" : 6, "b" : "7FFFAC125000", "vmaddr" : "7FFF8ADC9000", "buildId" : "3D50D8A8C460334DA5192DA841102C6B" }, { "path" : "/usr/lib/system/libxpc.dylib", "machType" : 6, "b" : "7FFFAC12B000", "vmaddr" : "7FFF8ADCF000", "buildId" : "BF896DF0D8E931A8A4B301120BFEEE52" }, { "path" : "/usr/lib/libobjc.A.dylib", "machType" : 6, "b" : "7FFFAB5E7000", "vmaddr" : "7FFF8A28B000", "buildId" : "70614861034032E285EDFE65759CDFFA" }, { "path" : "/usr/lib/libc++abi.dylib", "machType" : 6, "b" : "7FFFAAAC9000", "vmaddr" : "7FFF8976D000", "buildId" : "BC271AD3831B362A9DA7E8C51F285FE4" }, { "path" : "/usr/lib/libDiagnosticMessagesClient.dylib", "machType" : 6, "b" : "7FFFAA6F9000", "vmaddr" : "7FFF8939D000", "buildId" : "84A04D240E603810A8C090A65E2DF61A" }, { "path" : "/usr/lib/libicucore.A.dylib", "machType" : 6, "b" : "7FFFAB033000", "vmaddr" : "7FFF89CD7000", "buildId" : "CCD2ED243071383B925D8D763BB12A6F" }, { "path" : "/usr/lib/libz.1.dylib", "machType" : 6, "b" : "7FFFABDE6000", "vmaddr" : "7FFF8AA8A000", "buildId" : "46E3FFA24328327A8D34A03E20BFFB8E" }, { "path" : "/usr/lib/libcoretls.dylib", "machType" : 6, "b" : "7FFFAAB1B000", "vmaddr" : "7FFF897BF000", "buildId" : "64B1001E10F63542A3B2C4B49F51817F" }, { "path" : "/usr/lib/libcoretls_cfhelpers.dylib", "machType" : 6, "b" : "7FFFAAB1C000", "vmaddr" : "7FFF897C0000", "buildId" : "1A10303E5EB03C7C9165021FCDFD934D" }, { "path" : "/usr/lib/libOpenScriptingUtil.dylib", "machType" : 6, "b" : "7FFFAA932000", "vmaddr" : "7FFF895D6000", "buildId" : "90743888C1E834E3924E1A754B2B63B9" }, { "path" : "/usr/lib/libauto.dylib", "machType" : 6, "b" : "7FFFAAA51000", "vmaddr" : "7FFF896F5000", "buildId" : "34388D0BC5393C1B94082BC152162E43" }, { "path" : "/usr/lib/libbsm.0.dylib", "machType" : 6, "b" : "7FFFAAA52000", "vmaddr" : "7FFF896F6000", "buildId" : "20084796B04D3B35A003EA11459557A9" }, { "path" : "/usr/lib/libpam.2.dylib", "machType" : 6, "b" : "7FFFAB9BC000", "vmaddr" : "7FFF8A660000", "buildId" : "71EB0D88DE843C8DA2C558AA282BC5BC" }, { "path" : "/usr/lib/libsqlite3.dylib", "machType" : 6, "b" : "7FFFABA7B000", "vmaddr" : "7FFF8A71F000", "buildId" : "1ECF7DF77A073B4BA63BF4EFF6BC7ACF" }, { "path" : "/usr/lib/libxar.1.dylib", "machType" : 6, "b" : "7FFFABCBE000", "vmaddr" : "7FFF8A962000", "buildId" : "69547C64E811326FBBED490C6361BDCB" }, { "path" : "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit", "machType" : 6, "b" : "7FFF986B2000", "vmaddr" : "7FFF77356000", "buildId" : "7CE4C98B107C3AAAB49AF2ACFCBBF526" }, { "path" : "/usr/lib/libbz2.1.0.dylib", "machType" : 6, "b" : "7FFFAAA63000", "vmaddr" : "7FFF89707000", "buildId" : "ADFA329ADCE7356D8F09A3168DFC6610" }, { "path" : "/usr/lib/libxml2.2.dylib", "machType" : 6, "b" : "7FFFABCCC000", "vmaddr" : "7FFF8A970000", "buildId" : "D4C3E46737C634DE8A1BE7BFC29985E9" }, { "path" : "/usr/lib/liblzma.5.dylib", "machType" : 6, "b" : "7FFFAB260000", "vmaddr" : "7FFF89F04000", "buildId" : "44BD027999DD36B58A6EC11432E2098D" }, { "path" : "/usr/lib/libenergytrace.dylib", "machType" : 6, "b" : "7FFFAAF2A000", "vmaddr" : "7FFF89BCE000", "buildId" : "A1B040A2797730979ADF34FF181EB970" }, { "path" : "/usr/lib/system/libkxld.dylib", "machType" : 6, "b" : "7FFFABEE4000", "vmaddr" : "7FFF8AB88000", "buildId" : "BD02EF3F6E093A64AB21553D5B1D2859" } ] }}
+ mongod(_ZN5mongo15printStackTraceERNSt3__113basic_ostreamIcNS0_11char_traitsIcEEEE+0x39) [0x10d3de039]
+ mongod(_ZN5mongo12_GLOBAL__N_110abruptQuitEi+0xBD) [0x10d3dd85d]
+ libsystem_platform.dylib(_sigtramp+0x1A) [0x7fffac0f1b3a]
+ ??? [0x9674cd32]
+ libsystem_c.dylib(abort+0x81) [0x7fffabf76420]
+ mongod(_ZN5mongo17invariantOKFailedEPKcRKNS_6StatusES1_j+0x2F7) [0x10d3565a7]
+ mongod(_ZN5mongo18WiredTigerKVEngine13cleanShutdownEv+0x1B8) [0x10d160238]
+ mongod(_ZN5mongo20ServiceContextMongoD34shutdownGlobalStorageEngineCleanlyEv+0x1B) [0x10d09d85b]
+ mongod(_ZL12shutdownTaskv+0x38C) [0x10c8ff0fc]
+ mongod(_ZN5mongo8shutdownENS_8ExitCodeE+0x1C9) [0x10d365419]
+ mongod(_ZN5mongo11exitCleanlyENS_8ExitCodeE+0x9) [0x10c8ff429]
+ mongod(_ZN5mongo12_GLOBAL__N_122signalProcessingThreadEv+0x1FA) [0x10d3dcf5a]
+ mongod(_ZNSt3__114__thread_proxyINS_5tupleIJPFvvEEEEEEPvS5_+0x5D) [0x10cf0de4d]
+ libsystem_pthread.dylib(_pthread_body+0xB4) [0x7fffac0fb93b]
+ libsystem_pthread.dylib(_pthread_body+0x0) [0x7fffac0fb887]
+ libsystem_pthread.dylib(thread_start+0xD) [0x7fffac0fb08d]
+-----  END BACKTRACE  -----
+2017-10-27T10:52:07.856+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-27T10:52:07.904+0300 I CONTROL  [initandlisten] MongoDB starting : pid=30331 port=27017 dbpath=/Volumes/my_passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-27T10:52:07.904+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-27T10:52:07.904+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-27T10:52:07.904+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-27T10:52:07.904+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-27T10:52:07.904+0300 I CONTROL  [initandlisten] modules: none
+2017-10-27T10:52:07.904+0300 I CONTROL  [initandlisten] build environment:
+2017-10-27T10:52:07.904+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-27T10:52:07.904+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-27T10:52:07.904+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/my_passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-27T10:52:07.904+0300 W -        [initandlisten] Detected unclean shutdown - /Volumes/my_passport/data/mongod.lock is not empty.
+2017-10-27T10:52:07.951+0300 I -        [initandlisten] Detected data files in /Volumes/my_passport/data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-10-27T10:52:07.951+0300 W STORAGE  [initandlisten] Recovering data from the last clean checkpoint.
+2017-10-27T10:52:07.951+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-27T10:52:08.208+0300 I CONTROL  [initandlisten] 
+2017-10-27T10:52:08.208+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-27T10:52:08.208+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-27T10:52:08.208+0300 I CONTROL  [initandlisten] 
+2017-10-27T10:52:08.218+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Volumes/my_passport/data/diagnostic.data'
+2017-10-27T10:52:08.219+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-27T10:52:09.030+0300 I FTDC     [ftdc] Unclean full-time diagnostic data capture shutdown detected, found interim file, some metrics may have been lost. OK
+2017-10-27T10:52:13.494+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-27T10:52:13.495+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-27T10:52:13.495+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-27T10:52:13.495+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-27T10:52:13.495+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-27T10:52:13.495+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-27T10:52:13.495+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-27T10:52:13.546+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-27T10:52:13.573+0300 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-10-27T10:52:13.574+0300 I CONTROL  [signalProcessingThread] now exiting
+2017-10-27T10:52:13.574+0300 I CONTROL  [signalProcessingThread] shutting down with code:0
+2017-10-27T10:52:44.625+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-27T10:52:44.645+0300 I CONTROL  [initandlisten] MongoDB starting : pid=31100 port=27017 dbpath=/Volumes/my_passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-27T10:52:44.645+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-27T10:52:44.645+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-27T10:52:44.645+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-27T10:52:44.645+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-27T10:52:44.645+0300 I CONTROL  [initandlisten] modules: none
+2017-10-27T10:52:44.645+0300 I CONTROL  [initandlisten] build environment:
+2017-10-27T10:52:44.645+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-27T10:52:44.645+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-27T10:52:44.645+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/my_passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-27T10:52:44.646+0300 I -        [initandlisten] Detected data files in /Volumes/my_passport/data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-10-27T10:52:44.646+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-27T10:52:45.071+0300 I CONTROL  [initandlisten] 
+2017-10-27T10:52:45.071+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-27T10:52:45.071+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-27T10:52:45.071+0300 I CONTROL  [initandlisten] 
+2017-10-27T10:52:45.093+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Volumes/my_passport/data/diagnostic.data'
+2017-10-27T10:52:45.094+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-27T10:52:45.918+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-27T10:52:45.918+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-27T10:52:45.918+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-27T10:52:45.918+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-27T10:52:45.918+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-27T10:52:45.918+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-27T10:52:45.918+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-27T10:52:45.919+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-27T10:52:45.953+0300 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-10-27T10:52:45.954+0300 I CONTROL  [signalProcessingThread] now exiting
+2017-10-27T10:52:45.954+0300 I CONTROL  [signalProcessingThread] shutting down with code:0
+2017-10-27T10:52:59.999+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-27T10:53:00.023+0300 I CONTROL  [initandlisten] MongoDB starting : pid=31321 port=27017 dbpath=/Volumes/my_passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-27T10:53:00.023+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-27T10:53:00.023+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-27T10:53:00.023+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-27T10:53:00.023+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-27T10:53:00.023+0300 I CONTROL  [initandlisten] modules: none
+2017-10-27T10:53:00.023+0300 I CONTROL  [initandlisten] build environment:
+2017-10-27T10:53:00.023+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-27T10:53:00.023+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-27T10:53:00.023+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/my_passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-27T10:53:00.024+0300 I -        [initandlisten] Detected data files in /Volumes/my_passport/data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-10-27T10:53:00.024+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-27T10:53:00.182+0300 I CONTROL  [initandlisten] 
+2017-10-27T10:53:00.182+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-27T10:53:00.182+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-27T10:53:00.182+0300 I CONTROL  [initandlisten] 
+2017-10-27T10:53:00.198+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Volumes/my_passport/data/diagnostic.data'
+2017-10-27T10:53:00.198+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-27T10:53:00.747+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:62937 #1 (1 connection now open)
+2017-10-27T10:53:00.768+0300 I NETWORK  [conn1] received client metadata from 127.0.0.1:62937 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T10:53:11.327+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:62971 #2 (2 connections now open)
+2017-10-27T10:53:11.328+0300 I NETWORK  [conn2] received client metadata from 127.0.0.1:62971 conn2: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-27T10:53:30.366+0300 I COMMAND  [conn2] dropDatabase databnb starting
+2017-10-27T10:53:30.462+0300 I COMMAND  [conn2] dropDatabase databnb finished
+2017-10-27T10:53:32.746+0300 I -        [conn2] end connection 127.0.0.1:62971 (2 connections now open)
+2017-10-27T10:54:11.705+0300 I -        [conn1] end connection 127.0.0.1:62937 (1 connection now open)
+2017-10-27T10:54:12.305+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:63138 #3 (1 connection now open)
+2017-10-27T10:54:12.321+0300 I NETWORK  [conn3] received client metadata from 127.0.0.1:63138 conn3: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T10:54:16.926+0300 I -        [conn3] end connection 127.0.0.1:63138 (1 connection now open)
+2017-10-27T10:54:17.286+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:63156 #4 (1 connection now open)
+2017-10-27T10:54:17.302+0300 I NETWORK  [conn4] received client metadata from 127.0.0.1:63156 conn4: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T10:54:29.157+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:63182 #5 (2 connections now open)
+2017-10-27T10:54:29.164+0300 I NETWORK  [conn5] received client metadata from 127.0.0.1:63182 conn5: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T10:54:42.844+0300 I -        [conn5] end connection 127.0.0.1:63182 (2 connections now open)
+2017-10-27T10:56:37.579+0300 I -        [conn4] end connection 127.0.0.1:63156 (1 connection now open)
+2017-10-27T10:56:38.085+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:63538 #6 (1 connection now open)
+2017-10-27T10:56:38.105+0300 I NETWORK  [conn6] received client metadata from 127.0.0.1:63538 conn6: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T10:56:39.657+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:63543 #7 (2 connections now open)
+2017-10-27T10:56:39.679+0300 I NETWORK  [conn7] received client metadata from 127.0.0.1:63543 conn7: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T10:56:51.296+0300 I -        [conn7] end connection 127.0.0.1:63543 (2 connections now open)
+2017-10-27T10:57:49.404+0300 I -        [conn6] end connection 127.0.0.1:63538 (1 connection now open)
+2017-10-27T10:57:49.786+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:63752 #8 (1 connection now open)
+2017-10-27T10:57:49.802+0300 I NETWORK  [conn8] received client metadata from 127.0.0.1:63752 conn8: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T10:57:56.618+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:63769 #9 (2 connections now open)
+2017-10-27T10:57:56.639+0300 I NETWORK  [conn9] received client metadata from 127.0.0.1:63769 conn9: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T10:58:14.614+0300 I COMMAND  [conn9] command databnb.properties command: insert { insert: "properties", documents: [ { _id: ObjectId('59f2e716b2e6a78ea8f84f86'), check_out: new Date(1329782400000), check_in: new Date(1327104000000), listing_id: 38407, listing_lng: -0.02624264023163711, listing_lat: 51.49994512977172, extra_people_charge: 0, monthly_discount: 5, star_rating: 5, room_type: "Entire home/apt", city: "London", country: "United Kingdom", bedrooms: 1, currency: "USD", extra_people_fee: 0, security_deposit: 0, cleaning_fee: 0, amount_including_fees: 3039, __v: 0 } ], ordered: false } ninserted:1 keysInserted:1 numYields:0 reslen:44 locks:{ Global: { acquireCount: { r: 3, w: 3 } }, Database: { acquireCount: { w: 2, W: 1 } }, Collection: { acquireCount: { w: 2 } } } protocol:op_query 100ms
+2017-10-27T11:02:55.788+0300 I -        [conn9] end connection 127.0.0.1:63769 (2 connections now open)
+2017-10-27T11:14:56.061+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:52381 #10 (2 connections now open)
+2017-10-27T11:14:56.061+0300 I NETWORK  [conn10] received client metadata from 127.0.0.1:52381 conn10: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-27T11:15:07.934+0300 I COMMAND  [conn10] dropDatabase databnb starting
+2017-10-27T11:15:07.935+0300 I COMMAND  [conn10] dropDatabase databnb finished
+2017-10-27T11:15:09.327+0300 I -        [conn10] end connection 127.0.0.1:52381 (2 connections now open)
+2017-10-27T11:15:18.405+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:52475 #11 (2 connections now open)
+2017-10-27T11:15:18.411+0300 I NETWORK  [conn11] received client metadata from 127.0.0.1:52475 conn11: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-27T11:15:40.301+0300 I COMMAND  [conn11] command databnb.properties command: insert { insert: "properties", documents: [ { _id: ObjectId('59f2eb2c57fc9bd755e828be'), check_out: new Date(1416700800000), check_in: new Date(1414022400000), listing_id: 2354700, listing_lng: -0.1993959186560227, listing_lat: 51.53785099162204, extra_people_charge: 0, monthly_discount: 7, star_rating: 5, room_type: "Entire home/apt", city: "London", country: "United Kingdom", bedrooms: 2, currency: "USD", extra_people_fee: 0, security_deposit: 408, cleaning_fee: 68, amount_including_fees: 5656, __v: 0 } ], ordered: false } ninserted:1 keysInserted:1 numYields:0 reslen:44 locks:{ Global: { acquireCount: { r: 3, w: 3 } }, Database: { acquireCount: { w: 2, W: 1 } }, Collection: { acquireCount: { w: 2 } } } protocol:op_query 107ms
+2017-10-27T11:20:03.568+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:54621 #12 (3 connections now open)
+2017-10-27T14:21:54.795+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:64151 #13 (4 connections now open)
+2017-10-27T14:21:54.797+0300 I NETWORK  [conn13] received client metadata from 127.0.0.1:64151 conn13: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-27T15:21:25.523+0300 I -        [conn12] end connection 127.0.0.1:54621 (4 connections now open)
+2017-10-27T15:21:25.523+0300 I -        [conn11] end connection 127.0.0.1:52475 (4 connections now open)
+2017-10-27T15:23:33.020+0300 W FTDC     [ftdc] Uncaught exception in 'FileNotOpen: Failed to open interim file /Volumes/my_passport/data/diagnostic.data/metrics.interim.temp' in full-time diagnostic data capture subsystem. Shutting down the full-time diagnostic data capture subsystem.
+2017-10-27T15:57:51.991+0300 I -        [conn13] end connection 127.0.0.1:64151 (2 connections now open)
+2017-10-27T15:57:54.603+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-27T15:57:54.611+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-27T15:57:54.613+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-27T15:57:54.613+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-27T15:57:54.613+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-27T15:57:54.617+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-27T15:57:54.618+0300 I -        [conn8] end connection 127.0.0.1:63752 (1 connection now open)
+2017-10-27T15:57:54.625+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-27T15:57:54.631+0300 I FTDC     [signalProcessingThread] Failed to close full-time diagnostic data capture file manager: FileStreamFailed: Failed to write to archive file buffer for full-time diagnostic data capture: /Volumes/my_passport/data/diagnostic.data/metrics.2017-10-27T07-53-01Z-00000
+2017-10-27T15:57:54.634+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-27T15:57:54.661+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:657234][31321:0x70000c769000], file:index-3--6067555801493019915.wt, WT_CONNECTION.close: /Volumes/my_passport/data/index-3--6067555801493019915.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T15:57:54.661+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:661700][31321:0x70000c769000], file:index-3--6067555801493019915.wt, WT_CONNECTION.close: Final close of file:index-3--6067555801493019915.wt failed: Bad file descriptor
+2017-10-27T15:57:54.661+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:661798][31321:0x70000c769000], file:collection-2--6067555801493019915.wt, WT_CONNECTION.close: /Volumes/my_passport/data/collection-2--6067555801493019915.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T15:57:54.661+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:661877][31321:0x70000c769000], file:collection-2--6067555801493019915.wt, WT_CONNECTION.close: Final close of file:collection-2--6067555801493019915.wt failed: Bad file descriptor
+2017-10-27T15:57:54.661+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:661937][31321:0x70000c769000], file:index-1-4331842072256948561.wt, WT_CONNECTION.close: /Volumes/my_passport/data/index-1-4331842072256948561.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T15:57:54.661+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:661986][31321:0x70000c769000], file:index-1-4331842072256948561.wt, WT_CONNECTION.close: Final close of file:index-1-4331842072256948561.wt failed: Bad file descriptor
+2017-10-27T15:57:54.663+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:663385][31321:0x70000c769000], file:index-3-4331842072256948561.wt, WT_CONNECTION.close: /Volumes/my_passport/data/index-3-4331842072256948561.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T15:57:54.663+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:663461][31321:0x70000c769000], file:index-3-4331842072256948561.wt, WT_CONNECTION.close: Final close of file:index-3-4331842072256948561.wt failed: Bad file descriptor
+2017-10-27T15:57:54.663+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:663492][31321:0x70000c769000], file:collection-0-4331842072256948561.wt, WT_CONNECTION.close: /Volumes/my_passport/data/collection-0-4331842072256948561.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T15:57:54.663+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:663531][31321:0x70000c769000], file:collection-0-4331842072256948561.wt, WT_CONNECTION.close: Final close of file:collection-0-4331842072256948561.wt failed: Bad file descriptor
+2017-10-27T15:57:54.663+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:663568][31321:0x70000c769000], file:collection-2-4331842072256948561.wt, WT_CONNECTION.close: /Volumes/my_passport/data/collection-2-4331842072256948561.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T15:57:54.665+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:665765][31321:0x70000c769000], file:collection-2-4331842072256948561.wt, WT_CONNECTION.close: Final close of file:collection-2-4331842072256948561.wt failed: Bad file descriptor
+2017-10-27T15:57:54.665+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:665917][31321:0x70000c769000], file:_mdb_catalog.wt, WT_CONNECTION.close: /Volumes/my_passport/data/_mdb_catalog.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T15:57:54.666+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:665998][31321:0x70000c769000], file:_mdb_catalog.wt, WT_CONNECTION.close: Final close of file:_mdb_catalog.wt failed: Bad file descriptor
+2017-10-27T15:57:54.666+0300 E STORAGE  [signalProcessingThread] WiredTiger error (5) [1509109074:666180][31321:0x70000c769000], file:sizeStorer.wt, WT_CONNECTION.close: /Volumes/my_passport/data/sizeStorer.wt: handle-write: pwrite: failed to write 4096 bytes at offset 32768: Input/output error
+2017-10-27T15:57:54.666+0300 E STORAGE  [signalProcessingThread] WiredTiger error (5) [1509109074:666216][31321:0x70000c769000], file:sizeStorer.wt, WT_CONNECTION.close: Final close of file:sizeStorer.wt failed: Input/output error
+2017-10-27T15:57:54.667+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:667140][31321:0x70000c769000], file:WiredTigerLAS.wt, WT_CONNECTION.close: /Volumes/my_passport/data/WiredTigerLAS.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T15:57:54.669+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:669024][31321:0x70000c769000], file:WiredTigerLAS.wt, WT_CONNECTION.close: Final close of file:WiredTigerLAS.wt failed: Bad file descriptor
+2017-10-27T15:57:54.669+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:669300][31321:0x70000c769000], file:WiredTiger.wt, WT_CONNECTION.close: /Volumes/my_passport/data/WiredTiger.wt: handle-truncate: ftruncate: Bad file descriptor
+2017-10-27T15:57:54.669+0300 E STORAGE  [signalProcessingThread] WiredTiger error (9) [1509109074:669377][31321:0x70000c769000], file:WiredTiger.wt, WT_CONNECTION.close: Final close of file:WiredTiger.wt failed: Bad file descriptor
+2017-10-27T15:57:54.669+0300 E STORAGE  [signalProcessingThread] WiredTiger error (0) [1509109074:669795][31321:0x70000c769000], WT_CONNECTION.close: cache server: exiting with 25 pages in memory and 23 pages evicted
+2017-10-27T15:57:54.669+0300 E STORAGE  [signalProcessingThread] WiredTiger error (0) [1509109074:669828][31321:0x70000c769000], WT_CONNECTION.close: cache server: exiting with 10046 bytes in memory
+2017-10-27T15:57:54.669+0300 E STORAGE  [signalProcessingThread] WiredTiger error (0) [1509109074:669843][31321:0x70000c769000], WT_CONNECTION.close: cache server: exiting with 10046 bytes dirty and 2 pages dirty
+2017-10-27T15:57:54.669+0300 E STORAGE  [signalProcessingThread] WiredTiger error (0) [1509109074:669943][31321:0x70000c769000], WT_CONNECTION.close: Connection has open file handles: sizeStorer.wt
+2017-10-27T15:57:54.672+0300 I -        [signalProcessingThread] Invariant failure: _conn->close(_conn, config) resulted in status UnknownError: 9: Bad file descriptor at src/mongo/db/storage/wiredtiger/wiredtiger_kv_engine.cpp 347
+2017-10-27T15:57:54.673+0300 I -        [signalProcessingThread] 
+
+***aborting after invariant() failure
+
+
+2017-10-27T15:57:54.756+0300 F -        [signalProcessingThread] Got signal: 6 (Abort trap: 6).
+
+ 0x100e9c039 0x100e9b85d 0x7fffac0f1b3a 0x7fffb4de06b0 0x7fffabf76420 0x100e145a7 0x100c1e238 0x100b5b85b 0x1003bd0fc 0x100e23419 0x1003bd429 0x100e9af5a 0x1009cbe4d 0x7fffac0fb93b 0x7fffac0fb887 0x7fffac0fb08d
+----- BEGIN BACKTRACE -----
+{"backtrace":[{"b":"1003BB000","o":"AE1039","s":"_ZN5mongo15printStackTraceERNSt3__113basic_ostreamIcNS0_11char_traitsIcEEEE"},{"b":"1003BB000","o":"AE085D","s":"_ZN5mongo12_GLOBAL__N_110abruptQuitEi"},{"b":"7FFFAC0EF000","o":"2B3A","s":"_sigtramp"},{"b":"7FFFABF17000","o":"8EC96B0","s":"_C_time_locale"},{"b":"7FFFABF17000","o":"5F420","s":"abort"},{"b":"1003BB000","o":"A595A7","s":"_ZN5mongo17invariantOKFailedEPKcRKNS_6StatusES1_j"},{"b":"1003BB000","o":"863238","s":"_ZN5mongo18WiredTigerKVEngine13cleanShutdownEv"},{"b":"1003BB000","o":"7A085B","s":"_ZN5mongo20ServiceContextMongoD34shutdownGlobalStorageEngineCleanlyEv"},{"b":"1003BB000","o":"20FC","s":"_ZL12shutdownTaskv"},{"b":"1003BB000","o":"A68419","s":"_ZN5mongo8shutdownENS_8ExitCodeE"},{"b":"1003BB000","o":"2429","s":"_ZN5mongo11exitCleanlyENS_8ExitCodeE"},{"b":"1003BB000","o":"ADFF5A","s":"_ZN5mongo12_GLOBAL__N_122signalProcessingThreadEv"},{"b":"1003BB000","o":"610E4D","s":"_ZNSt3__114__thread_proxyINS_5tupleIJPFvvEEEEEEPvS5_"},{"b":"7FFFAC0F8000","o":"393B","s":"_pthread_body"},{"b":"7FFFAC0F8000","o":"3887","s":"_pthread_body"},{"b":"7FFFAC0F8000","o":"308D","s":"thread_start"}],"processInfo":{ "mongodbVersion" : "3.4.9", "gitVersion" : "876ebee8c7dd0e2d992f36a848ff4dc50ee6603e", "compiledModules" : [], "uname" : { "sysname" : "Darwin", "release" : "16.7.0", "version" : "Darwin Kernel Version 16.7.0: Thu Jun 15 17:36:27 PDT 2017; root:xnu-3789.70.16~2/RELEASE_X86_64", "machine" : "x86_64" }, "somap" : [ { "path" : "/usr/local/bin/mongod", "machType" : 2, "b" : "1003BB000", "vmaddr" : "100000000", "buildId" : "64C979E981303489B65E49819147DBE2" }, { "path" : "/usr/local/opt/openssl/lib/libssl.1.0.0.dylib", "machType" : 6, "b" : "103775000", "vmaddr" : "0", "buildId" : "35C152E071683B9994ABECA04D3B3DB5" }, { "path" : "/usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib", "machType" : 6, "b" : "1037D4000", "vmaddr" : "0", "buildId" : "11B495A9782C3FB09729ACFCD9F4F53E" }, { "path" : "/usr/lib/libSystem.B.dylib", "machType" : 6, "b" : "7FFFAA938000", "vmaddr" : "7FFF895DC000", "buildId" : "F18AC1E7C6F134B18069BE571B3231D4" }, { "path" : "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation", "machType" : 6, "b" : "7FFF966D3000", "vmaddr" : "7FFF75377000", "buildId" : "09ED473E5DE8307FB55C16F6419236D5" }, { "path" : "/System/Library/Frameworks/Security.framework/Versions/A/Security", "machType" : 6, "b" : "7FFF9C9E0000", "vmaddr" : "7FFF7B684000", "buildId" : "005E8C9640B635E3B58B888A5F5957C2" }, { "path" : "/usr/lib/libc++.1.dylib", "machType" : 6, "b" : "7FFFAAA72000", "vmaddr" : "7FFF89716000", "buildId" : "0B43BB5DE6EB34648DE9B41AC8ED9D1C" }, { "path" : "/usr/lib/system/libcache.dylib", "machType" : 6, "b" : "7FFFABE06000", "vmaddr" : "7FFF8AAAA000", "buildId" : "093A4DAB83853D47A350E20CB7CCF7BF" }, { "path" : "/usr/lib/system/libcommonCrypto.dylib", "machType" : 6, "b" : "7FFFABE0B000", "vmaddr" : "7FFF8AAAF000", "buildId" : "8A64D1B0C70E385C92F0E669079FDA90" }, { "path" : "/usr/lib/system/libcompiler_rt.dylib", "machType" : 6, "b" : "7FFFABE16000", "vmaddr" : "7FFF8AABA000", "buildId" : "55D47421772A32ABB5291A46C2F43B4D" }, { "path" : "/usr/lib/system/libcopyfile.dylib", "machType" : 6, "b" : "7FFFABE1E000", "vmaddr" : "7FFF8AAC2000", "buildId" : "819BEA3CDF113E3DA1A15A51C5BF1961" }, { "path" : "/usr/lib/system/libcorecrypto.dylib", "machType" : 6, "b" : "7FFFABE27000", "vmaddr" : "7FFF8AACB000", "buildId" : "65D7165E2E71335DA2D633F78E2DF0C1" }, { "path" : "/usr/lib/system/libdispatch.dylib", "machType" : 6, "b" : "7FFFABEAB000", "vmaddr" : "7FFF8AB4F000", "buildId" : "6582BAD6ED273B30B62090B1C5A4AE3C" }, { "path" : "/usr/lib/system/libdyld.dylib", "machType" : 6, "b" : "7FFFABEDD000", "vmaddr" : "7FFF8AB81000", "buildId" : "9B2AC56D107C3541A1279094A751F2C9" }, { "path" : "/usr/lib/system/libkeymgr.dylib", "machType" : 6, "b" : "7FFFABEE3000", "vmaddr" : "7FFF8AB87000", "buildId" : "7AA011A9DC213488BF733B5B14D1FDD6" }, { "path" : "/usr/lib/system/liblaunch.dylib", "machType" : 6, "b" : "7FFFABEF1000", "vmaddr" : "7FFF8AB95000", "buildId" : "B856ABD2896E3DE0B2C8146A6AF8E2A7" }, { "path" : "/usr/lib/system/libmacho.dylib", "machType" : 6, "b" : "7FFFABEF2000", "vmaddr" : "7FFF8AB96000", "buildId" : "17D5D855F6C33B04B680E9BF02EF8AED" }, { "path" : "/usr/lib/system/libquarantine.dylib", "machType" : 6, "b" : "7FFFABEF8000", "vmaddr" : "7FFF8AB9C000", "buildId" : "12448CC2378E35F3BE339DC395A5B970" }, { "path" : "/usr/lib/system/libremovefile.dylib", "machType" : 6, "b" : "7FFFABEFB000", "vmaddr" : "7FFF8AB9F000", "buildId" : "38D4CB9C10CD30D38B7BA515EC75FE85" }, { "path" : "/usr/lib/system/libsystem_asl.dylib", "machType" : 6, "b" : "7FFFABEFD000", "vmaddr" : "7FFF8ABA1000", "buildId" : "096E42283B7C30A68B13EC909A64499A" }, { "path" : "/usr/lib/system/libsystem_blocks.dylib", "machType" : 6, "b" : "7FFFABF16000", "vmaddr" : "7FFF8ABBA000", "buildId" : "10DC540473AB35B3A277A8AFECB476EB" }, { "path" : "/usr/lib/system/libsystem_c.dylib", "machType" : 6, "b" : "7FFFABF17000", "vmaddr" : "7FFF8ABBB000", "buildId" : "E5AE52447D0C36AC8BB6C7AE7EA52A4B" }, { "path" : "/usr/lib/system/libsystem_configuration.dylib", "machType" : 6, "b" : "7FFFABFA5000", "vmaddr" : "7FFF8AC49000", "buildId" : "BECC01A2CA8D31E6BCDFD452965FA976" }, { "path" : "/usr/lib/system/libsystem_coreservices.dylib", "machType" : 6, "b" : "7FFFABFA9000", "vmaddr" : "7FFF8AC4D000", "buildId" : "7D26DE79B424345085E1F7FAB32714AB" }, { "path" : "/usr/lib/system/libsystem_coretls.dylib", "machType" : 6, "b" : "7FFFABFAD000", "vmaddr" : "7FFF8AC51000", "buildId" : "EC6FCF07DCFB3A039CC96DD3709974C6" }, { "path" : "/usr/lib/system/libsystem_dnssd.dylib", "machType" : 6, "b" : "7FFFABFC6000", "vmaddr" : "7FFF8AC6A000", "buildId" : "CC9602150B1B3822A13A3DDE96FA796F" }, { "path" : "/usr/lib/system/libsystem_info.dylib", "machType" : 6, "b" : "7FFFABFCD000", "vmaddr" : "7FFF8AC71000", "buildId" : "611DB84CBF703F928702B9F28A900920" }, { "path" : "/usr/lib/system/libsystem_kernel.dylib", "machType" : 6, "b" : "7FFFABFF7000", "vmaddr" : "7FFF8AC9B000", "buildId" : "34B1F16CBC9C3C5F90450CAE91CB5914" }, { "path" : "/usr/lib/system/libsystem_m.dylib", "machType" : 6, "b" : "7FFFAC01A000", "vmaddr" : "7FFF8ACBE000", "buildId" : "86D499B5BBDC3D3B8A4E97AE8E6672A4" }, { "path" : "/usr/lib/system/libsystem_malloc.dylib", "machType" : 6, "b" : "7FFFAC062000", "vmaddr" : "7FFF8AD06000", "buildId" : "A3D15F1799A633678C7E4280E8619C95" }, { "path" : "/usr/lib/system/libsystem_network.dylib", "machType" : 6, "b" : "7FFFAC081000", "vmaddr" : "7FFF8AD25000", "buildId" : "369D022156CA3C3E9EDE94B41CAE77B7" }, { "path" : "/usr/lib/system/libsystem_networkextension.dylib", "machType" : 6, "b" : "7FFFAC0DB000", "vmaddr" : "7FFF8AD7F000", "buildId" : "B021F2B38A753633ABB0FC012B8E9B0C" }, { "path" : "/usr/lib/system/libsystem_notify.dylib", "machType" : 6, "b" : "7FFFAC0E5000", "vmaddr" : "7FFF8AD89000", "buildId" : "B8160190A0693B3ABDF62AA408221FAE" }, { "path" : "/usr/lib/system/libsystem_platform.dylib", "machType" : 6, "b" : "7FFFAC0EF000", "vmaddr" : "7FFF8AD93000", "buildId" : "897462FDB318321BA554E61982630F7E" }, { "path" : "/usr/lib/system/libsystem_pthread.dylib", "machType" : 6, "b" : "7FFFAC0F8000", "vmaddr" : "7FFF8AD9C000", "buildId" : "B8FB5E20329539E2B5EBB464D1D4B104" }, { "path" : "/usr/lib/system/libsystem_sandbox.dylib", "machType" : 6, "b" : "7FFFAC103000", "vmaddr" : "7FFF8ADA7000", "buildId" : "4B92EC49ACD036AEB07AA2B8152EAF9D" }, { "path" : "/usr/lib/system/libsystem_secinit.dylib", "machType" : 6, "b" : "7FFFAC107000", "vmaddr" : "7FFF8ADAB000", "buildId" : "F78B847B35653E4B98A6F7AD40392E2D" }, { "path" : "/usr/lib/system/libsystem_symptoms.dylib", "machType" : 6, "b" : "7FFFAC109000", "vmaddr" : "7FFF8ADAD000", "buildId" : "3390E07CC1CE348FADBD2C5440B45EAA" }, { "path" : "/usr/lib/system/libsystem_trace.dylib", "machType" : 6, "b" : "7FFFAC111000", "vmaddr" : "7FFF8ADB5000", "buildId" : "AC63A7FE50D93A3096E6F6B7FF16E465" }, { "path" : "/usr/lib/system/libunwind.dylib", "machType" : 6, "b" : "7FFFAC125000", "vmaddr" : "7FFF8ADC9000", "buildId" : "3D50D8A8C460334DA5192DA841102C6B" }, { "path" : "/usr/lib/system/libxpc.dylib", "machType" : 6, "b" : "7FFFAC12B000", "vmaddr" : "7FFF8ADCF000", "buildId" : "BF896DF0D8E931A8A4B301120BFEEE52" }, { "path" : "/usr/lib/libobjc.A.dylib", "machType" : 6, "b" : "7FFFAB5E7000", "vmaddr" : "7FFF8A28B000", "buildId" : "70614861034032E285EDFE65759CDFFA" }, { "path" : "/usr/lib/libc++abi.dylib", "machType" : 6, "b" : "7FFFAAAC9000", "vmaddr" : "7FFF8976D000", "buildId" : "BC271AD3831B362A9DA7E8C51F285FE4" }, { "path" : "/usr/lib/libDiagnosticMessagesClient.dylib", "machType" : 6, "b" : "7FFFAA6F9000", "vmaddr" : "7FFF8939D000", "buildId" : "84A04D240E603810A8C090A65E2DF61A" }, { "path" : "/usr/lib/libicucore.A.dylib", "machType" : 6, "b" : "7FFFAB033000", "vmaddr" : "7FFF89CD7000", "buildId" : "CCD2ED243071383B925D8D763BB12A6F" }, { "path" : "/usr/lib/libz.1.dylib", "machType" : 6, "b" : "7FFFABDE6000", "vmaddr" : "7FFF8AA8A000", "buildId" : "46E3FFA24328327A8D34A03E20BFFB8E" }, { "path" : "/usr/lib/libcoretls.dylib", "machType" : 6, "b" : "7FFFAAB1B000", "vmaddr" : "7FFF897BF000", "buildId" : "64B1001E10F63542A3B2C4B49F51817F" }, { "path" : "/usr/lib/libcoretls_cfhelpers.dylib", "machType" : 6, "b" : "7FFFAAB1C000", "vmaddr" : "7FFF897C0000", "buildId" : "1A10303E5EB03C7C9165021FCDFD934D" }, { "path" : "/usr/lib/libOpenScriptingUtil.dylib", "machType" : 6, "b" : "7FFFAA932000", "vmaddr" : "7FFF895D6000", "buildId" : "90743888C1E834E3924E1A754B2B63B9" }, { "path" : "/usr/lib/libauto.dylib", "machType" : 6, "b" : "7FFFAAA51000", "vmaddr" : "7FFF896F5000", "buildId" : "34388D0BC5393C1B94082BC152162E43" }, { "path" : "/usr/lib/libbsm.0.dylib", "machType" : 6, "b" : "7FFFAAA52000", "vmaddr" : "7FFF896F6000", "buildId" : "20084796B04D3B35A003EA11459557A9" }, { "path" : "/usr/lib/libpam.2.dylib", "machType" : 6, "b" : "7FFFAB9BC000", "vmaddr" : "7FFF8A660000", "buildId" : "71EB0D88DE843C8DA2C558AA282BC5BC" }, { "path" : "/usr/lib/libsqlite3.dylib", "machType" : 6, "b" : "7FFFABA7B000", "vmaddr" : "7FFF8A71F000", "buildId" : "1ECF7DF77A073B4BA63BF4EFF6BC7ACF" }, { "path" : "/usr/lib/libxar.1.dylib", "machType" : 6, "b" : "7FFFABCBE000", "vmaddr" : "7FFF8A962000", "buildId" : "69547C64E811326FBBED490C6361BDCB" }, { "path" : "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit", "machType" : 6, "b" : "7FFF986B2000", "vmaddr" : "7FFF77356000", "buildId" : "7CE4C98B107C3AAAB49AF2ACFCBBF526" }, { "path" : "/usr/lib/libbz2.1.0.dylib", "machType" : 6, "b" : "7FFFAAA63000", "vmaddr" : "7FFF89707000", "buildId" : "ADFA329ADCE7356D8F09A3168DFC6610" }, { "path" : "/usr/lib/libxml2.2.dylib", "machType" : 6, "b" : "7FFFABCCC000", "vmaddr" : "7FFF8A970000", "buildId" : "D4C3E46737C634DE8A1BE7BFC29985E9" }, { "path" : "/usr/lib/liblzma.5.dylib", "machType" : 6, "b" : "7FFFAB260000", "vmaddr" : "7FFF89F04000", "buildId" : "44BD027999DD36B58A6EC11432E2098D" }, { "path" : "/usr/lib/libenergytrace.dylib", "machType" : 6, "b" : "7FFFAAF2A000", "vmaddr" : "7FFF89BCE000", "buildId" : "A1B040A2797730979ADF34FF181EB970" }, { "path" : "/usr/lib/system/libkxld.dylib", "machType" : 6, "b" : "7FFFABEE4000", "vmaddr" : "7FFF8AB88000", "buildId" : "BD02EF3F6E093A64AB21553D5B1D2859" } ] }}
+ mongod(_ZN5mongo15printStackTraceERNSt3__113basic_ostreamIcNS0_11char_traitsIcEEEE+0x39) [0x100e9c039]
+ mongod(_ZN5mongo12_GLOBAL__N_110abruptQuitEi+0xBD) [0x100e9b85d]
+ libsystem_platform.dylib(_sigtramp+0x1A) [0x7fffac0f1b3a]
+ libsystem_c.dylib(_C_time_locale+0x0) [0x7fffb4de06b0]
+ libsystem_c.dylib(abort+0x81) [0x7fffabf76420]
+ mongod(_ZN5mongo17invariantOKFailedEPKcRKNS_6StatusES1_j+0x2F7) [0x100e145a7]
+ mongod(_ZN5mongo18WiredTigerKVEngine13cleanShutdownEv+0x1B8) [0x100c1e238]
+ mongod(_ZN5mongo20ServiceContextMongoD34shutdownGlobalStorageEngineCleanlyEv+0x1B) [0x100b5b85b]
+ mongod(_ZL12shutdownTaskv+0x38C) [0x1003bd0fc]
+ mongod(_ZN5mongo8shutdownENS_8ExitCodeE+0x1C9) [0x100e23419]
+ mongod(_ZN5mongo11exitCleanlyENS_8ExitCodeE+0x9) [0x1003bd429]
+ mongod(_ZN5mongo12_GLOBAL__N_122signalProcessingThreadEv+0x1FA) [0x100e9af5a]
+ mongod(_ZNSt3__114__thread_proxyINS_5tupleIJPFvvEEEEEEPvS5_+0x5D) [0x1009cbe4d]
+ libsystem_pthread.dylib(_pthread_body+0xB4) [0x7fffac0fb93b]
+ libsystem_pthread.dylib(_pthread_body+0x0) [0x7fffac0fb887]
+ libsystem_pthread.dylib(thread_start+0xD) [0x7fffac0fb08d]
+-----  END BACKTRACE  -----
+2017-10-28T00:03:28.509+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-28T00:03:28.591+0300 I CONTROL  [initandlisten] MongoDB starting : pid=52736 port=27017 dbpath=/Volumes/my_passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-28T00:03:28.591+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-28T00:03:28.591+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-28T00:03:28.591+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-28T00:03:28.591+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-28T00:03:28.591+0300 I CONTROL  [initandlisten] modules: none
+2017-10-28T00:03:28.591+0300 I CONTROL  [initandlisten] build environment:
+2017-10-28T00:03:28.591+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-28T00:03:28.591+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-28T00:03:28.591+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/my_passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-28T00:03:28.591+0300 W -        [initandlisten] Detected unclean shutdown - /Volumes/my_passport/data/mongod.lock is not empty.
+2017-10-28T00:03:28.614+0300 I -        [initandlisten] Detected data files in /Volumes/my_passport/data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-10-28T00:03:28.614+0300 W STORAGE  [initandlisten] Recovering data from the last clean checkpoint.
+2017-10-28T00:03:28.614+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-28T00:03:28.810+0300 I CONTROL  [initandlisten] 
+2017-10-28T00:03:28.810+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-28T00:03:28.810+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-28T00:03:28.810+0300 I CONTROL  [initandlisten] 
+2017-10-28T00:03:28.888+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Volumes/my_passport/data/diagnostic.data'
+2017-10-28T00:03:28.889+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-28T00:03:29.378+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57707 #1 (1 connection now open)
+2017-10-28T00:03:29.395+0300 I NETWORK  [conn1] received client metadata from 127.0.0.1:57707 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:04:30.385+0300 I -        [conn1] end connection 127.0.0.1:57707 (1 connection now open)
+2017-10-28T00:04:30.972+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57713 #2 (1 connection now open)
+2017-10-28T00:04:30.988+0300 I NETWORK  [conn2] received client metadata from 127.0.0.1:57713 conn2: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:04:39.202+0300 I -        [conn2] end connection 127.0.0.1:57713 (1 connection now open)
+2017-10-28T00:04:39.595+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57715 #3 (1 connection now open)
+2017-10-28T00:04:39.614+0300 I NETWORK  [conn3] received client metadata from 127.0.0.1:57715 conn3: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:05:25.339+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57746 #4 (2 connections now open)
+2017-10-28T00:05:25.340+0300 I NETWORK  [conn4] received client metadata from 127.0.0.1:57746 conn4: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-28T00:05:57.779+0300 I COMMAND  [conn4] dropDatabase databnb starting
+2017-10-28T00:05:57.792+0300 I COMMAND  [conn4] dropDatabase databnb finished
+2017-10-28T00:06:24.458+0300 I -        [conn3] end connection 127.0.0.1:57715 (2 connections now open)
+2017-10-28T00:06:24.953+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57773 #5 (2 connections now open)
+2017-10-28T00:06:24.970+0300 I NETWORK  [conn5] received client metadata from 127.0.0.1:57773 conn5: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:06:30.782+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57774 #6 (3 connections now open)
+2017-10-28T00:06:30.814+0300 I NETWORK  [conn6] received client metadata from 127.0.0.1:57774 conn6: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:07:38.741+0300 I -        [conn5] end connection 127.0.0.1:57773 (3 connections now open)
+2017-10-28T00:07:39.308+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57808 #7 (3 connections now open)
+2017-10-28T00:07:39.332+0300 I NETWORK  [conn7] received client metadata from 127.0.0.1:57808 conn7: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:15:16.492+0300 I -        [conn6] end connection 127.0.0.1:57774 (3 connections now open)
+2017-10-28T00:15:30.845+0300 I -        [conn7] end connection 127.0.0.1:57808 (2 connections now open)
+2017-10-28T00:15:31.470+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57825 #8 (2 connections now open)
+2017-10-28T00:15:31.486+0300 I NETWORK  [conn8] received client metadata from 127.0.0.1:57825 conn8: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:15:33.957+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57826 #9 (3 connections now open)
+2017-10-28T00:15:33.981+0300 I NETWORK  [conn9] received client metadata from 127.0.0.1:57826 conn9: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:15:38.293+0300 I -        [conn9] end connection 127.0.0.1:57826 (3 connections now open)
+2017-10-28T00:16:01.515+0300 I -        [conn8] end connection 127.0.0.1:57825 (2 connections now open)
+2017-10-28T00:16:02.114+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57856 #10 (2 connections now open)
+2017-10-28T00:16:02.135+0300 I NETWORK  [conn10] received client metadata from 127.0.0.1:57856 conn10: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:16:13.615+0300 I -        [conn10] end connection 127.0.0.1:57856 (2 connections now open)
+2017-10-28T00:16:14.023+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57859 #11 (2 connections now open)
+2017-10-28T00:16:14.040+0300 I NETWORK  [conn11] received client metadata from 127.0.0.1:57859 conn11: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:16:16.388+0300 I CONTROL  [signalProcessingThread] got signal 2 (Interrupt: 2), will terminate after current cmd ends
+2017-10-28T00:16:16.388+0300 I NETWORK  [signalProcessingThread] shutdown: going to close listening sockets...
+2017-10-28T00:16:16.388+0300 I NETWORK  [signalProcessingThread] closing listening socket: 7
+2017-10-28T00:16:16.388+0300 I NETWORK  [signalProcessingThread] closing listening socket: 8
+2017-10-28T00:16:16.389+0300 I NETWORK  [signalProcessingThread] removing socket file: /tmp/mongodb-27017.sock
+2017-10-28T00:16:16.392+0300 I NETWORK  [signalProcessingThread] shutdown: going to flush diaglog...
+2017-10-28T00:16:16.396+0300 I -        [conn11] end connection 127.0.0.1:57859 (2 connections now open)
+2017-10-28T00:16:16.400+0300 I FTDC     [signalProcessingThread] Shutting down full-time diagnostic data capture
+2017-10-28T00:16:16.414+0300 I STORAGE  [signalProcessingThread] WiredTigerKVEngine shutting down
+2017-10-28T00:16:16.458+0300 I STORAGE  [signalProcessingThread] shutdown: removing fs lock...
+2017-10-28T00:16:16.459+0300 I CONTROL  [signalProcessingThread] now exiting
+2017-10-28T00:16:16.459+0300 I CONTROL  [signalProcessingThread] shutting down with code:0
+2017-10-28T00:16:17.632+0300 I CONTROL  [main] ***** SERVER RESTARTED *****
+2017-10-28T00:16:17.653+0300 I CONTROL  [initandlisten] MongoDB starting : pid=66104 port=27017 dbpath=/Volumes/my_passport/data 64-bit host=MacBook-Pro-4.local
+2017-10-28T00:16:17.653+0300 I CONTROL  [initandlisten] db version v3.4.9
+2017-10-28T00:16:17.653+0300 I CONTROL  [initandlisten] git version: 876ebee8c7dd0e2d992f36a848ff4dc50ee6603e
+2017-10-28T00:16:17.653+0300 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2l  25 May 2017
+2017-10-28T00:16:17.653+0300 I CONTROL  [initandlisten] allocator: system
+2017-10-28T00:16:17.653+0300 I CONTROL  [initandlisten] modules: none
+2017-10-28T00:16:17.653+0300 I CONTROL  [initandlisten] build environment:
+2017-10-28T00:16:17.653+0300 I CONTROL  [initandlisten]     distarch: x86_64
+2017-10-28T00:16:17.653+0300 I CONTROL  [initandlisten]     target_arch: x86_64
+2017-10-28T00:16:17.653+0300 I CONTROL  [initandlisten] options: { config: "./mongod.conf", storage: { dbPath: "/Volumes/my_passport/data", journal: { enabled: false } }, systemLog: { destination: "file", logAppend: true, path: "./mongologs/mongod.log" } }
+2017-10-28T00:16:17.703+0300 I -        [initandlisten] Detected data files in /Volumes/my_passport/data created by the 'wiredTiger' storage engine, so setting the active storage engine to 'wiredTiger'.
+2017-10-28T00:16:17.703+0300 I STORAGE  [initandlisten] wiredtiger_open config: create,cache_size=3584M,session_max=20000,eviction=(threads_min=4,threads_max=4),config_base=false,statistics=(fast),log=(enabled=true,archive=true,path=journal,compressor=snappy),file_manager=(close_idle_time=100000),checkpoint=(wait=60,log_size=2GB),statistics_log=(wait=0),,log=(enabled=false),
+2017-10-28T00:16:17.812+0300 I CONTROL  [initandlisten] 
+2017-10-28T00:16:17.812+0300 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2017-10-28T00:16:17.812+0300 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2017-10-28T00:16:17.812+0300 I CONTROL  [initandlisten] 
+2017-10-28T00:16:17.865+0300 I FTDC     [initandlisten] Initializing full-time diagnostic data capture with directory '/Volumes/my_passport/data/diagnostic.data'
+2017-10-28T00:16:17.865+0300 I NETWORK  [thread1] waiting for connections on port 27017
+2017-10-28T00:16:18.354+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57860 #1 (1 connection now open)
+2017-10-28T00:16:18.370+0300 I NETWORK  [conn1] received client metadata from 127.0.0.1:57860 conn1: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:16:27.647+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57861 #2 (2 connections now open)
+2017-10-28T00:16:27.648+0300 I NETWORK  [conn2] received client metadata from 127.0.0.1:57861 conn2: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-28T00:16:37.455+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57864 #3 (3 connections now open)
+2017-10-28T00:16:37.480+0300 I NETWORK  [conn3] received client metadata from 127.0.0.1:57864 conn3: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:16:43.696+0300 I -        [conn3] end connection 127.0.0.1:57864 (3 connections now open)
+2017-10-28T00:17:42.619+0300 I -        [conn2] end connection 127.0.0.1:57861 (2 connections now open)
+2017-10-28T00:17:44.161+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57923 #4 (2 connections now open)
+2017-10-28T00:17:44.162+0300 I NETWORK  [conn4] received client metadata from 127.0.0.1:57923 conn4: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-28T00:18:59.599+0300 I -        [conn1] end connection 127.0.0.1:57860 (2 connections now open)
+2017-10-28T00:19:00.231+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57928 #5 (2 connections now open)
+2017-10-28T00:19:00.247+0300 I NETWORK  [conn5] received client metadata from 127.0.0.1:57928 conn5: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:19:02.550+0300 I -        [conn4] end connection 127.0.0.1:57923 (2 connections now open)
+2017-10-28T00:19:06.328+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57929 #6 (2 connections now open)
+2017-10-28T00:19:06.357+0300 I NETWORK  [conn6] received client metadata from 127.0.0.1:57929 conn6: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:19:11.393+0300 I -        [conn6] end connection 127.0.0.1:57929 (2 connections now open)
+2017-10-28T00:19:13.634+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57962 #7 (2 connections now open)
+2017-10-28T00:19:13.661+0300 I NETWORK  [conn7] received client metadata from 127.0.0.1:57962 conn7: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:19:17.290+0300 I -        [conn7] end connection 127.0.0.1:57962 (2 connections now open)
+2017-10-28T00:19:24.445+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57991 #8 (2 connections now open)
+2017-10-28T00:19:24.446+0300 I NETWORK  [conn8] received client metadata from 127.0.0.1:57991 conn8: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-28T00:20:42.085+0300 I -        [conn5] end connection 127.0.0.1:57928 (2 connections now open)
+2017-10-28T00:20:42.534+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57993 #9 (2 connections now open)
+2017-10-28T00:20:42.550+0300 I NETWORK  [conn9] received client metadata from 127.0.0.1:57993 conn9: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:21:01.461+0300 I -        [conn9] end connection 127.0.0.1:57993 (2 connections now open)
+2017-10-28T00:21:01.899+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:57995 #10 (2 connections now open)
+2017-10-28T00:21:01.916+0300 I NETWORK  [conn10] received client metadata from 127.0.0.1:57995 conn10: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:23:04.299+0300 I -        [conn10] end connection 127.0.0.1:57995 (2 connections now open)
+2017-10-28T00:23:04.891+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58007 #11 (2 connections now open)
+2017-10-28T00:23:04.907+0300 I NETWORK  [conn11] received client metadata from 127.0.0.1:58007 conn11: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:23:14.401+0300 I -        [conn11] end connection 127.0.0.1:58007 (2 connections now open)
+2017-10-28T00:23:14.795+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58009 #12 (2 connections now open)
+2017-10-28T00:23:14.811+0300 I NETWORK  [conn12] received client metadata from 127.0.0.1:58009 conn12: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:23:17.607+0300 I -        [conn12] end connection 127.0.0.1:58009 (2 connections now open)
+2017-10-28T00:23:17.975+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58010 #13 (2 connections now open)
+2017-10-28T00:23:17.991+0300 I NETWORK  [conn13] received client metadata from 127.0.0.1:58010 conn13: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:23:28.088+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58015 #14 (3 connections now open)
+2017-10-28T00:23:28.105+0300 I NETWORK  [conn14] received client metadata from 127.0.0.1:58015 conn14: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:23:28.167+0300 I -        [conn14] end connection 127.0.0.1:58015 (3 connections now open)
+2017-10-28T00:25:39.440+0300 I -        [conn13] end connection 127.0.0.1:58010 (2 connections now open)
+2017-10-28T00:25:40.099+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58108 #15 (2 connections now open)
+2017-10-28T00:25:40.114+0300 I NETWORK  [conn15] received client metadata from 127.0.0.1:58108 conn15: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:26:21.421+0300 I -        [conn15] end connection 127.0.0.1:58108 (2 connections now open)
+2017-10-28T00:26:22.085+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58114 #16 (2 connections now open)
+2017-10-28T00:26:22.106+0300 I NETWORK  [conn16] received client metadata from 127.0.0.1:58114 conn16: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:26:49.944+0300 I -        [conn16] end connection 127.0.0.1:58114 (2 connections now open)
+2017-10-28T00:26:50.401+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58118 #17 (2 connections now open)
+2017-10-28T00:26:50.417+0300 I NETWORK  [conn17] received client metadata from 127.0.0.1:58118 conn17: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:27:16.987+0300 I -        [conn8] end connection 127.0.0.1:57991 (2 connections now open)
+2017-10-28T00:27:17.935+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58121 #18 (2 connections now open)
+2017-10-28T00:27:17.935+0300 I NETWORK  [conn18] received client metadata from 127.0.0.1:58121 conn18: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-28T00:27:32.759+0300 I COMMAND  [conn18] dropDatabase databnb starting
+2017-10-28T00:27:32.816+0300 I COMMAND  [conn18] dropDatabase databnb finished
+2017-10-28T00:27:40.450+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58122 #19 (3 connections now open)
+2017-10-28T00:27:40.475+0300 I NETWORK  [conn19] received client metadata from 127.0.0.1:58122 conn19: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:27:40.532+0300 I -        [conn19] end connection 127.0.0.1:58122 (3 connections now open)
+2017-10-28T00:29:01.805+0300 I -        [conn17] end connection 127.0.0.1:58118 (2 connections now open)
+2017-10-28T00:29:02.797+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58126 #20 (2 connections now open)
+2017-10-28T00:29:02.812+0300 I NETWORK  [conn20] received client metadata from 127.0.0.1:58126 conn20: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:29:13.189+0300 I -        [conn20] end connection 127.0.0.1:58126 (2 connections now open)
+2017-10-28T00:29:13.642+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58128 #21 (2 connections now open)
+2017-10-28T00:29:13.665+0300 I NETWORK  [conn21] received client metadata from 127.0.0.1:58128 conn21: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:35:10.638+0300 I -        [conn21] end connection 127.0.0.1:58128 (2 connections now open)
+2017-10-28T00:35:11.227+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58438 #22 (2 connections now open)
+2017-10-28T00:35:11.243+0300 I NETWORK  [conn22] received client metadata from 127.0.0.1:58438 conn22: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:35:29.302+0300 I COMMAND  [conn18] dropDatabase databnb starting
+2017-10-28T00:35:29.303+0300 I COMMAND  [conn18] dropDatabase databnb finished
+2017-10-28T00:35:55.149+0300 I -        [conn22] end connection 127.0.0.1:58438 (2 connections now open)
+2017-10-28T00:35:55.805+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58442 #23 (2 connections now open)
+2017-10-28T00:35:55.826+0300 I NETWORK  [conn23] received client metadata from 127.0.0.1:58442 conn23: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:35:59.722+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58443 #24 (3 connections now open)
+2017-10-28T00:35:59.746+0300 I NETWORK  [conn24] received client metadata from 127.0.0.1:58443 conn24: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:37:52.209+0300 I -        [conn24] end connection 127.0.0.1:58443 (3 connections now open)
+2017-10-28T00:40:09.042+0300 I -        [conn23] end connection 127.0.0.1:58442 (2 connections now open)
+2017-10-28T00:40:09.633+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:58995 #25 (2 connections now open)
+2017-10-28T00:40:09.648+0300 I NETWORK  [conn25] received client metadata from 127.0.0.1:58995 conn25: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:40:48.964+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59001 #26 (3 connections now open)
+2017-10-28T00:40:48.986+0300 I NETWORK  [conn26] received client metadata from 127.0.0.1:59001 conn26: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:40:49.086+0300 I -        [conn26] end connection 127.0.0.1:59001 (3 connections now open)
+2017-10-28T00:42:35.624+0300 I -        [conn25] end connection 127.0.0.1:58995 (2 connections now open)
+2017-10-28T00:42:36.195+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59009 #27 (2 connections now open)
+2017-10-28T00:42:36.239+0300 I NETWORK  [conn27] received client metadata from 127.0.0.1:59009 conn27: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:42:53.516+0300 I -        [conn27] end connection 127.0.0.1:59009 (2 connections now open)
+2017-10-28T00:42:53.911+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59011 #28 (2 connections now open)
+2017-10-28T00:42:53.930+0300 I NETWORK  [conn28] received client metadata from 127.0.0.1:59011 conn28: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:42:56.144+0300 I -        [conn28] end connection 127.0.0.1:59011 (2 connections now open)
+2017-10-28T00:42:56.516+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59013 #29 (2 connections now open)
+2017-10-28T00:42:56.531+0300 I NETWORK  [conn29] received client metadata from 127.0.0.1:59013 conn29: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:43:01.722+0300 I COMMAND  [conn18] dropDatabase databnb starting
+2017-10-28T00:43:01.722+0300 I COMMAND  [conn18] dropDatabase databnb finished
+2017-10-28T00:44:38.728+0300 I -        [conn29] end connection 127.0.0.1:59013 (2 connections now open)
+2017-10-28T00:44:39.126+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59019 #30 (2 connections now open)
+2017-10-28T00:44:39.142+0300 I NETWORK  [conn30] received client metadata from 127.0.0.1:59019 conn30: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:44:42.026+0300 I -        [conn30] end connection 127.0.0.1:59019 (2 connections now open)
+2017-10-28T00:44:42.394+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59021 #31 (2 connections now open)
+2017-10-28T00:44:42.410+0300 I NETWORK  [conn31] received client metadata from 127.0.0.1:59021 conn31: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:44:49.819+0300 I -        [conn31] end connection 127.0.0.1:59021 (2 connections now open)
+2017-10-28T00:44:50.194+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59023 #32 (2 connections now open)
+2017-10-28T00:44:50.212+0300 I NETWORK  [conn32] received client metadata from 127.0.0.1:59023 conn32: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:45:02.337+0300 I -        [conn18] end connection 127.0.0.1:58121 (2 connections now open)
+2017-10-28T00:45:04.539+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59027 #33 (2 connections now open)
+2017-10-28T00:45:04.539+0300 I NETWORK  [conn33] received client metadata from 127.0.0.1:59027 conn33: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-28T00:45:11.647+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59028 #34 (3 connections now open)
+2017-10-28T00:45:11.669+0300 I NETWORK  [conn34] received client metadata from 127.0.0.1:59028 conn34: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:48:03.337+0300 I -        [conn32] end connection 127.0.0.1:59023 (3 connections now open)
+2017-10-28T00:48:03.918+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59504 #35 (3 connections now open)
+2017-10-28T00:48:03.935+0300 I NETWORK  [conn35] received client metadata from 127.0.0.1:59504 conn35: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:48:37.395+0300 I -        [conn35] end connection 127.0.0.1:59504 (3 connections now open)
+2017-10-28T00:48:37.988+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59509 #36 (3 connections now open)
+2017-10-28T00:48:38.005+0300 I NETWORK  [conn36] received client metadata from 127.0.0.1:59509 conn36: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:48:42.629+0300 I COMMAND  [conn33] dropDatabase databnb starting
+2017-10-28T00:48:42.630+0300 I COMMAND  [conn33] dropDatabase databnb finished
+2017-10-28T00:49:00.726+0300 I -        [conn36] end connection 127.0.0.1:59509 (3 connections now open)
+2017-10-28T00:49:01.352+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59511 #37 (3 connections now open)
+2017-10-28T00:49:01.370+0300 I NETWORK  [conn37] received client metadata from 127.0.0.1:59511 conn37: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:49:05.481+0300 I -        [conn34] end connection 127.0.0.1:59028 (3 connections now open)
+2017-10-28T00:49:08.912+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59513 #38 (3 connections now open)
+2017-10-28T00:49:08.939+0300 I NETWORK  [conn38] received client metadata from 127.0.0.1:59513 conn38: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T00:50:58.365+0300 I -        [conn38] end connection 127.0.0.1:59513 (3 connections now open)
+2017-10-28T00:53:07.272+0300 I -        [conn37] end connection 127.0.0.1:59511 (2 connections now open)
+2017-10-28T00:53:07.878+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:59981 #39 (2 connections now open)
+2017-10-28T00:53:07.896+0300 I NETWORK  [conn39] received client metadata from 127.0.0.1:59981 conn39: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:04:07.052+0300 I -        [conn39] end connection 127.0.0.1:59981 (2 connections now open)
+2017-10-28T01:04:07.637+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60020 #40 (2 connections now open)
+2017-10-28T01:04:07.652+0300 I NETWORK  [conn40] received client metadata from 127.0.0.1:60020 conn40: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:04:15.720+0300 I -        [conn40] end connection 127.0.0.1:60020 (2 connections now open)
+2017-10-28T01:04:16.093+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60022 #41 (2 connections now open)
+2017-10-28T01:04:16.111+0300 I NETWORK  [conn41] received client metadata from 127.0.0.1:60022 conn41: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:04:25.885+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60024 #42 (3 connections now open)
+2017-10-28T01:04:25.911+0300 I NETWORK  [conn42] received client metadata from 127.0.0.1:60024 conn42: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:04:36.620+0300 I -        [conn42] end connection 127.0.0.1:60024 (3 connections now open)
+2017-10-28T01:04:52.295+0300 I -        [conn41] end connection 127.0.0.1:60022 (2 connections now open)
+2017-10-28T01:04:52.889+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60087 #43 (2 connections now open)
+2017-10-28T01:04:52.906+0300 I NETWORK  [conn43] received client metadata from 127.0.0.1:60087 conn43: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:04:54.917+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60089 #44 (3 connections now open)
+2017-10-28T01:04:54.946+0300 I NETWORK  [conn44] received client metadata from 127.0.0.1:60089 conn44: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:05:17.017+0300 I -        [conn44] end connection 127.0.0.1:60089 (3 connections now open)
+2017-10-28T01:05:52.382+0300 I -        [conn43] end connection 127.0.0.1:60087 (2 connections now open)
+2017-10-28T01:05:52.972+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60212 #45 (2 connections now open)
+2017-10-28T01:05:52.988+0300 I NETWORK  [conn45] received client metadata from 127.0.0.1:60212 conn45: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:05:55.068+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60213 #46 (3 connections now open)
+2017-10-28T01:05:55.093+0300 I NETWORK  [conn46] received client metadata from 127.0.0.1:60213 conn46: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:06:07.317+0300 I -        [conn46] end connection 127.0.0.1:60213 (3 connections now open)
+2017-10-28T01:06:15.046+0300 I -        [conn33] end connection 127.0.0.1:59027 (2 connections now open)
+2017-10-28T01:06:16.182+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60265 #47 (2 connections now open)
+2017-10-28T01:06:16.182+0300 I NETWORK  [conn47] received client metadata from 127.0.0.1:60265 conn47: { application: { name: "MongoDB Shell" }, driver: { name: "MongoDB Internal Client", version: "3.4.9" }, os: { type: "Darwin", name: "Mac OS X", architecture: "x86_64", version: "16.7.0" } }
+2017-10-28T01:06:40.093+0300 I -        [conn45] end connection 127.0.0.1:60212 (2 connections now open)
+2017-10-28T01:06:40.533+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60270 #48 (2 connections now open)
+2017-10-28T01:06:40.550+0300 I NETWORK  [conn48] received client metadata from 127.0.0.1:60270 conn48: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:06:42.868+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60272 #49 (3 connections now open)
+2017-10-28T01:06:42.899+0300 I NETWORK  [conn49] received client metadata from 127.0.0.1:60272 conn49: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:06:54.084+0300 I -        [conn49] end connection 127.0.0.1:60272 (3 connections now open)
+2017-10-28T01:08:59.729+0300 I -        [conn48] end connection 127.0.0.1:60270 (2 connections now open)
+2017-10-28T01:09:00.345+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60334 #50 (2 connections now open)
+2017-10-28T01:09:00.360+0300 I NETWORK  [conn50] received client metadata from 127.0.0.1:60334 conn50: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:09:10.228+0300 I -        [conn50] end connection 127.0.0.1:60334 (2 connections now open)
+2017-10-28T01:09:10.837+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60336 #51 (2 connections now open)
+2017-10-28T01:09:10.853+0300 I NETWORK  [conn51] received client metadata from 127.0.0.1:60336 conn51: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:09:16.971+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60338 #52 (3 connections now open)
+2017-10-28T01:09:16.988+0300 I NETWORK  [conn52] received client metadata from 127.0.0.1:60338 conn52: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:09:17.106+0300 I -        [conn52] end connection 127.0.0.1:60338 (3 connections now open)
+2017-10-28T01:12:06.184+0300 I -        [conn51] end connection 127.0.0.1:60336 (2 connections now open)
+2017-10-28T01:12:06.572+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60350 #53 (2 connections now open)
+2017-10-28T01:12:06.592+0300 I NETWORK  [conn53] received client metadata from 127.0.0.1:60350 conn53: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:12:14.717+0300 I -        [conn53] end connection 127.0.0.1:60350 (2 connections now open)
+2017-10-28T01:12:15.132+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60352 #54 (2 connections now open)
+2017-10-28T01:12:15.152+0300 I NETWORK  [conn54] received client metadata from 127.0.0.1:60352 conn54: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:12:23.654+0300 I COMMAND  [conn47] dropDatabase databnb starting
+2017-10-28T01:12:23.655+0300 I COMMAND  [conn47] dropDatabase databnb finished
+2017-10-28T01:12:30.478+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60354 #55 (3 connections now open)
+2017-10-28T01:12:30.502+0300 I NETWORK  [conn55] received client metadata from 127.0.0.1:60354 conn55: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:14:03.466+0300 I -        [conn54] end connection 127.0.0.1:60352 (3 connections now open)
+2017-10-28T01:14:04.057+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60424 #56 (3 connections now open)
+2017-10-28T01:14:04.074+0300 I NETWORK  [conn56] received client metadata from 127.0.0.1:60424 conn56: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:14:07.905+0300 I -        [conn56] end connection 127.0.0.1:60424 (3 connections now open)
+2017-10-28T01:14:08.362+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60426 #57 (3 connections now open)
+2017-10-28T01:14:08.378+0300 I NETWORK  [conn57] received client metadata from 127.0.0.1:60426 conn57: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:14:17.648+0300 I COMMAND  [conn47] dropDatabase databnb starting
+2017-10-28T01:14:17.648+0300 I COMMAND  [conn47] dropDatabase databnb finished
+2017-10-28T01:14:24.958+0300 I -        [conn55] end connection 127.0.0.1:60354 (3 connections now open)
+2017-10-28T01:14:27.221+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60431 #58 (3 connections now open)
+2017-10-28T01:14:27.245+0300 I NETWORK  [conn58] received client metadata from 127.0.0.1:60431 conn58: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:14:37.880+0300 I -        [conn58] end connection 127.0.0.1:60431 (3 connections now open)
+2017-10-28T01:16:32.524+0300 I -        [conn57] end connection 127.0.0.1:60426 (2 connections now open)
+2017-10-28T01:16:32.974+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60499 #59 (2 connections now open)
+2017-10-28T01:16:33.000+0300 I NETWORK  [conn59] received client metadata from 127.0.0.1:60499 conn59: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:16:38.309+0300 I -        [conn59] end connection 127.0.0.1:60499 (2 connections now open)
+2017-10-28T01:16:38.748+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60502 #60 (2 connections now open)
+2017-10-28T01:16:38.764+0300 I NETWORK  [conn60] received client metadata from 127.0.0.1:60502 conn60: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:30:37.008+0300 I COMMAND  [conn47] dropDatabase databnb starting
+2017-10-28T01:30:37.016+0300 I COMMAND  [conn47] dropDatabase databnb finished
+2017-10-28T01:30:49.866+0300 I -        [conn60] end connection 127.0.0.1:60502 (2 connections now open)
+2017-10-28T01:30:50.683+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60723 #61 (2 connections now open)
+2017-10-28T01:30:50.701+0300 I NETWORK  [conn61] received client metadata from 127.0.0.1:60723 conn61: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:30:54.530+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:60724 #62 (3 connections now open)
+2017-10-28T01:30:54.556+0300 I NETWORK  [conn62] received client metadata from 127.0.0.1:60724 conn62: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T01:32:41.818+0300 I -        [conn62] end connection 127.0.0.1:60724 (3 connections now open)
+2017-10-28T02:00:25.203+0300 I -        [conn61] end connection 127.0.0.1:60723 (2 connections now open)
+2017-10-28T02:00:25.903+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:61727 #63 (2 connections now open)
+2017-10-28T02:00:25.922+0300 I NETWORK  [conn63] received client metadata from 127.0.0.1:61727 conn63: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T02:01:34.963+0300 I -        [conn63] end connection 127.0.0.1:61727 (2 connections now open)
+2017-10-28T02:01:35.561+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:61731 #64 (2 connections now open)
+2017-10-28T02:01:35.592+0300 I NETWORK  [conn64] received client metadata from 127.0.0.1:61731 conn64: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }
+2017-10-28T02:04:46.797+0300 I -        [conn64] end connection 127.0.0.1:61731 (2 connections now open)
+2017-10-28T02:04:47.204+0300 I NETWORK  [thread1] connection accepted from 127.0.0.1:61736 #65 (2 connections now open)
+2017-10-28T02:04:47.224+0300 I NETWORK  [conn65] received client metadata from 127.0.0.1:61736 conn65: { driver: { name: "nodejs", version: "2.2.31" }, os: { type: "Darwin", name: "darwin", architecture: "x64", version: "16.7.0" }, platform: "Node.js v8.6.0, LE, mongodb-core: 2.1.15" }

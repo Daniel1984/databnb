@@ -1,0 +1,3 @@
+#!/bin/bash
+mkdir -p /Volumes/my_passport/data
+mongod --config ./mongod.conf
