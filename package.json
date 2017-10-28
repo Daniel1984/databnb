@@ -6,6 +6,7 @@
     "dev": "nf start -p 3030"
   },
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "~1.18.2",
     "chalk": "^2.1.0",
     "cookie-parser": "~1.4.3",

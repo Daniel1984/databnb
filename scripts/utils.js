@@ -36,7 +36,7 @@ module.exports = {
     return `https://www.airbnb.com/api/v2/reviews?key=d306zoyjsyarp7ifhu67rjxn52tv0t20&currency=USD&locale=en&listing_id=${listingId}&role=guest&_format=for_p3&_limit=0&_offset=1&_order=language_country`;
   },
 
-  getPropertyListUrl(page) {
-    return `https://www.airbnb.com/s/London--United-Kingdom/homes${page ? `?section_offset=${page}` : ''}`;
+  getPropertyListUrl({ page, cityPath }) {
+    return `https://www.airbnb.com/s/${cityPath}/homes${page ? `?section_offset=${page}` : ''}`;
   }
 };

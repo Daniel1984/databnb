@@ -6,10 +6,11 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/databnb', { useMongoClient: true });
 
 const index = require('./routes/index');
-const users = require('./routes/users');
+const listingsScraper = require('./routes/listingsScraper');
 
 const app = express();
 
@@ -26,7 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/scraper', listingsScraper);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

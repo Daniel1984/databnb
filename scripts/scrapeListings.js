@@ -6,10 +6,7 @@ const getListingStartDate = require('./reviewsScraper');
 const City = require('../models/city');
 const { getPropertyListUrl } = require('./utils');
 
-
-(async () => {
-  mongoose.connect('mongodb://localhost/databnb', { useMongoClient: true });
-
+module.exports = async ({ cityPath }) => {
   let listingIdsAndUrls = [];
   let canScrape = true;
   let page = 0;
@@ -17,7 +14,7 @@ const { getPropertyListUrl } = require('./utils');
   const listingsWithIdsUrlsAndStartDate = [];
 
   do {
-    const listingsUrl = getPropertyListUrl(page);
+    const listingsUrl = getPropertyListUrl({ page, cityPath });
     const { linksAndIds, hasMoreProperties, hasErrors } = await propertyLinksScraper(listingsUrl);
     canScrape = hasErrors || hasMoreProperties;
     page += 1;
@@ -31,15 +28,5 @@ const { getPropertyListUrl } = require('./utils');
     listingsWithIdsUrlsAndStartDate.push({ listingId, listingUrl, listingStartDate });
   } while(listingIdsAndUrls.length);
 
-
-  const city = new City({ listings: listingsWithIdsUrlsAndStartDate, city: 'london' });
-
-  city.save((err) => {
-    if (err) {
-      console.log(chalk.white.bgRed.bold(`ERROR: SAVING LISTINGS FOR LONDON - ${err}`));
-    }
-
-    console.log(chalk.black.bgGreen.bold(`SUCCESS: SAVING LISTINGS FOR LONDON`));
-    mongoose.disconnect();
-  });
-})();
+  return listingsWithIdsUrlsAndStartDate;
+}
