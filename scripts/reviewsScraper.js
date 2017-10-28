@@ -17,26 +17,29 @@ module.exports = async ({ listingId }) => {
     }
   };
 
-  const defaultReviews = {
-    reviews: [{ created_at: MONTH_AGO }],
-  };
+  const defaultListingStartDate = MONTH_AGO;
 
   return new Promise((resolve) => {
     request(options, (err, res, body) => {
 
       if (err || res.statusCode >= 400 || !body) {
-        console.log(chalk.white.bgRed.bold(`ERR: COULDN'T FETCH REVIEWS DATA, ${err}`));
-        resolve(defaultReviews);
+        console.log(chalk.white.bgRed.bold(`ERR: NO REVIEWS FOUND, USING DEFAULT ${defaultListingStartDate}`));
+        resolve(defaultListingStartDate);
       }
 
       const responseReviews = JSON.parse(body);
 
       if (!responseReviews.reviews.length) {
-        resolve(defaultReviews);
+        console.log(chalk.black.bgGreen.bold(`WARNING: NO REVIEWS FOUND, USING DEFAULT ${defaultListingStartDate}`));
+        resolve(defaultListingStartDate);
         return;
       }
 
-      resolve(responseReviews);
+      const { created_at } = responseReviews.reviews.pop();
+
+      console.log(chalk.black.bgGreen.bold(`SUCCESS: GOT LISTING START TIME - ${created_at}`));
+
+      resolve(created_at);
     });
   });
 }

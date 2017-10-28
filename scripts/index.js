@@ -34,8 +34,7 @@ async function startCollectiong(page = 0) {
 
   while (propertyUrlsAndIds.length) {
     const { listingId, listingUrl } = propertyUrlsAndIds.shift();
-    const { reviews } = await getPropertyReviewsData({ listingId });
-    const { created_at: listingStartDate } = reviews.pop();
+    const listingStartDate = await getPropertyReviewsData({ listingId });
     const datesToFetch = getDatesToFetch(listingStartDate);
 
     while (datesToFetch.length) {
