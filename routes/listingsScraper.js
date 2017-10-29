@@ -13,10 +13,10 @@ router.get('/scrape-listings', async (req, res, next) => {
     return;
   }
 
-  let city = await City.findOne({ name: cityPath });
+  let city = await City.findOne({ cityPath: cityPath });
 
   if (!city) {
-    city = await City.create({ name: cityPath });;
+    city = await City.create({ cityPath: cityPath });;
   }
 
   res.status(200).json({ msg: 'scraping listings in progress' });
