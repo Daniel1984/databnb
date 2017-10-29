@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
   try {
     const cities = await City.find();
-    res.status(200).json(cities);
+    res.render('cities', { cities });
   } catch (error) {
     res.status(400).json({ error });
   }

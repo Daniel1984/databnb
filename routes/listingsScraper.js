@@ -6,17 +6,17 @@ const Listing = require('../models/listing');
 const router = express.Router();
 
 router.get('/scrape-listings', async (req, res, next) => {
-  const { cityPath } = req.query;
+  const { cityPath, cityName } = req.query;
 
-  if (!cityPath) {
-    res.json({ warning: 'cityPath must me specified' });
+  if (!cityPath || !cityName) {
+    res.json({ warning: 'cityPath and cityName must me specified' });
     return;
   }
 
   let city = await City.findOne({ cityPath: cityPath });
 
   if (!city) {
-    city = await City.create({ cityPath: cityPath });;
+    city = await City.create({ cityPath, name: cityName });;
   }
 
   res.status(200).json({ msg: 'scraping listings in progress' });
