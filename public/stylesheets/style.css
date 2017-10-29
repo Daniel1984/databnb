@@ -17,6 +17,10 @@ body {
   width: 100%;
 }
 
+.cities_name {
+  text-transform: capitalize;
+}
+
 .cities_card-msg {
   min-height: 40px;
 }
@@ -27,11 +31,17 @@ body {
   display: flex;
   justify-content: center;
   box-sizing: border-box;
-
 }
+
 @media (max-width: 768px) {
   .cities_card-container {
     width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cities_card-container {
+    width: 100%;
   }
 }
 

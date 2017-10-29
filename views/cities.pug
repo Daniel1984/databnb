@@ -7,7 +7,10 @@ block content
         .mdl-card.mdl-shadow--2dp.cities_card
           div(class="mdl-card__title cities_thumbnail--" + city.name)
 
-          .mdl-card__supporting-text.cities_card-msg Check the history of #{city.name} airbnb listigs...
+          .mdl-card__supporting-text.cities_card-msg
+            | Check the history of
+            | #[strong.cities_name #{city.name}]
+            | airbnb listigs...
 
           .mdl-card__actions.mdl-card--border
             a.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect(href="/cities/" + city._id) View History
