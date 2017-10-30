@@ -1,9 +1,12 @@
 const express = require('express');
-const { index, show } = require('./citiesHandler');
+const citiesHandler = require('./citiesHandler');
+const listingsHandler = require('./listingsHandler');
+const availabilityHandler = require('./availabilityHandler');
 
 const router = express.Router();
 
-router.get('/cities', index);
-router.get('/cities/:cityId', show);
+router.get('/cities', citiesHandler);
+router.get('/cities/:cityId/listings', listingsHandler);
+router.get('/cities/:cityId/availability', availabilityHandler);
 
 module.exports = router;

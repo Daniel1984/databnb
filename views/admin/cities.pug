@@ -9,7 +9,8 @@ block content
           th Name
           th Path
           th ID
-          th Action
+          th Listings
+          th Availability
       tbody
         each city in cities
           tr
@@ -17,4 +18,6 @@ block content
             td #{city.cityPath}
             td #{city._id}
             td
-              a(href="cities/" + city._id) Show listings
+              a(href="cities/" + city._id + "/listings") Show listings
+            td
+              a(href="cities/" + city._id + "/availability") Show Availability
