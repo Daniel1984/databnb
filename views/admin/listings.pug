@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  .admin-listings
+    h4 List Of #{city} listings
+    table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.admin-cities_table
+      thead
+        tr
+          th Listing submitted
+          th Listing url
+          th Scraped
+          th Id
+          th Action
+      tbody
+        each listing in listings
+          tr
+            td #{listing.listingStartDate}
+            td
+              a(href=listing.listingUrl target="_blank") Open
+            td
+              #listing
+                if listing.scraped
+                  span YES
+                else
+                  span NO
+            td #{listing._id}
+            td
+              a(href="" + listing._id) Show history

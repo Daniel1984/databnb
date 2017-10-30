@@ -1,6 +1,5 @@
 const express = require('express');
 
-const scrapeListings = require('../scripts/scrapeListings');
 const City = require('../models/city');
 const Listing = require('../models/listing');
 

@@ -49,6 +49,18 @@ body {
   font-family: 'Lobster', cursive;
 }
 
+.admin-cities {
+  padding: 20px;
+}
+
+.admin-cities_table {
+  width: 100%;
+}
+
+.admin-listings {
+  padding: 20px;
+}
+
 .demo-layout-transparent .mdl-layout__header,
 .demo-layout-transparent .mdl-layout__drawer-button {
   color: white;

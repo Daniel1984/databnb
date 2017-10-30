@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+  .admin-cities
+    h4 List Of Cities
+    table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.admin-cities_table
+      thead
+        tr
+          th Name
+          th Path
+          th ID
+          th Action
+      tbody
+        each city in cities
+          tr
+            td #{city.name}
+            td #{city.cityPath}
+            td #{city._id}
+            td
+              a(href="cities/" + city._id) Show listings

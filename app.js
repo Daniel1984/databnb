@@ -12,6 +12,7 @@ mongoose.connect('mongodb://localhost/databnb', { useMongoClient: true });
 const index = require('./routes/index');
 const listingsScraper = require('./routes/listingsScraper');
 const cities = require('./routes/cities');
+const admin = require('./routes/admin/admin');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 app.use('/', index);
 app.use('/scraper', listingsScraper);
 app.use('/cities', cities);
+app.use('/admin', admin)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
