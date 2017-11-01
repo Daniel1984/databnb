@@ -10,7 +10,7 @@ mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/databnb', { useMongoClient: true });
 
 const index = require('./routes/index');
-const listingsScraper = require('./routes/listingsScraper');
+const scraper = require('./routes/scraper/scraper');
 const cities = require('./routes/cities');
 const admin = require('./routes/admin/admin');
 
@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/', index);
-app.use('/scraper', listingsScraper);
+app.use('/scraper', scraper);
 app.use('/cities', cities);
 app.use('/admin', admin)
 

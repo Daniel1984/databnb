@@ -17,8 +17,8 @@ const listingHistorySchema = new Schema({
   listingLat: { type: Number, default: null },
   listingLng: { type: Number, default: null },
   checkIn: { type: Date, default: null },
-  checkOut: { type: Date, default: null }
-  listing: { type: Schema.Types.ObjectId, ref: 'Listing' },
+  checkOut: { type: Date, default: null },
+  listing: { type: Schema.Types.ObjectId, ref: 'Listing', index: true },
 });
 
 module.exports = mongoose.model('ListingHistrory', listingHistorySchema);

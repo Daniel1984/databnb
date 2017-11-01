@@ -3,7 +3,9 @@ const request = require('request');
 const chalk = require('chalk');
 const { getReviewsUrl } = require('./utils');
 
-const MONTH_AGO = addMonths(new Date(), -1);
+let today = new Date();
+today.setDate(1);
+const MONTH_AGO = addMonths(today, -1);
 
 module.exports = async ({ listingId }) => {
   console.log(chalk.black.bgYellow.bold(`GET: LISTING REVIEWS FOR ID - ${listingId}`));
@@ -27,19 +29,26 @@ module.exports = async ({ listingId }) => {
         resolve(defaultListingStartDate);
       }
 
-      const responseReviews = JSON.parse(body);
+      try {
+        const responseReviews = JSON.parse(body);
 
-      if (!responseReviews.reviews.length) {
-        console.log(chalk.black.bgGreen.bold(`WARNING: NO REVIEWS FOUND, USING DEFAULT ${defaultListingStartDate}`));
+        if (!responseReviews.reviews.length) {
+          console.log(chalk.black.bgGreen.bold(`WARNING: NO REVIEWS FOUND, USING DEFAULT ${defaultListingStartDate}`));
+          resolve(defaultListingStartDate);
+          return;
+        }
+
+        const { created_at } = responseReviews.reviews.pop();
+
+        console.log(chalk.black.bgGreen.bold(`SUCCESS: GOT LISTING START TIME - ${created_at}`));
+
+        const startDate = new Date(created_at);
+        startDate.setDate(1);
+        resolve(startDate);
+      } catch (error) {
+        console.log(chalk.white.bgRed.bold(`ERR: PARSING JSON ${error}`));
         resolve(defaultListingStartDate);
-        return;
       }
-
-      const { created_at } = responseReviews.reviews.pop();
-
-      console.log(chalk.black.bgGreen.bold(`SUCCESS: GOT LISTING START TIME - ${created_at}`));
-
-      resolve(created_at);
     });
   });
 }

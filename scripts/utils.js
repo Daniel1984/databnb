@@ -13,7 +13,7 @@ module.exports = {
 
   getDatesToFetch(listingStartDate = MONTH_AGO) {
     const datesToFetch = [];
-    const monthsSinceLaunch = differenceInMonths(new Date(), listingStartDate);
+    const monthsSinceLaunch = differenceInMonths(addMonths(new Date(), 2), listingStartDate);
 
     for (let i = 0; i <= monthsSinceLaunch; i += 1) {
       const checkIn = formatDate(addMonths(listingStartDate, i), 'YYYY-MM-DD');
