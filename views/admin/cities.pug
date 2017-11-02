@@ -11,6 +11,7 @@ block content
           th ID
           th Listings
           th Availability
+          th Action
       tbody
         each city in cities
           tr
@@ -21,3 +22,6 @@ block content
               a(href="cities/" + city._id + "/listings") Show listings
             td
               a(href="cities/" + city._id + "/availability") Show Availability
+            td
+              a(href="/scraper/scrape-all-listings-history/" + city._id) Scrape all listings history
+

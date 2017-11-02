@@ -1,9 +1,6 @@
-const mongoose = require('mongoose');
 const scrapeListingsHistory = require('../../scripts/scrapeListingsHistory');
 const Listing = require('../../models/listing');
 const ListingHistory = require('../../models/listingHistory');
-
-const Schema = mongoose.Schema;
 
 module.exports = async (req, res, next) => {
   const { listingId } = req.query;
@@ -13,18 +10,18 @@ module.exports = async (req, res, next) => {
     return;
   }
 
-  let listing = await Listing.findOne({ _id: listingId });
+  const listing = await Listing.findOne({ _id: listingId });
 
   if (listing) {
     res.status(200).json({ msg: 'scraping listing history in progress' });
+
     const listingsHistory = await scrapeListingsHistory(listing);
-    console.log(listingsHistory);
 
-    // listingsHistory.forEach((listingHistory) => {
-    //   ListingHistory.create(listingHistory);
-    // });
+    listingsHistory.forEach((listingHistory) => {
+      ListingHistory.create(listingHistory);
+    });
 
-    // await Listing.findByIdAndUpdate(listingId, { scraped: false });
+    await Listing.findByIdAndUpdate(listingId, { scraped: true });
 
     return;
   }

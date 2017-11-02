@@ -17,8 +17,8 @@ module.exports = async ({ listingUrl, listingStartDate, _id, listingId }) => {
     listingsHistory.push({
       ...propertyPaymentData,
       ...propertyInfoData,
-      checkIn,
-      checkOut,
+      check_in: checkIn,
+      check_out: checkOut,
       listing: _id,
     });
   }

@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+  .listing-history
+    h4 Listing history
+    table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.admin-cities_table
+      thead
+        tr
+          th Checkout
+          th Checkin
+          th Longitude
+          th Latitude
+          th Rating
+          th City
+          th Bedrooms
+          th Currency
+          th Price Per Month with fees
+      tbody
+        each record in history
+          tr
+            td #{record.check_out}
+            td #{record.check_in}
+            td #{record.listing_lng}
+            td #{record.listing_lat}
+            td #{record.star_rating}
+            td #{record.city}
+            td #{record.bedrooms}
+            td #{record.currency}
+            td #{record.amount_including_fees}
