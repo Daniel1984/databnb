@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nf start -p 3030"
+    "dev": "nf start -p 3030",
+    "build": "webpack"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
@@ -25,6 +26,8 @@
   },
   "devDependencies": {
     "foreman": "^2.0.0",
-    "nodemon": "^1.12.1"
+    "html-webpack-plugin": "^2.30.1",
+    "nodemon": "^1.12.1",
+    "webpack": "^3.8.1"
   }
 }

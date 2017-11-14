@@ -6,23 +6,25 @@ block content
     table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.admin-cities_table
       thead
         tr
-          th Listing submitted
-          th Listing url
-          th Scraped
-          th Id
+          th Has Payment Data
+          th Lat
+          th Lng
+          th Star rating
+          th Reviews Count
+          th New Listing
           th Action
       tbody
         each listing in listings
           tr
-            td #{listing.listingStartDate}
             td
-              a(href=listing.listingUrl target="_blank") Open
-            td
-              #listing
-                if listing.scraped
-                  span YES
-                else
-                  span NO
-            td #{listing._id}
+              if listing.has_pricing_history
+                span YES
+              else
+                span NO
+            td #{listing.lat}
+            td #{listing.lng}
+            td #{listing.star_rating}
+            td #{listing.reviews_count}
+            td #{listing.is_new_listing}
             td
               a(href="listings/" + listing._id) Show history

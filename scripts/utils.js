@@ -25,7 +25,7 @@ module.exports = {
   },
 
   getListingPaymentUrl({ listingId, checkIn, checkOut }) {
-    return `https://www.airbnb.com/api/v2/pdp_listing_booking_details?guests=1&listing_id=${listingId}&_format=for_web_with_date&_intents=p3_book_it&check_in=${checkIn}&check_out=${checkOut}&number_of_adults=1&number_of_children=0&number_of_infants=0&key=d306zoyjsyarp7ifhu67rjxn52tv0t20&currency=USD`;
+    return `https://www.airbnb.com/api/v2/pdp_listing_booking_details?guests=1&listing_id=${listingId}&_format=for_web_with_date&_interaction_type=dateChanged&_intents=p3_book_it&_parent_request_uuid=c41ad3ba-3754-4288-b3ab-fbf247b117c9&_p3_impression_id=p3_1509712741_zaz%2BkCBxSWYxoskw&show_smart_promotion=0&check_in=${checkIn}&check_out=${checkOut}&number_of_adults=1&number_of_children=0&number_of_infants=0&key=d306zoyjsyarp7ifhu67rjxn52tv0t20&currency=USD&locale=en`;
   },
 
   getListingUrl({ listingUrl, checkIn, checkOut }) {

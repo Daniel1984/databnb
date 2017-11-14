@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  .admin-cities
+    h4 List Of Neighborhoods
+    table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.admin-cities_table
+      thead
+        tr
+          th ID
+          th Name
+          th CityID
+          th Listings Count
+          th Action
+          th Action
+      tbody
+        each hood in neighborhoods
+          tr
+            td #{hood._id}
+            td #{hood.name}
+            td #{hood.city}
+            td #{hood.listings_count}
+            td
+              a(href="neighborhoods/" + hood._id) Show Listings
+            td
+              a(href="neighborhoods/" + hood._id + "/get-neighborhood-payments") Get payments

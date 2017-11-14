@@ -10,7 +10,6 @@ mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/databnb', { useMongoClient: true });
 
 const index = require('./routes/index');
-const scraper = require('./routes/scraper/scraper');
 const cities = require('./routes/cities');
 const admin = require('./routes/admin/admin');
 
@@ -20,8 +19,6 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,7 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/', index);
-app.use('/scraper', scraper);
 app.use('/cities', cities);
 app.use('/admin', admin)
 

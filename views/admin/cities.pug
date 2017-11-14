@@ -7,21 +7,15 @@ block content
       thead
         tr
           th Name
-          th Path
           th ID
-          th Listings
-          th Availability
+          th Action
           th Action
       tbody
         each city in cities
           tr
             td #{city.name}
-            td #{city.cityPath}
             td #{city._id}
             td
-              a(href="cities/" + city._id + "/listings") Show listings
+              a(href="cities/" + city._id + "/neighborhoods") Show Neighborhoods
             td
-              a(href="cities/" + city._id + "/availability") Show Availability
-            td
-              a(href="/scraper/scrape-all-listings-history/" + city._id) Scrape all listings history
-
+              a(href="cities/" + city._id + "/get-city-payments") Get city payments

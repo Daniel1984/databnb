@@ -27,7 +27,9 @@ module.exports = async (req, res, next) => {
       ListingHistory.create(history);
     });
 
-    await Listing.findByIdAndUpdate(listing._id, { scraped: true });
+    if (listingHistory.length) { // sometimes property is unavailable and we have 0 records of it
+      await Listing.findByIdAndUpdate(listing._id, { scraped: true });
+    }
   } while (listings.length);
 
   console.log('DONE SCRAPING ALL LISTINGS HISTORY');

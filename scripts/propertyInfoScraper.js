@@ -65,7 +65,7 @@ module.exports = async (url) => {
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: 'networkidle' });
 
-  let propertyInfo = {};
+  let propertyInfo = null;
 
   try {
     propertyInfo = await getPropertyInfo(page);
