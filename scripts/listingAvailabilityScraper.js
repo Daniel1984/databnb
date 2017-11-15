@@ -1,9 +1,7 @@
 const request = require('request');
 const utils = require('./utils');
 
-module.exports = async ({ listingId }) => {
-  console.log(`GET: LISTING AVAILABILITY INFO FOR ID: ${listingId}`);
-
+module.exports = async (url) => {
   const options = {
     url,
     headers: {
@@ -12,4 +10,21 @@ module.exports = async ({ listingId }) => {
       'x-csrf-token': 'V4$.airbnb.com$elyeLCWfhnw$UFJ_qHhwTrVcDVA4GRrgReIhG5o8ycPYhdyHMUKXXE0=',
     }
   };
+
+  return new Promise((resolve) => {
+    request(options, (err, res, body) => {
+
+      if (err || res.statusCode >= 400 || !body) {
+        resolve([]);
+      }
+
+      try {
+        const { calendar_months } = JSON.parse(body);
+        resolve(calendar_months);
+      } catch (error) {
+        console.log(`ERR: PARSING AVAILABILITY JSON ${error}`);
+        resolve([]);
+      }
+    });
+  });
 }

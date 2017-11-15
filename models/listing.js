@@ -19,6 +19,7 @@ const listingSchema = new Schema({
   space_type: { type: String, default: null },
   star_rating: { type: Number, default: null },
   listing_start_date: { type: Date, default: null },
+  last_time_checked_availability: { type: Date, default: null },
   has_start_date: { type: Boolean, default: false },
   available: { type: Boolean, default: true },
   has_pricing_history: { type: Boolean, default: false },

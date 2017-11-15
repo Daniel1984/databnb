@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer');
-const chalk = require('chalk');
 
 function getPropertyInfo(page) {
   return page.evaluate((selector) => {
@@ -60,7 +59,7 @@ function getPropertyInfo(page) {
 }
 
 module.exports = async (url) => {
-  console.log(chalk.black.bgYellow.bold(`GET: PROPERTY INFO FROM - ${url}`));
+  console.log(`GET: PROPERTY INFO FROM - ${url}`);
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: 'networkidle' });
@@ -70,7 +69,7 @@ module.exports = async (url) => {
   try {
     propertyInfo = await getPropertyInfo(page);
   } catch (error) {
-    console.log(chalk.white.bgRed.bold('ERROR - PROPERTY JSON DATA HAS CHANGED, SOME OF THE FIELDS COULD NOt BE Found'));
+    console.log('ERROR - PROPERTY JSON DATA HAS CHANGED, SOME OF THE FIELDS COULD NOt BE Found');
   }
 
   await browser.close();
