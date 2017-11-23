@@ -60,7 +60,7 @@ module.exports = async (req, res, next) => {
 
   request(options, async (err, response, body) => {
     if (err || response.statusCode >= 400 || !body) {
-      console.log(chalk.white.bgRed.bold('ERROR: COULDN`T FETCH PAYMENT DATA'));
+      console.log('ERROR: COULDN`T FETCH PAYMENT DATA');
       res.status(200).json({ err: `cant get info for ${neighborhood}` });
       return;
     }

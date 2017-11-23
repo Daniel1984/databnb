@@ -1,6 +1,5 @@
 const addMonths = require('date-fns/add_months');
 const request = require('request');
-const chalk = require('chalk');
 const { getReviewsUrl } = require('./utils');
 
 let today = new Date();
@@ -8,7 +7,7 @@ today.setDate(1);
 const MONTH_AGO = addMonths(today, -1);
 
 module.exports = async ({ listingId }) => {
-  console.log(chalk.black.bgYellow.bold(`GET: LISTING REVIEWS FOR ID - ${listingId}`));
+  console.log(`GET: LISTING REVIEWS FOR ID - ${listingId}`);
 
   const options = {
     url: getReviewsUrl({ listingId }),
@@ -25,7 +24,7 @@ module.exports = async ({ listingId }) => {
     request(options, (err, res, body) => {
 
       if (err || res.statusCode >= 400 || !body) {
-        console.log(chalk.white.bgRed.bold(`ERR: NO REVIEWS FOUND, USING DEFAULT ${defaultListingStartDate}`));
+        console.log(`ERR: NO REVIEWS FOUND, USING DEFAULT ${defaultListingStartDate}`);
         resolve(defaultListingStartDate);
       }
 
@@ -33,20 +32,20 @@ module.exports = async ({ listingId }) => {
         const responseReviews = JSON.parse(body);
 
         if (!responseReviews.reviews.length) {
-          console.log(chalk.black.bgGreen.bold(`WARNING: NO REVIEWS FOUND, USING DEFAULT ${defaultListingStartDate}`));
+          console.log(`WARNING: NO REVIEWS FOUND, USING DEFAULT ${defaultListingStartDate}`);
           resolve(defaultListingStartDate);
           return;
         }
 
         const { created_at } = responseReviews.reviews.pop();
 
-        console.log(chalk.black.bgGreen.bold(`SUCCESS: GOT LISTING START TIME - ${created_at}`));
+        console.log(`SUCCESS: GOT LISTING START TIME - ${created_at}`);
 
         const startDate = new Date(created_at);
         startDate.setDate(1);
         resolve(startDate);
       } catch (error) {
-        console.log(chalk.white.bgRed.bold(`ERR: PARSING JSON ${error}`));
+        console.log(`ERR: PARSING JSON ${error}`);
         resolve(defaultListingStartDate);
       }
     });

@@ -10,6 +10,7 @@ block content
           th ID
           th Action
           th Action
+          th Action
       tbody
         each city in cities
           tr
@@ -19,3 +20,5 @@ block content
               a(href="cities/" + city._id + "/neighborhoods") Show Neighborhoods
             td
               a(href="cities/" + city._id + "/get-city-payments") Get city payments
+            td
+              a(href="cities/" + city._id + "/scrape-listings-availability") Get availability

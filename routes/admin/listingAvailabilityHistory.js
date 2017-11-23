@@ -9,7 +9,6 @@ module.exports = async (req, res, next) => {
   const listings = await Listing
     .find({ city })
     .where('last_time_checked_availability').eq(null)
-    .limit(1);
     // .where({
     //   $or: [
     //     { last_time_checked_availability: null },
@@ -18,16 +17,18 @@ module.exports = async (req, res, next) => {
     // })
 
   while (listings.length) {
-    const { id: listingId, _id, city, neighborhood } = listings.shift();
+    const { id: listingId, _id: listingDbId, city, neighborhood } = listings.shift();
     const availabilityUrl = getAvailabilityUrl({ listingId });
     const availabilityMonths = await getListingAvailabilities(availabilityUrl);
 
     availabilityMonths.forEach(({ days = [] }) => {
       days.forEach((day) => {
-        ListingAvailability.create({ ...day, listing: _id, city, neighborhood });
+        ListingAvailability.create({ ...day, listing: listingDbId, city, neighborhood });
       });
     });
+
+    await Listing.findByIdAndUpdate(listingDbId, { last_time_checked_availability: new Date() });
   }
 
-  res.status(200).json({ msg: 'ok' });
+  res.status(200).json({ msg: 'getting availability' });
 }

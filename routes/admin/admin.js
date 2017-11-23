@@ -1,7 +1,6 @@
 const express = require('express');
 const citiesHandler = require('./citiesHandler');
 const listingsHandler = require('./listingsHandler');
-const listingsHistoryHandler = require('./listingsHistoryHandler');
 const neighborhoodHandler = require('./neighborhoodHandler');
 const listingsInfoHandler = require('./listingsInfoHandler');
 const listingsStartDateHandler = require('./listingsStartDateHandler');
@@ -10,6 +9,7 @@ const { getNeighborhoodPayments, getCityPayments } = require('./listingsPricingH
 
 const router = express.Router();
 
+router.get('/test', (req, res) => res.status(200).json({ msg: 'all good' }));
 router.get('/scrape-listings', listingsInfoHandler); // #1
 router.get('/scrape-listings-start-dates', listingsStartDateHandler); // #2
 router.get('/cities/:cityId/scrape-listings-availability', listingAvailabilityHistory); // #3
