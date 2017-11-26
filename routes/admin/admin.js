@@ -9,7 +9,7 @@ const { getNeighborhoodPayments, getCityPayments } = require('./listingsPricingH
 
 const router = express.Router();
 
-router.get('/test', (req, res) => res.status(200).json({ msg: 'all good' }));
+router.get('/test', (req, res) => res.status(200).json({ msg: 'all good 123' }));
 router.get('/scrape-listings', listingsInfoHandler); // #1
 router.get('/scrape-listings-start-dates', listingsStartDateHandler); // #2
 router.get('/cities/:cityId/scrape-listings-availability', listingAvailabilityHistory); // #3
