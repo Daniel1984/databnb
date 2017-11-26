@@ -2,7 +2,7 @@ const DEFAULT_ENV = 'local';
 
 module.exports = {
   local: {
-    dbUri: 'mongodb://localhost/databnb',
+    dbUri: 'mongodb://localhost/metabnb',
   },
   production: {
     dbUri: 'mongodb://daniel:DSvr!l4ezv@159.89.11.146:27017/metabnb',

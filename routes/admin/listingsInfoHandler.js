@@ -24,7 +24,7 @@ function getInfoUrl({ city, neighborhood }) {
     '&metadata_only=false',
     '&is_standard_search=true',
     '&tab_id=home_tab',
-    `&location=${neighborhood} ${city}`,
+    `&location=${neighborhood ? `${neighborhood} ` : ''}${city}`,
     '&federated_search_session_id=e30fad3d-4dfd-4348-b72a-bb2d1f53ca0c',
     '&_intents=p1',
     '&key=d306zoyjsyarp7ifhu67rjxn52tv0t20',
@@ -36,8 +36,8 @@ function getInfoUrl({ city, neighborhood }) {
 module.exports = async (req, res, next) => {
   const { city, neighborhood } = req.query;
 
-  if (!city || !neighborhood) {
-    res.status(200).json({ err: 'city and neighborhood must be specified'});
+  if (!city) {
+    res.status(200).json({ err: 'city must be specified'});
     return;
   }
 
@@ -47,7 +47,7 @@ module.exports = async (req, res, next) => {
     cityModel = await City.create({ name: city });;
   }
 
-  res.status(200).json({ msg: `started getting info for ${neighborhood} neighborhood.`});
+  res.status(200).json({ msg: `started getting info for ${neighborhood || city}.`});
 
   const options = {
     url: getInfoUrl({ city, neighborhood }),
@@ -61,7 +61,7 @@ module.exports = async (req, res, next) => {
   request(options, async (err, response, body) => {
     if (err || response.statusCode >= 400 || !body) {
       console.log('ERROR: COULDN`T FETCH PAYMENT DATA');
-      res.status(200).json({ err: `cant get info for ${neighborhood}` });
+      res.status(200).json({ err: `cant get info for ${neighborhood || city}` });
       return;
     }
 
@@ -75,20 +75,28 @@ module.exports = async (req, res, next) => {
 
       const { listings } = sections[0];
 
-      let neighborhoodModel = await Neighborhood.findOne({ name: neighborhood, city: cityModel._id });
+      let neighborhoodModel;
+
+      if (neighborhood) {
+        neighborhoodModel = await Neighborhood.findOne({ name: neighborhood, city: cityModel._id });
+      }
 
       if (!neighborhoodModel) {
         neighborhoodModel = await Neighborhood.create({
-          name: neighborhood,
+          name: neighborhood ? neighborhood : null,
           city: cityModel._id,
           listings_count,
         });
       }
 
-      listings.forEach(({ listing }) => {
-        Listing.create({ ...listing, neighborhood: neighborhoodModel._id, city: cityModel._id });
-      });
+      do {
+        const listing = listings.shift();
+        const existingListing = await Listing.findOne({ id: listing.id });
 
+        if (!existingListing) {
+          await Listing.create({ ...listing, neighborhood: neighborhoodModel._id, city: cityModel._id });
+        }
+      } while (listings.length);
     } catch (error) {
       res.status(200).json({ err: `cant get info for ${neighborhood}` });
     }

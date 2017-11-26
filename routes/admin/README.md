@@ -179,3 +179,4 @@ net:
 ## Mongo dump / restore / cron jobs
 1. refer to https://www.digitalocean.com/community/tutorials/how-to-back-up-restore-and-migrate-a-mongodb-database-on-ubuntu-14-04
 2. copying files from local to remote example: `scp metabnb.zip daniel@159.89.11.146:/home/daniel/`
+3. restore mongo from dump: `sudo mongorestore -d metabnb -u 'daniel' --authenticationDatabase metabnb -p 'password' ./metabnb/`
