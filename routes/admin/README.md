@@ -175,3 +175,6 @@ net:
 ```
 14. `sudo systemctl restart mongod`
 15. `sudo systemctl status mongod`
+
+## Mongo dump / restore / cron jobs
+1. refer to https://www.digitalocean.com/community/tutorials/how-to-back-up-restore-and-migrate-a-mongodb-database-on-ubuntu-14-04
