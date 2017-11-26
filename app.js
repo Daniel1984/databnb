@@ -4,10 +4,14 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const config = require('./config');
+console.log(config);
+var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 
-// var mongoose = require('mongoose');
-// mongoose.Promise = require('bluebird');
-// mongoose.connect('mongodb://localhost/databnb', { useMongoClient: true });
+mongoose.connect(config.dbUri, { useMongoClient: true })
+  .then(() => console.log('SUCCESS'))
+  .catch(err => console.log(err));
 
 const admin = require('./routes/admin/admin');
 
