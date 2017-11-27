@@ -90,7 +90,7 @@ module.exports = async (req, res, next) => {
       }
 
       do {
-        const listing = listings.shift();
+        const { listing } = listings.shift();
         const existingListing = await Listing.findOne({ id: listing.id });
 
         if (!existingListing) {
