@@ -19,12 +19,15 @@ const listingSchema = new Schema({
   space_type: { type: String, default: null },
   star_rating: { type: Number, default: null },
   listing_start_date: { type: Date, default: null },
-  last_time_checked_availability: { type: Date, default: null },
+  availability_checked_at: { type: Date, default: null },
+  pricing_checked_at: { type: Date, default: null },
   has_start_date: { type: Boolean, default: false },
   available: { type: Boolean, default: true },
   has_pricing_history: { type: Boolean, default: false },
   neighborhood: { type: Schema.Types.ObjectId, ref: 'Neighborhood', index: true },
   city: { type: Schema.Types.ObjectId, ref: 'City', index: true },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: null },
 });
 
 module.exports = mongoose.model('Listing', listingSchema);

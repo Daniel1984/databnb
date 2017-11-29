@@ -8,10 +8,10 @@ module.exports = async (req, res, next) => {
 
   const listings = await Listing
     .find({ city })
-    .where('last_time_checked_availability').eq(null)
+    .where('availability_checked_at').eq(null)
     // .where({
     //   $or: [
-    //     { last_time_checked_availability: null },
+    //     { availability_checked_at: null },
     //     { where: { $lt: new Date(2011, 12, 12) }}
     //   ]
     // })
@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
       });
     });
 
-    await Listing.findByIdAndUpdate(listingDbId, { last_time_checked_availability: new Date() });
+    await Listing.findByIdAndUpdate(listingDbId, { availability_checked_at: new Date() });
   }
 
   res.status(200).json({ msg: 'getting availability' });

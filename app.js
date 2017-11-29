@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('./config');
 const admin = require('./routes/admin/admin');
+const scraper = require('./routes/scraper/scraper');
 const subscribe = require('./routes/subscribe/subscribe');
 
 var mongoose = require('mongoose');
@@ -29,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/admin', admin);
+app.use('/1984', scraper);
 app.use('/subscribe', subscribe);
 
 // catch 404 and forward to error handler

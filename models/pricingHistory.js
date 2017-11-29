@@ -12,6 +12,8 @@ const pricingHistorySchema = new Schema({
   neighborhood: { type: Schema.Types.ObjectId, ref: 'Neighborhood', index: true },
   city: { type: Schema.Types.ObjectId, ref: 'City', index: true },
   listing: { type: Schema.Types.ObjectId, ref: 'Listing', index: true },
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: null },
 });
 
 module.exports = mongoose.model('PricingHistory', pricingHistorySchema);
