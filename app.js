@@ -8,6 +8,7 @@ const cors = require('cors');
 const config = require('./config');
 const admin = require('./routes/admin/admin');
 const scraper = require('./routes/scraper/scraper');
+const pricePrediction = require('./routes/pricePrediction/pricePrediction');
 const subscribe = require('./routes/subscribe/subscribe');
 
 var mongoose = require('mongoose');
@@ -31,6 +32,7 @@ app.use(cookieParser());
 
 app.use('/admin', admin);
 app.use('/1984', scraper);
+app.use('/price-prediction', pricePrediction);
 app.use('/subscribe', subscribe);
 
 // catch 404 and forward to error handler

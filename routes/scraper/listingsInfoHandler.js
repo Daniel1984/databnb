@@ -74,17 +74,16 @@ module.exports = async (req, res, next) => {
       } = explore_tabs.filter(tab => (tab.tab_id === 'home_tab' || tab.tab_name === 'Homes'))[0];
 
       const { listings } = sections[0];
-
       let neighborhoodModel;
 
       if (neighborhood) {
-        neighborhoodModel = await Neighborhood.findOne({ name: neighborhood, city: cityModel._id });
+        neighborhoodModel = await Neighborhood.findOne({ name: neighborhood, city_id: cityModel._id });
       }
 
       if (!neighborhoodModel) {
         neighborhoodModel = await Neighborhood.create({
-          name: neighborhood ? neighborhood : null,
-          city: cityModel._id,
+          name: neighborhood ? neighborhood : city,
+          city_id: cityModel._id,
           listings_count,
         });
       }
@@ -93,8 +92,10 @@ module.exports = async (req, res, next) => {
         const { listing } = listings.shift();
         const existingListing = await Listing.findOne({ id: listing.id });
 
-        if (!existingListing) {
-          await Listing.create({ ...listing, neighborhood: neighborhoodModel._id, city: cityModel._id });
+        if (existingListing) {
+          await Listing.findOneAndUpdate({ id: listing.id }, listing);
+        } else {
+          await Listing.create({ ...listing, neighborhood_id: neighborhoodModel._id, city_id: cityModel._id });
         }
       } while (listings.length);
     } catch (error) {

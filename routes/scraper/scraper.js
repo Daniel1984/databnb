@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/scrape-listings', listingsInfoHandler); // #1
 router.get('/scrape-listings-start-dates', listingsStartDateHandler); // #2
-router.get('/cities/:cityId/scrape-listings-availability', listingAvailabilityHistory); // #3
-router.get('/cities/:cityId/get-city-payments', getCityPayments);
+router.get('/:cityId/scrape-listings-availability', listingAvailabilityHistory); // #3
+router.get('/:cityId/get-city-payments', getCityPayments);
 
 module.exports = router;

@@ -26,7 +26,7 @@ module.exports = async (req, res, next) => {
     const { _id: hoodId } = neighborhoods.shift();
 
     const listings = await Listing.find({
-      has_pricing_history: false,
+      pricing_checked_at: null,
       city: cityId,
       neighborhood: hoodId
     });
@@ -55,7 +55,7 @@ module.exports = async (req, res, next) => {
       } while (datesToFetch.length);
 
       if (hasPricingInfo) {
-        await Listing.findByIdAndUpdate(listingDbId, { has_pricing_history: true });
+        await Listing.findByIdAndUpdate(listingDbId, { pricing_checked_at: Date.now });
       }
     } while (listings.length);
   } while (neighborhoods.length);
