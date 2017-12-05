@@ -1,13 +1,9 @@
 const express = require('express');
 const City = require('../../models/city');
 const Listing = require('../../models/listing');
+const ListingAvailability = require('../../models/listingAvailability');
 
 const router = express.Router();
-
-// 0.009 === 1km
-// 0.004 < 0.5km which is reasonable to judge
-const DISTANCE_OFFSET = 0.001;
-const MIN_LISTINGS_TO_ANALYZE = 50;
 
 const getOffsetPossition = ({ lat, lng }) => delta => {
   const maxLat = Number(Number(lat) + delta).toFixed(4);
@@ -23,6 +19,69 @@ const getOffsetPossition = ({ lat, lng }) => delta => {
   };
 }
 
+async function getListingsWithAvailabilities(listings) {
+  let listingsWithAvailabilities = [];
+
+  do {
+    const {
+      _id,
+      bedrooms,
+      reviews_count,
+      room_type,
+      star_rating,
+      lat,
+      lng
+    } = listings.shift();
+
+    const listingAvailabilities = await ListingAvailability
+      .find({ listing_id: _id })
+      .sort('date')
+      .select('available date price -_id');
+
+    // agregate availabilities data, maybe month average in range,
+
+    const listingWithAvailability = {
+      bedrooms,
+      reviews_count,
+      room_type,
+      star_rating,
+      lat,
+      lng,
+      availability: listingAvailabilities,
+    };
+
+    listingsWithAvailabilities.push(listingWithAvailability);
+  } while (listings.length);
+
+  return listingsWithAvailabilities;
+}
+
+async function getListings({ lat, lng }) {
+  // 0.001 ~ 110m which is reasonable to judge
+  let coordinateOffset = 0.001;
+  const minimumListingsToAnalyze = 50;
+  const getPoitsWithDelta = getOffsetPossition({ lat, lng });
+
+  let listings = [];
+
+  do {
+    const { maxLat, minLat, maxLng, minLng } = getPoitsWithDelta(coordinateOffset)
+
+    listings = await Listing
+      .find()
+      .where('lat').gt(minLat).lt(maxLat)
+      .where('lng').gt(minLng).lt(maxLng)
+      .select('bedrooms reviews_count room_type star_rating lat lng');
+
+    coordinateOffset += 0.001;
+  } while (listings.length < minimumListingsToAnalyze);
+
+  return {
+    listings,
+    coordinateOffset,
+  };
+}
+
 router.get('/', async (req, res, next) => {
   const { city, lat, lng } = req.query;
 
@@ -32,23 +91,10 @@ router.get('/', async (req, res, next) => {
   //   res.status(400).json({ err: 'city not yet set' });
   // }
 
-  const getPoitsWithDelta = getOffsetPossition({ lat, lng });
+  const { listings, coordinateOffset } = await getListings({ lat, lng });
+  const listingsWithAvailabilities = await getListingsWithAvailabilities(listings);
 
-  let listings = [];
-  let distanceIncreaseBy = 0;
-
-  do {
-    const { maxLat, minLat, maxLng, minLng } = getPoitsWithDelta(DISTANCE_OFFSET + distanceIncreaseBy)
-
-    listings = await Listing
-      .find({})
-      .where('lat').gt(minLat).lt(maxLat)
-      .where('lng').gt(minLng).lt(maxLng);
-
-    distanceIncreaseBy += DISTANCE_OFFSET;
-  } while (listings.length < MIN_LISTINGS_TO_ANALYZE);
-
-  res.status(200).json({ listings });
+  res.status(200).json({ listingsWithAvailabilities });
 });
 
 module.exports = router;
