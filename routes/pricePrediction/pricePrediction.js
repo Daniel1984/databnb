@@ -1,4 +1,9 @@
 const express = require('express');
+const format = require('date-fns/format')
+const groupBy = require('lodash/fp/groupBy');
+const map = require('lodash/fp/map');
+const flow = require('lodash/fp/flow');
+const sumBy = require('lodash/fp/sumBy');
 const City = require('../../models/city');
 const Listing = require('../../models/listing');
 const ListingAvailability = require('../../models/listingAvailability');
@@ -17,6 +22,26 @@ const getOffsetPossition = ({ lat, lng }) => delta => {
     maxLng,
     minLng,
   };
+}
+
+function getAgregatedAvailabilities(availabilities) {
+  return availabilities.reduce((accumulator, { date, available, price }) => {
+    const key = format(date, 'MMMM-YYYY');
+
+    accumulator[key] = accumulator[key] || {
+      availabilities: [],
+      nativePriceTotal: 0,
+      nativeAdjustedPriceTotal: 0,
+      nativeCurrency: null,
+    };
+
+    accumulator[key].availabilities.push({ date, available, price: price.native_price });
+    accumulator[key].nativePriceTotal = accumulator[key].nativePriceTotal + price.native_price;
+    accumulator[key].nativeAdjustedPriceTotal = accumulator[key].nativeAdjustedPriceTotal + price.native_adjusted_price;
+    accumulator[key].nativeCurrency = accumulator[key].nativeCurrency || price.native_currency;
+
+    return accumulator;
+  }, {});
 }
 
 async function getListingsWithAvailabilities(listings) {
@@ -38,7 +63,7 @@ async function getListingsWithAvailabilities(listings) {
       .sort('date')
       .select('available date price -_id');
 
-    // agregate availabilities data, maybe month average in range,
+    const agregatedAvailabilities = getAgregatedAvailabilities(listingAvailabilities);
 
     const listingWithAvailability = {
       bedrooms,
@@ -47,7 +72,7 @@ async function getListingsWithAvailabilities(listings) {
       star_rating,
       lat,
       lng,
-      availability: listingAvailabilities,
+      availability: agregatedAvailabilities,
     };
 
     listingsWithAvailabilities.push(listingWithAvailability);
@@ -59,7 +84,7 @@ async function getListingsWithAvailabilities(listings) {
 async function getListings({ lat, lng }) {
   // 0.001 ~ 110m which is reasonable to judge
   let coordinateOffset = 0.001;
-  const minimumListingsToAnalyze = 50;
+  const minimumListingsToAnalyze = 100;
   const getPoitsWithDelta = getOffsetPossition({ lat, lng });
 
   let listings = [];
