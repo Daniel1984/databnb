@@ -81,10 +81,10 @@ async function getListingsWithAvailabilities(listings) {
   return listingsWithAvailabilities;
 }
 
-async function getListings({ lat, lng }) {
+async function getListings({ lat, lng, bedrooms }) {
   // 0.001 ~ 110m which is reasonable to judge
   let coordinateOffset = 0.001;
-  const minimumListingsToAnalyze = 100;
+  const minimumListingsToAnalyze = 60;
   const getPoitsWithDelta = getOffsetPossition({ lat, lng });
 
   let listings = [];
@@ -96,6 +96,7 @@ async function getListings({ lat, lng }) {
       .find()
       .where('lat').gt(minLat).lt(maxLat)
       .where('lng').gt(minLng).lt(maxLng)
+      .where('bedrooms').equals(bedrooms)
       .select('bedrooms reviews_count room_type star_rating lat lng');
 
     coordinateOffset += 0.001;
@@ -108,7 +109,7 @@ async function getListings({ lat, lng }) {
 }
 
 router.get('/', async (req, res, next) => {
-  const { city, lat, lng } = req.query;
+  const { city, lat, lng, bedrooms } = req.query;
 
   // const cityModel = await City.findOne({ name: /city/ig });
 
@@ -116,7 +117,7 @@ router.get('/', async (req, res, next) => {
   //   res.status(400).json({ err: 'city not yet set' });
   // }
 
-  const { listings, coordinateOffset } = await getListings({ lat, lng });
+  const { listings, coordinateOffset } = await getListings({ lat, lng, bedrooms });
   const listingsWithAvailabilities = await getListingsWithAvailabilities(listings);
 
   res.status(200).json({ listingsWithAvailabilities });
