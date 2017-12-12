@@ -11,10 +11,10 @@ const ListingAvailability = require('../../models/listingAvailability');
 const router = express.Router();
 
 const getOffsetPossition = ({ lat, lng }) => delta => {
-  const maxLat = Number(Number(lat) + delta).toFixed(4);
-  const minLat = Number(Number(lat) - delta).toFixed(4);
-  const maxLng = Number(Number(lng) + delta).toFixed(4);
-  const minLng = Number(Number(lng) - delta).toFixed(4);
+  const maxLat = (Number(lat) + delta).toFixed(4);
+  const minLat = (Number(lat) - delta).toFixed(4);
+  const maxLng = (Number(lng) + delta).toFixed(4);
+  const minLng = (Number(lng) - delta).toFixed(4);
 
   return {
     maxLat,
@@ -46,6 +46,10 @@ function getAgregatedAvailabilities(availabilities) {
 
 async function getListingsWithAvailabilities(listings) {
   let listingsWithAvailabilities = [];
+
+  if (!listings.length) {
+    return [];
+  }
 
   do {
     const {
@@ -100,7 +104,7 @@ async function getListings({ lat, lng, bedrooms }) {
       .select('bedrooms reviews_count room_type star_rating lat lng');
 
     coordinateOffset += 0.001;
-  } while (listings.length < minimumListingsToAnalyze);
+  } while (coordinateOffset < 0.007);
 
   return {
     listings,
@@ -120,7 +124,7 @@ router.get('/', async (req, res, next) => {
   const { listings, coordinateOffset } = await getListings({ lat, lng, bedrooms });
   const listingsWithAvailabilities = await getListingsWithAvailabilities(listings);
 
-  res.status(200).json({ listingsWithAvailabilities });
+  res.status(200).json({ listingsWithAvailabilities, coordinateOffset });
 });
 
 module.exports = router;
