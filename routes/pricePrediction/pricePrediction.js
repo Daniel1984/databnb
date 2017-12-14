@@ -37,8 +37,8 @@ function getAgregatedAvailabilities(availabilities) {
     };
 
     accumulator[key].availabilities.push({ date, available, price: price.native_price });
-    accumulator[key].nativePriceTotal = accumulator[key].nativePriceTotal + price.native_price;
-    accumulator[key].nativeAdjustedPriceTotal = accumulator[key].nativeAdjustedPriceTotal + price.native_adjusted_price;
+    accumulator[key].nativePriceTotal += price.native_price;
+    accumulator[key].nativeAdjustedPriceTotal += price.native_adjusted_price;
     accumulator[key].nativeCurrency = accumulator[key].nativeCurrency || price.native_currency;
 
     return accumulator;
