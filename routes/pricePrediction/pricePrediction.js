@@ -7,6 +7,7 @@ const sumBy = require('lodash/fp/sumBy');
 const City = require('../../models/city');
 const Listing = require('../../models/listing');
 const ListingAvailability = require('../../models/listingAvailability');
+const _ = require('lodash');
 
 const router = express.Router();
 
@@ -59,13 +60,19 @@ async function getListingsWithAvailabilities(listings) {
       room_type,
       star_rating,
       lat,
-      lng
+      lng,
+      listing_start_date,
+      city_id,
     } = listings.shift();
 
-    const listingAvailabilities = await ListingAvailability
+    let listingAvailabilities = await ListingAvailability
       .find({ listing_id: _id })
       .sort('date')
       .select('available date price -_id');
+
+    const city = await City.findById(city_id);
+
+    listingAvailabilities = _.uniqBy(listingAvailabilities, ({ date }) => date.toString());
 
     const agregatedAvailabilities = getAgregatedAvailabilities(listingAvailabilities);
 
@@ -76,6 +83,8 @@ async function getListingsWithAvailabilities(listings) {
       star_rating,
       lat,
       lng,
+      listing_start_date,
+      city: city.name,
       availability: agregatedAvailabilities,
     };
 
@@ -101,7 +110,7 @@ async function getListings({ lat, lng, bedrooms }) {
       .where('lat').gt(minLat).lt(maxLat)
       .where('lng').gt(minLng).lt(maxLng)
       .where('bedrooms').equals(bedrooms)
-      .select('bedrooms reviews_count room_type star_rating lat lng');
+      .select('bedrooms reviews_count room_type star_rating lat lng listing_start_date city_id');
 
     coordinateOffset += 0.001;
   } while (coordinateOffset < 0.007);
