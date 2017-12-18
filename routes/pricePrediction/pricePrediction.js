@@ -94,46 +94,32 @@ async function getListingsWithAvailabilities(listings) {
   return listingsWithAvailabilities;
 }
 
-async function getListings({ lat, lng, bedrooms }) {
-  // 0.001 ~ 110m which is reasonable to judge
-  let coordinateOffset = 0.001;
-  const minimumListingsToAnalyze = 60;
+async function getListings({ lat, lng, bedrooms, cityId }) {
   const getPoitsWithDelta = getOffsetPossition({ lat, lng });
+  const { maxLat, minLat, maxLng, minLng } = getPoitsWithDelta(0.007)
+  const listings = await Listing
+    .where('city_id').equals(cityId)
+    .where('bedrooms').equals(bedrooms)
+    .where('lat').gt(minLat).lt(maxLat)
+    .where('lng').gt(minLng).lt(maxLng)
+    .limit(60)
+    .select('bedrooms reviews_count room_type star_rating lat lng listing_start_date city_id');
 
-  let listings = [];
-
-  do {
-    const { maxLat, minLat, maxLng, minLng } = getPoitsWithDelta(coordinateOffset)
-
-    listings = await Listing
-      .find()
-      .where('lat').gt(minLat).lt(maxLat)
-      .where('lng').gt(minLng).lt(maxLng)
-      .where('bedrooms').equals(bedrooms)
-      .select('bedrooms reviews_count room_type star_rating lat lng listing_start_date city_id');
-
-    coordinateOffset += 0.001;
-  } while (coordinateOffset < 0.007);
-
-  return {
-    listings,
-    coordinateOffset,
-  };
+  return listings;
 }
 
 router.get('/', async (req, res, next) => {
   const { city, lat, lng, bedrooms } = req.query;
+  const cityModel = await City.findOne({ name: city.toLowerCase() });
 
-  // const cityModel = await City.findOne({ name: /city/ig });
+  if (!cityModel) {
+    res.status(400).json({ err: 'city not yet set' });
+  }
 
-  // if (!cityModel) {
-  //   res.status(400).json({ err: 'city not yet set' });
-  // }
-
-  const { listings, coordinateOffset } = await getListings({ lat, lng, bedrooms });
+  const listings = await getListings({ lat, lng, bedrooms, cityId: cityModel._id });
   const listingsWithAvailabilities = await getListingsWithAvailabilities(listings);
 
-  res.status(200).json({ listingsWithAvailabilities, coordinateOffset });
+  res.status(200).json({ listingsWithAvailabilities });
 });
 
 module.exports = router;
