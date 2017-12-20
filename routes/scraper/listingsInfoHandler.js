@@ -2,8 +2,9 @@ const request = require('request');
 const City = require('../../models/city');
 const Neighborhood = require('../../models/neighborhood');
 const Listing = require('../../models/listing');
+const suburbs = require('../../suburbs.json');
 
-function getInfoUrl({ city, neighborhood }) {
+function getInfoUrl({ city, suburb }) {
   return [
     'https://www.airbnb.com/api/v2/explore_tabs',
     '?version=1.3.1',
@@ -24,7 +25,7 @@ function getInfoUrl({ city, neighborhood }) {
     '&metadata_only=false',
     '&is_standard_search=true',
     '&tab_id=home_tab',
-    `&location=${neighborhood ? `${neighborhood} ` : ''}${city}`,
+    `&location=${suburb} ${city}`,
     '&federated_search_session_id=e30fad3d-4dfd-4348-b72a-bb2d1f53ca0c',
     '&_intents=p1',
     '&key=d306zoyjsyarp7ifhu67rjxn52tv0t20',
@@ -34,10 +35,15 @@ function getInfoUrl({ city, neighborhood }) {
 }
 
 module.exports = async (req, res, next) => {
-  const { city, neighborhood } = req.query;
+  const { city } = req.query;
 
   if (!city) {
     res.status(200).json({ err: 'city must be specified'});
+    return;
+  }
+
+  if (!suburbs[city]) {
+    res.status(200).json({ err: 'city is not yet set with suburbs data'});
     return;
   }
 
@@ -47,59 +53,55 @@ module.exports = async (req, res, next) => {
     cityModel = await City.create({ name: city });;
   }
 
-  res.status(200).json({ msg: `started getting info for ${neighborhood || city}.`});
+  res.status(200).json({ msg: `started getting listings for ${city}.`});
 
-  const options = {
-    url: getInfoUrl({ city, neighborhood }),
-    headers: {
-      'authority': 'www.airbnb.com',
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
-      'x-csrf-token': 'V4$.airbnb.com$elyeLCWfhnw$UFJ_qHhwTrVcDVA4GRrgReIhG5o8ycPYhdyHMUKXXE0=',
-    }
-  };
+  suburbs[city].forEach((suburb) => {
+    const options = {
+      url: getInfoUrl({ city, suburb }),
+      headers: {
+        'authority': 'www.airbnb.com',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
+        'x-csrf-token': 'V4$.airbnb.com$elyeLCWfhnw$UFJ_qHhwTrVcDVA4GRrgReIhG5o8ycPYhdyHMUKXXE0=',
+      }
+    };
 
-  request(options, async (err, response, body) => {
-    if (err || response.statusCode >= 400 || !body) {
-      console.log('ERROR: COULDN`T FETCH PAYMENT DATA');
-      res.status(200).json({ err: `cant get info for ${neighborhood || city}` });
-      return;
-    }
-
-    try {
-      const { explore_tabs } = JSON.parse(body);
-
-      const {
-        sections,
-        home_tab_metadata: { listings_count }
-      } = explore_tabs.filter(tab => (tab.tab_id === 'home_tab' || tab.tab_name === 'Homes'))[0];
-
-      const { listings } = sections[0];
-      let neighborhoodModel;
-
-      if (neighborhood) {
-        neighborhoodModel = await Neighborhood.findOne({ name: neighborhood, city_id: cityModel._id });
+    request(options, async (err, response, body) => {
+      if (err || response.statusCode >= 400 || !body) {
+        console.log('ERROR: COULDN`T FETCH LISTING INFO');
+        return;
       }
 
-      if (!neighborhoodModel) {
-        neighborhoodModel = await Neighborhood.create({
-          name: neighborhood ? neighborhood : city,
-          city_id: cityModel._id,
-          listings_count,
-        });
-      }
+      try {
+        const { explore_tabs } = JSON.parse(body);
 
-      do {
-        const { listing } = listings.shift();
-        const existingListing = await Listing.findOne({ id: listing.id });
+        const {
+          sections
+        } = explore_tabs.filter(tab => (tab.tab_id === 'home_tab' || tab.tab_name === 'Homes'))[0];
 
-        if (existingListing) {
-          await Listing.findOneAndUpdate({ id: listing.id }, listing);
-        } else {
-          await Listing.create({ ...listing, neighborhood_id: neighborhoodModel._id, city_id: cityModel._id });
+        const { listings } = sections[0];
+
+        let suburbModel = await Neighborhood.findOne({ name: suburb, city_id: cityModel._id });
+
+        if (!suburbModel) {
+          suburbModel = await Neighborhood.create({
+            name: suburb,
+            city_id: cityModel._id
+          });
         }
-      } while (listings.length);
-    } catch (error) {
-      res.status(200).json({ err: `cant get info for ${neighborhood}` });
-    }
+
+        while (listings.length) {
+          const { listing } = listings.shift();
+          const updatedListing = await Listing.findOneAndUpdate({ id: listing.id }, listing);
+
+          if (!updatedListing) {
+            await Listing.create({ ...listing, neighborhood_id: suburbModel._id, city_id: cityModel._id });
+          }
+        }
+
+        console.log('DONE!');
+      } catch (error) {
+        console.log(`cant get info for ${suburb}`);
+      }
+    });
   });
 }

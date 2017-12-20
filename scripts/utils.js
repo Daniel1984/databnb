@@ -40,11 +40,7 @@ module.exports = {
     return `https://www.airbnb.com/s/${cityPath}/homes${page ? `?section_offset=${page}` : ''}`;
   },
 
-  getAvailabilityUrl({ listingId }) {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth() - 1;
-
+  getAvailabilityUrl({ listingId, year, month }) {
     return `https://www.airbnb.com/api/v2/calendar_months?key=d306zoyjsyarp7ifhu67rjxn52tv0t20&currency=USD&locale=en&listing_id=${listingId}&month=${month}&year=${year}&count=6&_format=with_conditions`
   }
 };

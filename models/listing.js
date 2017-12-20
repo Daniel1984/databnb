@@ -3,8 +3,6 @@ const Schema = mongoose.Schema;
 
 const listingSchema = new Schema({
   id: { type: Number, default: null },
-  is_business_travel_ready: { type: Boolean, default: null },
-  is_family_preferred: { type: Boolean, default: null },
   is_new_listing: { type: Boolean, default: null },
   is_superhost: { type: Boolean, default: null },
   lat: { type: Number, default: null, index: true  },
@@ -24,7 +22,6 @@ const listingSchema = new Schema({
   listing_start_date: { type: Date, default: null },
   availability_checked_at: { type: Date, default: null },
   pricing_checked_at: { type: Date, default: null },
-  has_pricing_history: { type: Boolean, default: false },
   neighborhood_id: { type: Schema.Types.ObjectId, ref: 'Neighborhood', index: true },
   city_id: { type: Schema.Types.ObjectId, ref: 'City', index: true },
   createdAt: { type: Date, default: Date.now },

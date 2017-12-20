@@ -97,11 +97,12 @@ async function getListingsWithAvailabilities(listings) {
 async function getListings({ lat, lng, bedrooms, cityId }) {
   const getPoitsWithDelta = getOffsetPossition({ lat, lng });
   const { maxLat, minLat, maxLng, minLng } = getPoitsWithDelta(0.007)
+
   const listings = await Listing
     .where('city_id').equals(cityId)
     .where('bedrooms').equals(bedrooms)
-    .where('lat').gt(minLat).lt(maxLat)
-    .where('lng').gt(minLng).lt(maxLng)
+    .where('lat').gte(minLat).lte(maxLat)
+    .where('lng').gte(minLng).lte(maxLng)
     .limit(60)
     .select('bedrooms reviews_count room_type star_rating lat lng listing_start_date city_id');
 
