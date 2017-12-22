@@ -99,7 +99,6 @@ async function getListings({ lat, lng, bedrooms, cityId }) {
   const { maxLat, minLat, maxLng, minLng } = getPoitsWithDelta(0.007)
 
   const listings = await Listing
-    .where('city_id').equals(cityId)
     .where('bedrooms').equals(bedrooms)
     .where('lat').gte(minLat).lte(maxLat)
     .where('lng').gte(minLng).lte(maxLng)
@@ -110,14 +109,8 @@ async function getListings({ lat, lng, bedrooms, cityId }) {
 }
 
 router.get('/', async (req, res, next) => {
-  const { city, lat, lng, bedrooms } = req.query;
-  const cityModel = await City.findOne({ name: city.toLowerCase() });
-
-  if (!cityModel) {
-    res.status(400).json({ err: 'city not yet set' });
-  }
-
-  const listings = await getListings({ lat, lng, bedrooms, cityId: cityModel._id });
+  const { lat, lng, bedrooms } = req.query;
+  const listings = await getListings({ lat, lng, bedrooms });
   const listingsWithAvailabilities = await getListingsWithAvailabilities(listings);
 
   res.status(200).json({ listingsWithAvailabilities });
