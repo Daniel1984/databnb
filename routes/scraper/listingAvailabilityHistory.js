@@ -7,30 +7,22 @@ module.exports = {
   getListingAvailabilityHistory: async (req, res, next) => {
     res.status(200).json({ msg: 'getting availability' });
 
-    const { cityId } = req.params;
-
     const listings = await Listing
-      .find({ city_id: cityId })
       .where('availability_checked_at')
       .eq(null);
-      // .where({
-      //   $or: [
-      //     { availability_checked_at: null },
-      //     { where: { $lt: new Date(2011, 12, 12) }}
-      //   ]
-      // })
 
     while (listings.length) {
       const today = new Date();
       const year = today.getFullYear();
       const month = today.getMonth() - 1;
-      const { id: listingId, _id: listingDbId, city_id, neighborhood_id } = listings.shift();
+
+      const { id: listingId, _id: listingDbId, neighborhood_id } = listings.shift();
       const availabilityUrl = getAvailabilityUrl({ listingId, year, month });
       const availabilityMonths = await getListingAvailabilities(availabilityUrl);
 
       availabilityMonths.forEach(({ days = [] }) => {
         days.forEach((day) => {
-          ListingAvailability.create({ ...day, listing_id: listingDbId, city_id, neighborhood_id });
+          ListingAvailability.create({ ...day, listing_id: listingDbId, neighborhood_id });
         });
       });
 
@@ -42,17 +34,15 @@ module.exports = {
 
   updateListingAvailabilityHistory: async (req, res, next) => {
     res.status(200).json({ msg: 'getting availability' });
-    const { cityId } = req.params;
 
     const listings = await Listing
-      .find({ city_id: cityId })
-      .select('id city_id neighborhood_id availability_checked_at');
+      .find()
+      .select('id neighborhood_id availability_checked_at');
 
     while (listings.length) {
       const {
         id: listingId,
         _id: listingDbId,
-        city_id,
         neighborhood_id,
         availability_checked_at
       } = listings.shift();
@@ -74,7 +64,7 @@ module.exports = {
           }, { ...day, updatedAt: Date.now() });
 
           if (!availability) {
-            await ListingAvailability.create({ ...day, listing_id: listingDbId, city_id, neighborhood_id })
+            await ListingAvailability.create({ ...day, listing_id: listingDbId, neighborhood_id })
           }
         }
       }

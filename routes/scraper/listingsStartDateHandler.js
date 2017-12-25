@@ -13,8 +13,6 @@ module.exports = async (req, res, next) => {
     const { id, _id } = listings.shift();
     const listingStartDate = await reviewsScraper({ listingId: id });
 
-    console.log(listingStartDate);
-
     await Listing.findByIdAndUpdate(_id, { listing_start_date: listingStartDate });
   } while (listings.length);
 

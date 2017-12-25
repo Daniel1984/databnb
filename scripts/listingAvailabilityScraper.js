@@ -7,13 +7,12 @@ module.exports = async (url) => {
     headers: {
       'authority': 'www.airbnb.com',
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
-      'x-csrf-token': 'V4$.airbnb.com$elyeLCWfhnw$UFJ_qHhwTrVcDVA4GRrgReIhG5o8ycPYhdyHMUKXXE0=',
+      'x-csrf-token': 'V4$.airbnb.com$xBp27wugDFc$rr7NeRdApi5UCVMMsCPyQ2ulkwJ2MHJ1xxq7hv1Fkn8=',
     }
   };
 
   return new Promise((resolve) => {
     request(options, (err, res, body) => {
-
       if (err || res.statusCode >= 400 || !body) {
         resolve([]);
       }

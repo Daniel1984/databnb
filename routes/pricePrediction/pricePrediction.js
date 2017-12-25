@@ -1,119 +1,74 @@
 const express = require('express');
-const format = require('date-fns/format')
 const groupBy = require('lodash/fp/groupBy');
 const map = require('lodash/fp/map');
 const flow = require('lodash/fp/flow');
 const sumBy = require('lodash/fp/sumBy');
-const City = require('../../models/city');
+const lastDayOfMonth = require('date-fns/last_day_of_month');
+const isBefore = require('date-fns/is_before');
 const Listing = require('../../models/listing');
 const ListingAvailability = require('../../models/listingAvailability');
-const _ = require('lodash');
+const getListingsInfo = require('../../scripts/listingInfoScraper');
+const getListingStartDate = require('../../scripts/reviewsScraper');
+const { getAvailabilityUrl } = require('../../scripts/utils');
+const getListingAvailabilities = require('../../scripts/listingAvailabilityScraper');
+const getListingsWithAvailabilities = require('./helpers/getListingsWithAvailabilities');
+const getListings = require('./helpers/getListings');
+const getOrCreateNeighborhood = require('./helpers/getOrCreateNeighborhood');
+const createOrUpdateListing = require('./helpers/createOrUpdateListing');
 
 const router = express.Router();
 
-const getOffsetPossition = ({ lat, lng }) => delta => {
-  const maxLat = (Number(lat) + delta).toFixed(4);
-  const minLat = (Number(lat) - delta).toFixed(4);
-  const maxLng = (Number(lng) + delta).toFixed(4);
-  const minLng = (Number(lng) - delta).toFixed(4);
+router.get('/', async (req, res, next) => {
+  const { lat, lng, bedrooms, address } = req.query;
+  let listings = await getListings({ lat, lng, bedrooms });
 
-  return {
-    maxLat,
-    minLat,
-    maxLng,
-    minLng,
-  };
-}
-
-function getAgregatedAvailabilities(availabilities) {
-  return availabilities.reduce((accumulator, { date, available, price }) => {
-    const key = format(date, 'MMMM-YYYY');
-
-    accumulator[key] = accumulator[key] || {
-      availabilities: [],
-      nativePriceTotal: 0,
-      nativeAdjustedPriceTotal: 0,
-      nativeCurrency: null,
-    };
-
-    accumulator[key].availabilities.push({ date, available, price: price.native_price });
-    accumulator[key].nativePriceTotal += price.native_price;
-    accumulator[key].nativeAdjustedPriceTotal += price.native_adjusted_price;
-    accumulator[key].nativeCurrency = accumulator[key].nativeCurrency || price.native_currency;
-
-    return accumulator;
-  }, {});
-}
-
-async function getListingsWithAvailabilities(listings) {
-  let listingsWithAvailabilities = [];
-
-  if (!listings.length) {
-    return [];
+  if (listings.length) {
+    const listingsWithAvailabilities = await getListingsWithAvailabilities(listings);
+    res.status(200).json({ listings: listingsWithAvailabilities });
+    return;
   }
 
-  do {
-    const {
-      _id,
-      bedrooms,
-      reviews_count,
-      room_type,
-      star_rating,
-      lat,
-      lng,
-      listing_start_date,
-      city_id,
-    } = listings.shift();
+  listings = await getListingsInfo({ suburb: address });
 
-    let listingAvailabilities = await ListingAvailability
-      .find({ listing_id: _id })
-      .sort('date')
-      .select('available date price -_id');
+  if (!listings.length) {
+    return res.status(403).json({ msg: `No listings found in ${address}` });
+  }
 
-    const city = await City.findById(city_id);
+  listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
 
-    listingAvailabilities = _.uniqBy(listingAvailabilities, ({ date }) => date.toString());
+  const suburb = await getOrCreateNeighborhood(address);
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() - 1;
 
-    const agregatedAvailabilities = getAgregatedAvailabilities(listingAvailabilities);
+  let persistedListings = [];
+  res.set({ 'content-type': 'application/json' })
 
-    const listingWithAvailability = {
-      bedrooms,
-      reviews_count,
-      room_type,
-      star_rating,
-      lat,
-      lng,
-      listing_start_date,
-      city: city.name,
-      availability: agregatedAvailabilities,
-    };
+  while (listings.length) {
+    const { listing } = listings.shift();
+    const listingStartDate = await getListingStartDate({ listingId: listing.id });
+    const persistedListing = await createOrUpdateListing({ listing, listingStartDate, suburbId: suburb._id });
+    const { id: listingId, _id: listingDbId, neighborhood_id } = persistedListing;
+    const availabilityUrl = getAvailabilityUrl({ listingId, year, month });
+    const availabilityMonths = await getListingAvailabilities(availabilityUrl);
 
-    listingsWithAvailabilities.push(listingWithAvailability);
-  } while (listings.length);
+    persistedListings = [...persistedListings, persistedListing];
 
-  return listingsWithAvailabilities;
-}
+    while (availabilityMonths.length) {
+      let { days = [] } = availabilityMonths.shift();
+      days = days.filter(({ date }) => isBefore(date, lastDayOfMonth(today)));
 
-async function getListings({ lat, lng, bedrooms, cityId }) {
-  const getPoitsWithDelta = getOffsetPossition({ lat, lng });
-  const { maxLat, minLat, maxLng, minLng } = getPoitsWithDelta(0.007)
+      while (days.length) {
+        const day = days.shift();
+        await ListingAvailability.create({ ...day, listing_id: listingDbId, neighborhood_id });
+      }
+    }
 
-  const listings = await Listing
-    .where('bedrooms').equals(bedrooms)
-    .where('lat').gte(minLat).lte(maxLat)
-    .where('lng').gte(minLng).lte(maxLng)
-    .limit(60)
-    .select('bedrooms reviews_count room_type star_rating lat lng listing_start_date city_id');
+    await Listing.findByIdAndUpdate(listingDbId, { availability_checked_at: new Date() });
+  }
 
-  return listings;
-}
-
-router.get('/', async (req, res, next) => {
-  const { lat, lng, bedrooms } = req.query;
-  const listings = await getListings({ lat, lng, bedrooms });
-  const listingsWithAvailabilities = await getListingsWithAvailabilities(listings);
-
-  res.status(200).json({ listingsWithAvailabilities });
+  const listingsWithAvailabilities = await getListingsWithAvailabilities(persistedListings);
+  res.status(200).json({ listings: listingsWithAvailabilities });
 });
 
 module.exports = router;
