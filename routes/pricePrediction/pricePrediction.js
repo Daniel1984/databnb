@@ -36,7 +36,12 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
   listings = await getListingsInfo({ suburb: address });
   listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
 
+  // deal with 0 listings
+  let analyzedProperties = 0;
+  let totalProperties = listings.length;
+
   while (listings.length) {
+    socket.emit('getListings:loadingInfo', { msg: `Loading ${analyzedProperties += 1}/${totalProperties} properties` });
     const { listing } = listings.shift();
     const listingStartDate = await getListingStartDate({ listingId: listing.id });
     const persistedListing = await createOrUpdateListing({ listing, listingStartDate, suburbId: suburb._id });
@@ -53,6 +58,7 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
         await ListingAvailability.create({ ...day, listing_id: listingDbId, neighborhood_id });
       }
     }
+
     const listingWithAvailabilities = await getListingsWithAvailabilities([persistedListing]);
     socket.emit('listing', { listing: listingWithAvailabilities });
     await Listing.findByIdAndUpdate(listingDbId, { availability_checked_at: Date.now() });
