@@ -6,6 +6,7 @@ const lastDayOfMonth = require('date-fns/last_day_of_month');
 const isBefore = require('date-fns/is_before');
 const Listing = require('../../models/listing');
 const ListingAvailability = require('../../models/listingAvailability');
+const Neighborhood = require('../../models/neighborhood');
 const getListingsInfo = require('../../scripts/listingInfoScraper');
 const getListingStartDate = require('../../scripts/reviewsScraper');
 const { getAvailabilityUrl } = require('../../scripts/utils');
@@ -24,7 +25,20 @@ function getYearAndMonthForAirbnbUrl() {
 }
 
 module.exports = async function pricePrediction({ lat, lng, bedrooms, address, socketId, socket }) {
-  let listings = await getListings({ lat, lng, bedrooms });
+  let listings = [];
+  const neigborhood = await Neighborhood.findOne({ name: address });
+
+  if (neigborhood) {
+    listings = await Listing
+      .where('neighborhood_id').equals(neigborhood._id)
+      .where('bedrooms').equals(bedrooms)
+      .limit(60)
+      .select('bedrooms reviews_count room_type star_rating lat lng listing_start_date');
+  }
+
+  if (!listings.length) {
+    listings = await getListings({ lat, lng, bedrooms });
+  }
 
   if (listings.length) {
     const listingsWithAvailabilities = await getListingsWithAvailabilities(listings);
@@ -36,7 +50,11 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
   listings = await getListingsInfo({ suburb: address });
   listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
 
-  // deal with 0 listings
+  if (!listings.length) {
+    socket.emit('listings', { listings: [] });
+    return;
+  }
+
   let analyzedProperties = 0;
   let totalProperties = listings.length;
 

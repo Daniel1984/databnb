@@ -11,7 +11,7 @@ const getOffsetPossition = ({ lat, lng }) => delta => {
 
 module.exports = function getListings({ lat, lng, bedrooms }) {
   const getPoitsWithDelta = getOffsetPossition({ lat, lng });
-  const { maxLat, minLat, maxLng, minLng } = getPoitsWithDelta(0.007);
+  const { maxLat, minLat, maxLng, minLng } = getPoitsWithDelta(0.006);
 
   return Listing
     .where('bedrooms').equals(bedrooms)

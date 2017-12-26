@@ -44,6 +44,7 @@ module.exports = ({ city, suburb }) => {
     request(options, async (err, response, body) => {
       if (err || response.statusCode >= 400 || !body) {
         console.log('ERROR: COULDN`T FETCH LISTING INFO', err);
+        resolve([]);
         return;
       }
 
