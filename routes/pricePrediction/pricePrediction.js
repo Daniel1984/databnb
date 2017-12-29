@@ -69,7 +69,6 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
 
     while (availabilityMonths.length) {
       let { days = [] } = availabilityMonths.shift();
-      days = days.filter(({ date }) => isBefore(date, lastDayOfMonth(new Date())));
 
       while (days.length) {
         const day = days.shift();
