@@ -29,6 +29,8 @@ module.exports = async (listings) => {
     return [];
   }
 
+  const availabilityDateKey = format(new Date(), 'MMMM-YYYY');
+
   while (listings.length) {
     const {
       _id,
@@ -49,6 +51,12 @@ module.exports = async (listings) => {
     listingAvailabilities = uniqBy(listingAvailabilities, ({ date }) => date.toString());
     const agregatedAvailabilities = getAgregatedAvailabilities(listingAvailabilities);
 
+    const {
+      nativeAdjustedPriceTotal,
+      nativePriceTotal,
+      nativeCurrency,
+    } = agregatedAvailabilities[availabilityDateKey];
+
     const listingWithAvailability = {
       bedrooms,
       reviews_count,
@@ -57,6 +65,7 @@ module.exports = async (listings) => {
       lat,
       lng,
       listing_start_date,
+      pointerTitle: `${nativeAdjustedPriceTotal || nativePriceTotal} ${nativeCurrency}`,
       availability: agregatedAvailabilities,
     };
 
