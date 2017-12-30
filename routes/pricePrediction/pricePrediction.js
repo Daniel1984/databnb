@@ -1,43 +1,20 @@
-const groupBy = require('lodash/fp/groupBy');
-const map = require('lodash/fp/map');
-const flow = require('lodash/fp/flow');
-const sumBy = require('lodash/fp/sumBy');
-const lastDayOfMonth = require('date-fns/last_day_of_month');
-const isBefore = require('date-fns/is_before');
-const Listing = require('../../models/listing');
-const ListingAvailability = require('../../models/listingAvailability');
 const Neighborhood = require('../../models/neighborhood');
-const getListingsInfo = require('../../scripts/listingInfoScraper');
-const getListingStartDate = require('../../scripts/reviewsScraper');
-const { getAvailabilityUrl } = require('../../scripts/utils');
-const getListingAvailabilities = require('../../scripts/listingAvailabilityScraper');
+const scrapeListingsInfo = require('../../scripts/listingInfoScraper');
 const getListingsWithAvailabilities = require('./helpers/getListingsWithAvailabilities');
-const getListings = require('./helpers/getListings');
-const getOrCreateNeighborhood = require('./helpers/getOrCreateNeighborhood');
-const createOrUpdateListing = require('./helpers/createOrUpdateListing');
-
-function getYearAndMonthForAirbnbUrl() {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth() - 1;
-
-  return { year, month };
-}
+const getListingsByLocation = require('./helpers/getListingsByLocation');
+const getListingsByNeighborhood = require('./helpers/getListingsByNeighborhood');
+const persistListingsWithAvailabilities = require('./helpers/persistListingsWithAvailabilities');
 
 module.exports = async function pricePrediction({ lat, lng, bedrooms, address, socketId, socket }) {
   let listings = [];
   const neigborhood = await Neighborhood.findOne({ name: address });
 
   if (neigborhood) {
-    listings = await Listing
-      .where('neighborhood_id').equals(neigborhood._id)
-      .where('bedrooms').equals(bedrooms)
-      .limit(60)
-      .select('bedrooms reviews_count room_type star_rating lat lng listing_start_date');
+    listings = await getListingsByNeighborhood({ neighborhoodId: neigborhood._id, bedrooms });
   }
 
   if (!listings.length) {
-    listings = await getListings({ lat, lng, bedrooms });
+    listings = await getListingsByLocation({ lat, lng, bedrooms });
   }
 
   if (listings.length) {
@@ -46,40 +23,15 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
     return;
   }
 
-  const suburb = await getOrCreateNeighborhood(address);
-  listings = await getListingsInfo({ suburb: address });
-  listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
+  listings = await scrapeListingsInfo({ suburb: address });
 
   if (!listings.length) {
     socket.emit('listings', { listings: [] });
     return;
   }
 
-  let analyzedProperties = 0;
-  let totalProperties = listings.length;
+  listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
 
-  while (listings.length) {
-    socket.emit('getListings:loadingInfo', { msg: `Loading ${analyzedProperties += 1}/${totalProperties} properties` });
-    const { listing } = listings.shift();
-    const listingStartDate = await getListingStartDate({ listingId: listing.id });
-    const persistedListing = await createOrUpdateListing({ listing, listingStartDate, suburbId: suburb._id });
-    const { id: listingId, _id: listingDbId, neighborhood_id } = persistedListing;
-    const availabilityUrl = getAvailabilityUrl({ listingId, ...getYearAndMonthForAirbnbUrl() });
-    const availabilityMonths = await getListingAvailabilities(availabilityUrl);
-
-    while (availabilityMonths.length) {
-      let { days = [] } = availabilityMonths.shift();
-
-      while (days.length) {
-        const day = days.shift();
-        await ListingAvailability.create({ ...day, listing_id: listingDbId, neighborhood_id });
-      }
-    }
-
-    const listingWithAvailabilities = await getListingsWithAvailabilities([persistedListing]);
-    socket.emit('listing', { listing: listingWithAvailabilities });
-    await Listing.findByIdAndUpdate(listingDbId, { availability_checked_at: Date.now() });
-  }
-
+  await persistListingsWithAvailabilities({ listings, address, socket });
   socket.emit('reenableForm', true);
 };

@@ -9,7 +9,7 @@ const getOffsetPossition = ({ lat, lng }) => delta => {
   return { maxLat, minLat, maxLng, minLng };
 }
 
-module.exports = function getListings({ lat, lng, bedrooms }) {
+module.exports = function getListingsByLocation({ lat, lng, bedrooms }) {
   const getPoitsWithDelta = getOffsetPossition({ lat, lng });
   const { maxLat, minLat, maxLng, minLng } = getPoitsWithDelta(0.006);
 

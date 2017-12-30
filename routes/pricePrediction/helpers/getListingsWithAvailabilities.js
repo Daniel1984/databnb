@@ -1,5 +1,5 @@
 const format = require('date-fns/format');
-const _ = require('lodash');
+const uniqBy = require('lodash/uniqBy');
 const ListingAvailability = require('../../../models/listingAvailability');
 
 function getAgregatedAvailabilities(availabilities) {
@@ -46,7 +46,7 @@ module.exports = async (listings) => {
       .sort('date')
       .select('available date price -_id');
 
-    listingAvailabilities = _.uniqBy(listingAvailabilities, ({ date }) => date.toString());
+    listingAvailabilities = uniqBy(listingAvailabilities, ({ date }) => date.toString());
     const agregatedAvailabilities = getAgregatedAvailabilities(listingAvailabilities);
 
     const listingWithAvailability = {
