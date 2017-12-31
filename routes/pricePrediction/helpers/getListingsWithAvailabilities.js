@@ -65,7 +65,8 @@ module.exports = async (listings) => {
       lat,
       lng,
       listing_start_date,
-      pointerTitle: `${nativeAdjustedPriceTotal || nativePriceTotal} ${nativeCurrency}`,
+      currentMonthPrice: nativeAdjustedPriceTotal || nativePriceTotal,
+      currency: nativeCurrency,
       availability: agregatedAvailabilities,
     };
 
