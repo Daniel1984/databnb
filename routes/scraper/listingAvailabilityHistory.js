@@ -13,8 +13,9 @@ module.exports = {
 
     while (listings.length) {
       const today = new Date();
+      today.setMonth(today.getMonth() - 1);
       const year = today.getFullYear();
-      const month = today.getMonth() - 1;
+      const month = today.getMonth();
 
       const { id: listingId, _id: listingDbId, neighborhood_id } = listings.shift();
       const availabilityUrl = getAvailabilityUrl({ listingId, year, month });

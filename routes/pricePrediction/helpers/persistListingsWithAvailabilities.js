@@ -7,9 +7,12 @@ const persistListingAvailabilities = require('./persistListingAvailabilities');
 const getListingsWithAvailabilities = require('./getListingsWithAvailabilities');
 
 function getYearAndMonthForAirbnbUrl() {
+  const today = new Date();
+  today.setMonth(today.getMonth() - 1);
+
   return {
-    year: (new Date()).getFullYear(),
-    month: (new Date()).getMonth() - 1,
+    year: today.getFullYear(),
+    month: today.getMonth(),
   };
 }
 

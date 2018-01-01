@@ -23,13 +23,13 @@ function getAgregatedAvailabilities(availabilities) {
 }
 
 module.exports = async (listings) => {
-  let listingsWithAvailabilities = [];
 
   if (!listings.length) {
     return [];
   }
 
   const availabilityDateKey = format(new Date(), 'MMMM-YYYY');
+  let listingsWithAvailabilities = [];
 
   while (listings.length) {
     const {
