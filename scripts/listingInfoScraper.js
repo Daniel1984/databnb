@@ -1,11 +1,12 @@
 const request = require('request');
 
-function getInfoUrl({ city, suburb }) {
+function getInfoUrl({ suburb }) {
+  const location = encodeURI(suburb);
   return [
     'https://www.airbnb.com/api/v2/explore_tabs',
     '?version=1.3.2',
     '&_format=for_explore_search_web',
-    '&experiences_per_grid=0',
+    '&experiences_per_grid=20',
     '&items_per_grid=300',
     '&guidebooks_per_grid=0',
     '&auto_ib=true',
@@ -20,8 +21,9 @@ function getInfoUrl({ city, suburb }) {
     '&timezone_offset=120',
     '&metadata_only=false',
     '&is_standard_search=true',
+    '&selected_tab_id=all_tab',
     '&tab_id=home_tab',
-    `&location=${suburb}${city ? ` ${city}` : ''}`,
+    `&location=${location}`,
     '&federated_search_session_id=e30fad3d-4dfd-4348-b72a-bb2d1f53ca0c',
     '&_intents=p1',
     '&key=d306zoyjsyarp7ifhu67rjxn52tv0t20',
@@ -36,14 +38,14 @@ module.exports = ({ city, suburb }) => {
     headers: {
       'authority': 'www.airbnb.com',
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
-      'x-csrf-token': 'V4$.airbnb.com$xBp27wugDFc$rr7NeRdApi5UCVMMsCPyQ2ulkwJ2MHJ1xxq7hv1Fkn8=',
+      'x-csrf-token': 'V4$.airbnb.com$HxMVGU-RyKM$1Zwcm1JOrU3Tn0Y8oRrvN3Hc67ZQSbOKVnMjCRtZPzQ=',
     }
   };
 
   return new Promise((resolve, reject) => {
     request(options, async (err, response, body) => {
       if (err || response.statusCode >= 400 || !body) {
-        console.log('ERROR: COULDN`T FETCH LISTING INFO', err);
+        console.log('ERROR: COULDN`T FETCH LISTING INFO', body);
         resolve([]);
         return;
       }
