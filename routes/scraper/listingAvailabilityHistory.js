@@ -13,7 +13,7 @@ module.exports = {
 
     while (listings.length) {
       const today = new Date();
-      today.setMonth(today.getMonth() - 1);
+      today.setMonth(today.getMonth() + 1);
       const year = today.getFullYear();
       const month = today.getMonth();
 
@@ -48,8 +48,10 @@ module.exports = {
         availability_checked_at
       } = listings.shift();
 
-      const year = availability_checked_at.getFullYear();
-      const month = availability_checked_at.getMonth() + 1;
+      const date = new Date(availability_checked_at);
+      date.setMonth(date.getMonth() + 1);
+      const year = date.getFullYear();
+      const month = date.getMonth();
       const availabilityUrl = getAvailabilityUrl({ listingId, year, month });
       const availabilityMonths = await getListingAvailabilities(availabilityUrl);
 

@@ -1,5 +1,6 @@
 const request = require('request');
 const utils = require('./utils');
+const format = require('date-fns/format');
 
 module.exports = async (url) => {
   const options = {
@@ -19,7 +20,20 @@ module.exports = async (url) => {
 
       try {
         const { calendar_months } = JSON.parse(body);
-        resolve(calendar_months);
+        const filteredDays = calendar_months.map((calendarMonth) => {
+          const { year, month, days } = calendarMonth;
+
+          /*
+            airbnb mizes dates from previous and next months into current one
+            for date picker purpose I guess but that breaks our logic so need to filter
+          */
+          calendarMonth.days = days.filter(({ date }) => {
+            return format(date, 'YYYY-MM') === format([year, month], 'YYYY-MM');
+          });
+
+          return calendarMonth;
+        })
+        resolve(filteredDays);
       } catch (error) {
         console.log(`ERR: PARSING AVAILABILITY JSON ${error}`);
         resolve([]);

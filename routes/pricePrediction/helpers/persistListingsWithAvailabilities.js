@@ -8,7 +8,7 @@ const getListingsWithAvailabilities = require('./getListingsWithAvailabilities')
 
 function getYearAndMonthForAirbnbUrl() {
   const today = new Date();
-  today.setMonth(today.getMonth() - 1);
+  today.setMonth(today.getMonth() + 1);
 
   return {
     year: today.getFullYear(),

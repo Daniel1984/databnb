@@ -23,7 +23,6 @@ function getAgregatedAvailabilities(availabilities) {
 }
 
 module.exports = async (listings) => {
-
   if (!listings.length) {
     return [];
   }

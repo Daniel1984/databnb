@@ -41,6 +41,7 @@ module.exports = {
   },
 
   getAvailabilityUrl({ listingId, year, month }) {
-    return `https://www.airbnb.com/api/v2/calendar_months?key=d306zoyjsyarp7ifhu67rjxn52tv0t20&currency=USD&locale=en&listing_id=${listingId}&month=${month}&year=${year}&count=6&_format=with_conditions`
+    month = !month ? 1 : month;
+    return `https://www.airbnb.com/api/v2/calendar_months?key=d306zoyjsyarp7ifhu67rjxn52tv0t20&currency=USD&locale=en&listing_id=${listingId}&month=${month}&year=${year}&count=5&_format=with_conditions`
   }
 };

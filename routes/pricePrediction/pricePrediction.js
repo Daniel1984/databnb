@@ -5,33 +5,60 @@ const getListingsByLocation = require('./helpers/getListingsByLocation');
 const getListingsByNeighborhood = require('./helpers/getListingsByNeighborhood');
 const persistListingsWithAvailabilities = require('./helpers/persistListingsWithAvailabilities');
 
-module.exports = async function pricePrediction({ lat, lng, bedrooms, address, socketId, socket }) {
+module.exports = async function pricePrediction({ lat, lng, bedrooms, address, socket }) {
   let listings = [];
-  const neigborhood = await Neighborhood.findOne({ name: address });
+  let neigborhood;
+
+  try {
+    neigborhood = await Neighborhood.findOne({ name: address });
+  } catch (error) {
+    console.log(`Neighborhood.findOne: ${error}`);
+  }
 
   if (neigborhood) {
-    listings = await getListingsByNeighborhood({ neighborhoodId: neigborhood._id, bedrooms });
+    try {
+      listings = await getListingsByNeighborhood({ neighborhoodId: neigborhood._id });
+    } catch (error) {
+      console.log(`getListingsByNeighborhood: ${error}`);
+    }
   }
 
   if (!listings.length) {
-    listings = await getListingsByLocation({ lat, lng, bedrooms });
+    try {
+      listings = await getListingsByLocation({ lat, lng });
+    } catch (error) {
+      console.log(`getListingsByLocation: ${error}`);
+    }
   }
 
   if (listings.length) {
-    const listingsWithAvailabilities = await getListingsWithAvailabilities(listings);
-    socket.emit('listings', { listings: listingsWithAvailabilities });
-    return;
+    try {
+      const listingsWithAvailabilities = await getListingsWithAvailabilities(listings);
+      socket.emit('listings', { listings: listingsWithAvailabilities });
+      return;
+    } catch (error) {
+      console.log(`getListingsWithAvailabilities: ${error}`);
+    }
   }
 
-  listings = await scrapeListingsInfo({ suburb: address });
+  try {
+    listings = await scrapeListingsInfo({ suburb: address, socket });
+  } catch (error) {
+    console.log(`scrapeListingsInfo: ${error}`);
+  }
 
   if (!listings.length) {
     socket.emit('listings', { listings: [] });
     return;
   }
 
-  listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
+  // listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
 
-  await persistListingsWithAvailabilities({ listings, address, socket });
+  try {
+    await persistListingsWithAvailabilities({ listings, address, socket });
+  } catch (error) {
+    console.log(`persistListingsWithAvailabilities: ${error}`);
+  }
+
   socket.emit('reenableForm', true);
 };
