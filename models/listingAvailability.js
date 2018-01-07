@@ -15,7 +15,6 @@ const listingAvailabilitySchema = new Schema({
     type: { type: String, default: null },
   },
   neighborhood_id: { type: Schema.Types.ObjectId, ref: 'Neighborhood', index: true },
-  city_id: { type: Schema.Types.ObjectId, ref: 'City', index: true },
   listing_id: { type: Schema.Types.ObjectId, ref: 'Listing', index: true },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: null },

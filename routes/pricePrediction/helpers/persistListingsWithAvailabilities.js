@@ -30,7 +30,7 @@ module.exports = function persistListingsWithAvailabilities({ listings, address,
 
       const { listing } = listings.shift();
       const listingStartDate = await getListingStartDate({ listingId: listing.id });
-      const persistedListing = await createOrUpdateListing({ listing, listingStartDate, suburbId: suburb._id, availability_checked_at: Date.now() });
+      const persistedListing = await createOrUpdateListing({ listing, listingStartDate, suburbId: suburb._id });
       const availabilityUrl = getAvailabilityUrl({ listingId: persistedListing.id, ...getYearAndMonthForAirbnbUrl() });
       const availabilities = await getListingAvailabilities(availabilityUrl);
 
