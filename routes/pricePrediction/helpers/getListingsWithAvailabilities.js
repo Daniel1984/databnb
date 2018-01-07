@@ -22,6 +22,18 @@ function getAgregatedAvailabilities(availabilities) {
   }, {});
 }
 
+function getCurrentDayPrice(availabilities) {
+  const today = format(new Date(), 'YYYY-MM-DD');
+
+  return availabilities.reduce((accumulator, { date, price }) => {
+    if (today === format(date, 'YYYY-MM-DD')) {
+      accumulator = price;
+    }
+
+    return accumulator;
+  }, 0);
+}
+
 module.exports = async (listings) => {
   if (!listings.length) {
     return [];
@@ -54,6 +66,7 @@ module.exports = async (listings) => {
       nativeAdjustedPriceTotal,
       nativePriceTotal,
       nativeCurrency,
+      availabilities,
     } = agregatedAvailabilities[availabilityDateKey];
 
     const listingWithAvailability = {
@@ -64,7 +77,7 @@ module.exports = async (listings) => {
       lat,
       lng,
       listing_start_date,
-      currentMonthPrice: nativeAdjustedPriceTotal || nativePriceTotal,
+      currentDayPrice: getCurrentDayPrice(availabilities),
       currency: nativeCurrency,
       availability: agregatedAvailabilities,
     };
