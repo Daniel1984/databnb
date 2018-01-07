@@ -4,22 +4,23 @@ const getListingsWithAvailabilities = require('./helpers/getListingsWithAvailabi
 const getListingsByLocation = require('./helpers/getListingsByLocation');
 const getListingsByNeighborhood = require('./helpers/getListingsByNeighborhood');
 const persistListingsWithAvailabilities = require('./helpers/persistListingsWithAvailabilities');
+const getOrCreateNeighborhood = require('./helpers/getOrCreateNeighborhood');
 
 module.exports = async function pricePrediction({ lat, lng, bedrooms, address, socket }) {
   let listings = [];
-  let neigborhood;
+  let neighborhood;
 
   try {
-    neigborhood = await Neighborhood.findOne({ name: address });
+    neighborhood = await Neighborhood.findOne({ name: address });
   } catch (error) {
-    console.log(`Neighborhood.findOne: ${error}`);
+    console.log(`pricePrediction.js:Neighborhood.findOne: ${error}`);
   }
 
-  if (neigborhood) {
+  if (neighborhood) {
     try {
-      listings = await getListingsByNeighborhood({ neighborhoodId: neigborhood._id });
+      listings = await getListingsByNeighborhood({ neighborhoodId: neighborhood._id });
     } catch (error) {
-      console.log(`getListingsByNeighborhood: ${error}`);
+      console.log(`pricePrediction.js:getListingsByNeighborhood: ${error}`);
     }
   }
 
@@ -27,7 +28,7 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
     try {
       listings = await getListingsByLocation({ lat, lng });
     } catch (error) {
-      console.log(`getListingsByLocation: ${error}`);
+      console.log(`pricePrediction.js:getListingsByLocation: ${error}`);
     }
   }
 
@@ -37,14 +38,16 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
       socket.emit('listings', { listings: listingsWithAvailabilities });
       return;
     } catch (error) {
-      console.log(`getListingsWithAvailabilities: ${error}`);
+      console.log(`pricePrediction.js:getListingsWithAvailabilities: ${error}`);
     }
   }
 
+  neighborhood = await getOrCreateNeighborhood(address);
+
   try {
-    listings = await scrapeListingsInfo({ suburb: address, socket });
+    listings = await scrapeListingsInfo({ suburb: neighborhood.name, socket });
   } catch (error) {
-    console.log(`scrapeListingsInfo: ${error}`);
+    console.log(`pricePrediction.js:scrapeListingsInfo: ${error}`);
   }
 
   if (!listings.length) {
@@ -55,9 +58,9 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
   // listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
 
   try {
-    await persistListingsWithAvailabilities({ listings, address, socket });
+    await persistListingsWithAvailabilities({ listings, neighborhood, socket });
   } catch (error) {
-    console.log(`persistListingsWithAvailabilities: ${error}`);
+    console.log(`pricePrediction.js:persistListingsWithAvailabilities: ${error}`);
   }
 
   socket.emit('reenableForm', true);

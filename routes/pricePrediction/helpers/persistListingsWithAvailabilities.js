@@ -1,7 +1,6 @@
 const getListingStartDate = require('../../../scripts/reviewsScraper');
 const { getAvailabilityUrl } = require('../../../scripts/utils');
 const getListingAvailabilities = require('../../../scripts/listingAvailabilityScraper');
-const getOrCreateNeighborhood = require('./getOrCreateNeighborhood');
 const createOrUpdateListing = require('./createOrUpdateListing');
 const persistListingAvailabilities = require('./persistListingAvailabilities');
 const getListingsWithAvailabilities = require('./getListingsWithAvailabilities');
@@ -16,9 +15,8 @@ function getYearAndMonthForAirbnbUrl() {
   };
 }
 
-module.exports = function persistListingsWithAvailabilities({ listings, address, socket }) {
+module.exports = function persistListingsWithAvailabilities({ listings, neighborhood, socket }) {
   return new Promise(async (resolve, reject) => {
-    const suburb = await getOrCreateNeighborhood(address);
     const listingsWithAvailabilities = [];
     let analyzedProperties = 0;
     let totalProperties = listings.length;
@@ -29,20 +27,48 @@ module.exports = function persistListingsWithAvailabilities({ listings, address,
       });
 
       const { listing } = listings.shift();
-      const listingStartDate = await getListingStartDate({ listingId: listing.id });
-      const persistedListing = await createOrUpdateListing({ listing, listingStartDate, suburbId: suburb._id });
+
+      let listingStartDate;
+      try {
+        listingStartDate = await getListingStartDate({ listingId: listing.id });
+      } catch (error) {
+        console.log(`persistListingsWithAvailabilities.js:getListingStartDate: ${error}`);
+      }
+
+      let persistedListing;
+      try {
+        persistedListing = await createOrUpdateListing({ listing, listingStartDate, suburbId: neighborhood._id });
+      } catch (error) {
+        console.log(`persistListingsWithAvailabilities.js:createOrUpdateListing: ${error}`);
+      }
+
       const availabilityUrl = getAvailabilityUrl({ listingId: persistedListing.id, ...getYearAndMonthForAirbnbUrl() });
-      const availabilities = await getListingAvailabilities(availabilityUrl);
 
-      await persistListingAvailabilities({
-        availabilities,
-        listingId: persistedListing._id,
-        neighborhoodId: persistedListing.neighborhood_id
-      });
+      let availabilities;
+      try {
+        availabilities = await getListingAvailabilities(availabilityUrl);
+      } catch (error) {
+        console.log(`persistListingsWithAvailabilities.js:getListingAvailabilities: ${error}`);
+      }
 
-      const listingWithAvailabilities = await getListingsWithAvailabilities([persistedListing]);
-      socket.emit('listing', { listing: listingWithAvailabilities });
-      listingsWithAvailabilities.push(listingWithAvailabilities);
+      try {
+        await persistListingAvailabilities({
+          availabilities,
+          listingId: persistedListing._id,
+          neighborhoodId: persistedListing.neighborhood_id
+        });
+      } catch (error) {
+        console.log(`persistListingsWithAvailabilities.js:persistListingAvailabilities: ${error}`);
+      }
+
+      let listingWithAvailabilities;
+      try {
+        listingWithAvailabilities = await getListingsWithAvailabilities([persistedListing]);
+        socket.emit('listing', { listing: listingWithAvailabilities });
+        listingsWithAvailabilities.push(listingWithAvailabilities);
+      } catch (error) {
+        console.log(`persistListingsWithAvailabilities.js:getListingsWithAvailabilities: ${error}`);
+      }
     }
 
     resolve(listingsWithAvailabilities);
