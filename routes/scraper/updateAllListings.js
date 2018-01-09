@@ -1,3 +1,4 @@
+const setDate = require('date-fns/set_date');
 const Neighborhood = require('../../models/neighborhood');
 const scrapeListings = require('../../scripts/listingInfoScraper');
 const getListingStartDate = require('../../scripts/reviewsScraper');
@@ -17,8 +18,15 @@ function getYearAndMonthForAirbnbUrl() {
 }
 
 module.exports = async (req, res, next) => {
-  const neighborhoods = await Neighborhood.find();
-  // const neighborhoods = [{ name: 'bromley, london', _id: '5a2328588670a001959a6ea7' }];
+  const neighborhoods = await Neighborhood
+    .find({
+      $or: [
+        { listingsScrapedAt: { $lte: setDate(new Date(), (new Date()).getDate() - 7) } },
+        { listingsScrapedAt: { $eq: null } }
+      ]
+    })
+    .select('name listingsScrapedAt -_id');
+
   res.status(200).json({ length: neighborhoods });
 
   while (neighborhoods.length) {
@@ -41,6 +49,7 @@ module.exports = async (req, res, next) => {
         persistedListing = await createOrUpdateListing({ listing, listingStartDate, suburbId: neighborhood._id });
       } catch (error) {
         console.log(`persistListingsWithAvailabilities.js:createOrUpdateListing: ${error}`);
+        continue;
       }
 
       const availabilityUrl = getAvailabilityUrl({ listingId: persistedListing.id, ...getYearAndMonthForAirbnbUrl() });
@@ -50,6 +59,7 @@ module.exports = async (req, res, next) => {
         availabilities = await getListingAvailabilities(availabilityUrl);
       } catch (error) {
         console.log(`persistListingsWithAvailabilities.js:getListingAvailabilities: ${error}`);
+        continue;
       }
 
       try {
@@ -60,7 +70,10 @@ module.exports = async (req, res, next) => {
         });
       } catch (error) {
         console.log(`persistListingsWithAvailabilities.js:persistListingAvailabilities: ${error}`);
+        continue;
       }
+
+      await Neighborhood.findByIdAndUpdate(neighborhood._id, { listingsScrapedAt: new Date() });
     }
   }
 }
