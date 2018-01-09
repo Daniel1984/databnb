@@ -14,6 +14,7 @@ const listingSchema = new Schema({
   name: { type: String, default: null },
   neighborhood: { type: String, default: null },
   person_capacity: { type: Number, default: null },
+  picture_url: { type: String, default: null },
   picture_count: { type: Number, default: null },
   reviews_count: { type: Number, default: null },
   room_type: { type: String, default: null },
@@ -21,8 +22,7 @@ const listingSchema = new Schema({
   star_rating: { type: Number, default: null },
   listing_start_date: { type: Date, default: null },
   availability_checked_at: { type: Date, default: null },
-  pricing_checked_at: { type: Date, default: null },
-  neighborhood_id: { type: Schema.Types.ObjectId, ref: 'Neighborhood', index: true },
+  neighborhood_id: { type: Schema.Types.ObjectId, ref: 'Neighborhood' },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: null },
 });

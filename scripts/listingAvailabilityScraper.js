@@ -35,7 +35,7 @@ module.exports = async (url) => {
         })
         resolve(filteredDays);
       } catch (error) {
-        console.log(`ERR: PARSING AVAILABILITY JSON ${error}`);
+        console.log(`listingAvailabilityScraper:error: ${error}, body: ${body}`);
         resolve([]);
       }
     });

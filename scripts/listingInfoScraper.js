@@ -75,9 +75,11 @@ module.exports = async function scrapeListings({ suburb, socket }) {
 
       console.log(`got ${foundListings.length} listings for ${suburb}`);
 
-      socket.emit('getListings:loadingInfo', {
-        msg: `Found ${foundListings.length} properties`,
-      });
+      if (socket) {
+        socket.emit('getListings:loadingInfo', {
+          msg: `Found ${foundListings.length} properties`,
+        });
+      }
 
       hasMoreListingsToFetch = has_next_page;
       sectionOffset = section_offset;
