@@ -25,9 +25,9 @@ module.exports = async (req, res, next) => {
         { listingsScrapedAt: { $eq: null } }
       ]
     })
-    .select('name listingsScrapedAt -_id');
+    .select('name listingsScrapedAt');
 
-  res.status(200).json({ length: neighborhoods });
+  res.status(200).json({ notUpdatedListings: neighborhoods.length });
 
   while (neighborhoods.length) {
     const neighborhood = neighborhoods.shift();
@@ -72,8 +72,14 @@ module.exports = async (req, res, next) => {
         console.log(`persistListingsWithAvailabilities.js:persistListingAvailabilities: ${error}`);
         continue;
       }
+    }
 
+    console.log('updating neighborhood', neighborhood._id);
+
+    try {
       await Neighborhood.findByIdAndUpdate(neighborhood._id, { listingsScrapedAt: new Date() });
+    } catch (error) {
+      console.log(`persistListingsWithAvailabilities.js:findByIdAndUpdate: ${error}`);
     }
   }
 }
