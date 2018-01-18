@@ -21,7 +21,7 @@ module.exports = async (req, res, next) => {
   const neighborhoods = await Neighborhood
     .find({
       $or: [
-        { listingsScrapedAt: { $lte: setDate(new Date(), (new Date()).getDate() - 7) } },
+        // { listingsScrapedAt: { $lte: setDate(new Date(), (new Date()).getDate() - 7) } },
         { listingsScrapedAt: { $eq: null } }
       ]
     })
@@ -36,8 +36,9 @@ module.exports = async (req, res, next) => {
 
     while (listings.length) {
       const { listing } = listings.shift();
-
+      console.log(`${listings.length} listings left`);
       let listingStartDate;
+
       try {
         listingStartDate = await getListingStartDate({ listingId: listing.id });
       } catch (error) {

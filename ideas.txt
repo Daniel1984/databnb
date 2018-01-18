@@ -1,0 +1,6 @@
+1. graph label - Price per month
+2. info block - show hi low based on daily rate rather than monthly (show todays price)
+3. do not group by rating as optional thing, group by default and give no option to toggle
+4. ignore previous months of availability info. Only take into count current month and all future months (doublecheck)
+
+as soon as listing found - find availability and save! also keep updating progress for UI

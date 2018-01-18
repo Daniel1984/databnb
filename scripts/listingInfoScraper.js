@@ -2,6 +2,9 @@ const { promisify } = require('util');
 const request = require('request');
 const requestPromise = promisify(request);
 
+// safety switch as sometimes it goes into infinite count
+const MAX_LISTINGS_PER_LOCATION = 300;
+
 function getListingsInfoUrl({ suburb }) {
   const location = encodeURI(suburb);
 
@@ -57,9 +60,14 @@ module.exports = async function scrapeListings({ suburb, socket }) {
       const res = await requestPromise({ url, headers });
       body = res.body;
       hasMoreListingsToFetch = res.statusCode < 400;
+
+      if (!hasMoreListingsToFetch) {
+        continue;
+      }
     } catch (error) {
       hasMoreListingsToFetch = false;
       console.log(`requestPromise: ${error}`);
+      continue;
     }
 
     try {
@@ -81,8 +89,12 @@ module.exports = async function scrapeListings({ suburb, socket }) {
         });
       }
 
-      hasMoreListingsToFetch = has_next_page;
+      hasMoreListingsToFetch = has_next_page || false;
       sectionOffset = section_offset;
+
+      if (foundListings.length > MAX_LISTINGS_PER_LOCATION) {
+        hasMoreListingsToFetch = false;
+      }
     } catch (error) {
       console.log(`cant get info for suburb: ${suburb}, error: ${error}`);
       hasMoreListingsToFetch = false;

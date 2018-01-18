@@ -6,6 +6,7 @@ const neighborhoodSchema = new Schema({
   listingsScrapedAt: { type: Date, default: null },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: null },
+  locked: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model('Neighborhood', neighborhoodSchema);

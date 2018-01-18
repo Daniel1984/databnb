@@ -16,6 +16,7 @@ module.exports = async (url) => {
     request(options, (err, res, body) => {
       if (err || res.statusCode >= 400 || !body) {
         resolve([]);
+        return;
       }
 
       try {
