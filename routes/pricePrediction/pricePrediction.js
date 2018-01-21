@@ -18,7 +18,7 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
 
   if (neighborhood) {
     try {
-      listings = await getListingsByNeighborhood({ neighborhoodId: neighborhood._id });
+      listings = await getListingsByNeighborhood({ neighborhoodId: neighborhood._id, bedrooms });
     } catch (error) {
       console.log(`pricePrediction.js:getListingsByNeighborhood: ${error}`);
     }
@@ -26,7 +26,7 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
 
   if (!listings.length) {
     try {
-      listings = await getListingsByLocation({ lat, lng });
+      listings = await getListingsByLocation({ lat, lng, bedrooms });
     } catch (error) {
       console.log(`pricePrediction.js:getListingsByLocation: ${error}`);
     }
@@ -34,7 +34,7 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
 
   if (listings.length) {
     try {
-      const listingsWithAvailabilities = await getListingsWithAvailabilities(listings);
+      const listingsWithAvailabilities = await getListingsWithAvailabilities({ listings, neighborhoodId: neighborhood._id });
       socket.emit('listings', { listings: listingsWithAvailabilities });
       return;
     } catch (error) {
@@ -45,7 +45,7 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
   neighborhood = await getOrCreateNeighborhood(address);
 
   try {
-    listings = await scrapeListingsInfo({ suburb: neighborhood.name, socket });
+    listings = await scrapeListingsInfo({ suburb: neighborhood.name, socket, bedrooms });
   } catch (error) {
     console.log(`pricePrediction.js:scrapeListingsInfo: ${error}`);
   }
@@ -54,8 +54,6 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
     socket.emit('listings', { listings: [] });
     return;
   }
-
-  // listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
 
   try {
     await persistListingsWithAvailabilities({ listings, neighborhood, socket });

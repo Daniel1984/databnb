@@ -4,6 +4,7 @@ const requestPromise = promisify(request);
 
 // safety switch as sometimes it goes into infinite count
 const MAX_LISTINGS_PER_LOCATION = 300;
+const MAX_SCRAPING_ATTEMPTS = 6;
 
 function getListingsInfoUrl({ suburb }) {
   const location = encodeURI(suburb);
@@ -32,7 +33,6 @@ function getListingsInfoUrl({ suburb }) {
     `&location=${location}`,
     '&federated_search_session_id=e30fad3d-4dfd-4348-b72a-bb2d1f53ca0c',
     '&_intents=p1',
-    // '&zoom=14',
     '&screen_size=large',
     '&key=d306zoyjsyarp7ifhu67rjxn52tv0t20',
     '&currency=USD',
@@ -46,10 +46,12 @@ const headers = {
   'x-csrf-token': 'V4$.airbnb.com$HxMVGU-RyKM$1Zwcm1JOrU3Tn0Y8oRrvN3Hc67ZQSbOKVnMjCRtZPzQ=',
 };
 
-module.exports = async function scrapeListings({ suburb, socket }) {
+module.exports = async function scrapeListings({ suburb, socket, bedrooms = null }) {
   let hasMoreListingsToFetch = true;
   let sectionOffset = 0
   let foundListings = [];
+  let scrapeAttempt = 0;
+  let scannedProperties = 0;
 
   while (hasMoreListingsToFetch) {
     const listingsInfoUrl = getListingsInfoUrl({ suburb });
@@ -78,14 +80,21 @@ module.exports = async function scrapeListings({ suburb, socket }) {
         pagination_metadata: { has_next_page, section_offset },
       } = explore_tabs.filter(tab => (tab.tab_id === 'home_tab' || tab.tab_name === 'Homes'))[0];
 
-      const { listings } = sections[0];
+      let { listings = [] } = sections[0];
+
+      scannedProperties += listings.length;
+
+      if (bedrooms !== null) {
+        listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
+      }
+
       foundListings = [...foundListings, ...listings];
 
       console.log(`got ${foundListings.length} listings for ${suburb}`);
 
       if (socket) {
         socket.emit('getListings:loadingInfo', {
-          msg: `Found ${foundListings.length} properties`,
+          msg: !foundListings.length ? `Scanned ${scannedProperties} properties in area` : `Found ${foundListings.length} properties`,
         });
       }
 
@@ -93,6 +102,10 @@ module.exports = async function scrapeListings({ suburb, socket }) {
       sectionOffset = section_offset;
 
       if (foundListings.length > MAX_LISTINGS_PER_LOCATION) {
+        hasMoreListingsToFetch = false;
+      }
+
+      if (++scrapeAttempt > MAX_SCRAPING_ATTEMPTS) {
         hasMoreListingsToFetch = false;
       }
     } catch (error) {

@@ -23,7 +23,7 @@ module.exports = function persistListingsWithAvailabilities({ listings, neighbor
 
     while (listings.length) {
       socket.emit('getListings:loadingInfo', {
-        msg: `Loading ${analyzedProperties += 1}/${totalProperties} properties`
+        msg: `Analyzing ${analyzedProperties += 1}/${totalProperties} properties`
       });
 
       const { listing } = listings.shift();
@@ -63,7 +63,7 @@ module.exports = function persistListingsWithAvailabilities({ listings, neighbor
 
       let listingWithAvailabilities;
       try {
-        listingWithAvailabilities = await getListingsWithAvailabilities([persistedListing]);
+        listingWithAvailabilities = await getListingsWithAvailabilities({ listings: [persistedListing] });
         socket.emit('listing', { listing: listingWithAvailabilities });
         listingsWithAvailabilities.push(listingWithAvailabilities);
       } catch (error) {
