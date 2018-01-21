@@ -1,6 +1,18 @@
 const format = require('date-fns/format');
 const uniqBy = require('lodash/uniqBy');
+const { getAvailabilityUrl } = require('../../../scripts/utils');
+const getListingAvailabilities = require('../../../scripts/listingAvailabilityScraper');
 const ListingAvailability = require('../../../models/listingAvailability');
+
+function getYearAndMonthForAirbnbUrl() {
+  const today = new Date();
+  today.setMonth(today.getMonth() + 1);
+
+  return {
+    year: today.getFullYear(),
+    month: today.getMonth(),
+  };
+}
 
 function getAgregatedAvailabilities(availabilities) {
   return availabilities.reduce((accumulator, { date, available, price }) => {
@@ -34,7 +46,7 @@ function getCurrentDayPrice(availabilities) {
   }, 0);
 }
 
-module.exports = async (listings) => {
+module.exports = async ({ listings, neighborhoodId }) => {
   if (!listings.length) {
     return [];
   }
@@ -45,6 +57,7 @@ module.exports = async (listings) => {
   while (listings.length) {
     const {
       _id,
+      id,
       bedrooms,
       reviews_count,
       room_type,
@@ -58,6 +71,29 @@ module.exports = async (listings) => {
       .where({ listing_id: _id })
       .sort('date')
       .select('available date price -_id');
+
+    if (!listingAvailabilities.length) {
+      const availabilityUrl = getAvailabilityUrl({ listingId: id, ...getYearAndMonthForAirbnbUrl() });
+
+      try {
+        let availabilities = await getListingAvailabilities(availabilityUrl);
+
+        availabilities = availabilities.reduce((acc, { days = [] }) => {
+          const amendedDays = days.map(day => ({ ...day, listing_id: _id, neighborhood_id: neighborhoodId }));
+          acc = [...acc, ...amendedDays]
+          return acc;
+        }, []);
+
+        listingAvailabilities = await ListingAvailability.insertMany(availabilities);
+      } catch (error) {
+        console.log(`persistListingsWithAvailabilities.js:getListingAvailabilities: ${error}`);
+        continue;
+      }
+    }
+
+    if (!listingAvailabilities.length) {
+      continue;
+    }
 
     listingAvailabilities = uniqBy(listingAvailabilities, ({ date }) => date.toString());
     const agregatedAvailabilities = getAgregatedAvailabilities(listingAvailabilities);

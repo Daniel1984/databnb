@@ -33,7 +33,8 @@ module.exports = async (url) => {
           });
 
           return calendarMonth;
-        })
+        });
+
         resolve(filteredDays);
       } catch (error) {
         console.log(`listingAvailabilityScraper:error: ${error}, body: ${body}`);
