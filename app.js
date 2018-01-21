@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('./config');
-const admin = require('./routes/admin/admin');
+const robots = require('./routes/robots/robots');
 const scraper = require('./routes/scraper/scraper');
 const pricePrediction = require('./routes/pricePrediction/pricePrediction');
 const subscribe = require('./routes/subscribe/subscribe');
@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/admin', admin);
+app.use('/robots.txt', robots);
 app.use('/1984', scraper);
 app.use('/price-prediction', pricePrediction);
 app.use('/subscribe', subscribe);
