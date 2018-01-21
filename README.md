@@ -79,6 +79,8 @@ server {
 }
 ```
 
+## If `sudo nginx -t` fails then most likely one of config files for `nginx` has dulicate record for default server pointing to same port. Run `grep -R default_server /etc/nginx` to find where except for `/default` config you can see `default_server` in use and delete. Stop and start enginx again after removig the duplcate.
+
 3. Create secure diffy helman group - `sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048`
 
 4. Create SSL config file - `sudo nano /etc/nginx/snippets/ssl-params.conf` and enter following:

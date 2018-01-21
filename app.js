@@ -5,11 +5,14 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const bugsnag = require("bugsnag");
 const config = require('./config');
 const robots = require('./routes/robots/robots');
 const scraper = require('./routes/scraper/scraper');
 const pricePrediction = require('./routes/pricePrediction/pricePrediction');
 const subscribe = require('./routes/subscribe/subscribe');
+
+bugsnag.register('6ecefaae2b572d031cc92c700088245a');
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
