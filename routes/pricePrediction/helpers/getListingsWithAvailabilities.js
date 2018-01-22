@@ -112,6 +112,7 @@ module.exports = async ({ listings, neighborhoodId }) => {
       star_rating,
       lat,
       lng,
+      id,
       listing_start_date,
       currentDayPrice: getCurrentDayPrice(availabilities),
       currency: nativeCurrency,
