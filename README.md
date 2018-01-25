@@ -79,7 +79,7 @@ server {
 }
 ```
 
-## If `sudo nginx -t` fails then most likely one of config files for `nginx` has dulicate record for default server pointing to same port. Run `grep -R default_server /etc/nginx` to find where except for `/default` config you can see `default_server` in use and delete. Stop and start enginx again after removig the duplcate.
+If `sudo nginx -t` fails then most likely one of config files for `nginx` has dulicate record for default server pointing to same port. Run `grep -R default_server /etc/nginx` to find where except for `/default` config you can see `default_server` in use and delete. Stop and start enginx again after removig the duplcate.
 
 3. Create secure diffy helman group - `sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048`
 
@@ -101,8 +101,10 @@ add_header X-Content-Type-Options nosniff;
 
 # Add our strong Diffie-Hellman group
 ssl_dhparam /etc/ssl/certs/dhparam.pem;
-Test NGINX configration
-sudo nginx -t You should see following:
+```
+4.1 Test NGINX configration"
+`sudo nginx -t` You should see following:
+```
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```

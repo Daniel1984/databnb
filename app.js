@@ -14,7 +14,7 @@ const subscribe = require('./routes/subscribe/subscribe');
 
 bugsnag.register('6ecefaae2b572d031cc92c700088245a');
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.connect(config.dbUri, { useMongoClient: true })
   .then(() => console.log('SUCCESS'))

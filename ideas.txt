@@ -4,3 +4,5 @@
 4. ignore previous months of availability info. Only take into count current month and all future months (doublecheck)
 
 as soon as listing found - find availability and save! also keep updating progress for UI
+
+- add average income per day among min and max
