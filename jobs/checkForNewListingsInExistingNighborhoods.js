@@ -1,15 +1,28 @@
-const setDate = require('date-fns/set_date');
 const mongoose = require('mongoose');
 const config = require('../config');
 const Neighborhood = require('../models/neighborhood');
 const Listing = require('../models/listing');
 const scrapeListings = require('../scripts/listingInfoScraper');
 const getListingStartDate = require('../scripts/reviewsScraper');
+const ListingAvailability = require('../models/listingAvailability');
+const persistListingAvailabilities = require('../routes/pricePrediction/helpers/persistListingAvailabilities');
+const { getAvailabilityUrl } = require('../scripts/utils');
+const getListingAvailabilities = require('../scripts/listingAvailabilityScraper');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect(config.dbUri, { useMongoClient: true })
   .then(() => console.log('SUCCESS'))
   .catch(err => console.log(err));
+
+function getYearAndMonthForAirbnbUrl() {
+  const today = new Date();
+  today.setMonth(today.getMonth() + 1);
+
+  return {
+    year: today.getFullYear(),
+    month: today.getMonth(),
+  };
+}
 
 (async () => {
   const neighborhoods = await Neighborhood.find();
@@ -32,12 +45,30 @@ mongoose.connect(config.dbUri, { useMongoClient: true })
 
         console.log(`Got new listing: ${listing.id}`);
 
-        await Listing.create({
+        const persistedListing = await Listing.create({
           ...listing,
           neighborhood_id: neighborhood._id,
           listing_start_date: listingStartDate,
-          availability_checked_at: null,
+          availability_checked_at: new Date(),
         });
+
+        const availabilityUrl = getAvailabilityUrl({ listingId: persistedListing.id, ...getYearAndMonthForAirbnbUrl() });
+
+        try {
+          const availabilities = await getListingAvailabilities(availabilityUrl);
+
+          try {
+            await persistListingAvailabilities({
+              availabilities,
+              listingId: persistedListing._id,
+              neighborhoodId: neighborhood._id
+            });
+          } catch (error) {
+            console.log(`checkForNewListingsInExistingNighborhoods.js:persistListingAvailabilities: ${error}`);
+          }
+        } catch (error) {
+          console.log(`checkForNewListingsInExistingNighborhoods.js:getListingAvailabilities: ${error}`);
+        }
       }
     }
   }
