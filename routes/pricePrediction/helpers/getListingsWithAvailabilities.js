@@ -51,7 +51,6 @@ module.exports = async ({ listings, neighborhoodId }) => {
     return [];
   }
 
-  const availabilityDateKey = format(new Date(), 'MMMM-YYYY');
   let listingsWithAvailabilities = [];
 
   while (listings.length) {
@@ -72,7 +71,7 @@ module.exports = async ({ listings, neighborhoodId }) => {
       .sort('date')
       .select('available date price -_id');
 
-    if (!listingAvailabilities.length) {
+    if (!listingAvailabilities || !listingAvailabilities.length) {
       const availabilityUrl = getAvailabilityUrl({ listingId: id, ...getYearAndMonthForAirbnbUrl() });
 
       try {
@@ -96,14 +95,22 @@ module.exports = async ({ listings, neighborhoodId }) => {
     }
 
     listingAvailabilities = uniqBy(listingAvailabilities, ({ date }) => date.toString());
+
+    const currentMonthAvailabilities = format(new Date(), 'MMMM-YYYY');
+    const nextMonthAvailabilities = format((new Date()).setMonth((new Date()).getMonth() + 1), 'MMMM-YYYY');
     const agregatedAvailabilities = getAgregatedAvailabilities(listingAvailabilities);
+    const agregatedAvailability = agregatedAvailabilities[currentMonthAvailabilities] || agregatedAvailabilities[nextMonthAvailabilities];
+
+    if (!agregatedAvailability) {
+      continue;
+    }
 
     const {
       nativeAdjustedPriceTotal,
       nativePriceTotal,
       nativeCurrency,
       availabilities,
-    } = agregatedAvailabilities[availabilityDateKey];
+    } = agregatedAvailability;
 
     const listingWithAvailability = {
       bedrooms,
