@@ -1,5 +1,6 @@
 # Setting up ubuntu DIGITALOCEAN
-
+- `cat ~/.ssh/id_rsa.pub | ssh root@[your.ip.address.here] "cat >> ~/.ssh/authorized_keys"` - to set key on remote
+- https://www.digitalocean.com/community/tutorials/how-to-use-ssh-keys-with-digitalocean-droplets
 1. Create droplet with preferred specs
 2. Add ssh key to enable ssh
 3. Ssh into droplet and create new user - `adduser username`
@@ -184,14 +185,3 @@ net:
 1. refer to https://www.digitalocean.com/community/tutorials/how-to-back-up-restore-and-migrate-a-mongodb-database-on-ubuntu-14-04
 2. copying files from local to remote example: `scp metabnb.zip daniel@159.89.11.146:/home/daniel/`
 3. restore mongo from dump: `sudo mongorestore -d metabnb -u 'daniel' --authenticationDatabase metabnb -p 'password' ./metabnb/`
-
-## Getting listings
-```
-Array.from(new Set(Array.from($0.getElementsByTagName('tr')).map(tr => tr.firstElementChild.innerText))).forEach((branch) => {
- fetch(`http://localhost:3030/1984/scrape-listings?city=london&neighborhood=${branch.toLowerCase()}`, {mode: 'cors'});
-});
-```
-where `$0` is `table body` of all neighborhoods
-
-1. London all branches / sub branches - https://en.wikipedia.org/wiki/List_of_areas_of_London
-1.2 London all branches / sub branches - https://en.wikipedia.org/wiki/List_of_London_Underground_stations

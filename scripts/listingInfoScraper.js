@@ -90,7 +90,7 @@ module.exports = async function scrapeListings({ suburb, socket, bedrooms = null
 
       foundListings = [...foundListings, ...listings];
 
-      console.log(`got ${foundListings.length} listings for ${suburb}`);
+      console.log(`found ${foundListings.length} listings for ${suburb}`);
 
       if (socket) {
         socket.emit('getListings:loadingInfo', {

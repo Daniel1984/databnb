@@ -43,7 +43,7 @@ function getYearAndMonthForAirbnbUrl() {
           console.log(`persistListingsWithAvailabilities.js:getListingStartDate: ${error}`);
         }
 
-        console.log(`Got new listing: ${listing.id}`);
+        console.log(`Found new listing: ${listing.id}`);
 
         const persistedListing = await Listing.create({
           ...listing,
