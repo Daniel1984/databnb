@@ -1,8 +1,6 @@
-const Neighborhood = require('../../models/neighborhood');
 const scrapeListingsInfo = require('../../scripts/listingInfoScraper');
 const getListingsWithAvailabilities = require('./helpers/getListingsWithAvailabilities');
 const getListingsByLocation = require('./helpers/getListingsByLocation');
-// const getListingsByNeighborhood = require('./helpers/getListingsByNeighborhood');
 const persistListingsWithAvailabilities = require('./helpers/persistListingsWithAvailabilities');
 const getOrCreateNeighborhood = require('./helpers/getOrCreateNeighborhood');
 
@@ -11,18 +9,10 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
   let neighborhood;
 
   try {
-    neighborhood = await Neighborhood.findOne({ name: address });
+    neighborhood = await getOrCreateNeighborhood(address);
   } catch (error) {
-    console.log(`pricePrediction.js:Neighborhood.findOne: ${error}`);
+    console.log(`pricePrediction.js:getOrCreateNeighborhood: ${error}`);
   }
-
-  // if (neighborhood) {
-  //   try {
-  //     listings = await getListingsByNeighborhood({ neighborhoodId: neighborhood._id, bedrooms });
-  //   } catch (error) {
-  //     console.log(`pricePrediction.js:getListingsByNeighborhood: ${error}`);
-  //   }
-  // }
 
   if (!listings.length) {
     try {
@@ -41,8 +31,6 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
       console.log(`pricePrediction.js:getListingsWithAvailabilities: ${error}`);
     }
   }
-
-  neighborhood = await getOrCreateNeighborhood(address);
 
   try {
     listings = await scrapeListingsInfo({ suburb: neighborhood.name, socket, bedrooms });

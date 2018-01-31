@@ -9,6 +9,7 @@ const persistListingAvailabilities = require('../pricePrediction/helpers/persist
 
 function getYearAndMonthForAirbnbUrl() {
   const today = new Date();
+  today.setDate(1);
   today.setMonth(today.getMonth() + 1);
 
   return {

@@ -6,6 +6,7 @@ const ListingAvailability = require('../../../models/listingAvailability');
 
 function getYearAndMonthForAirbnbUrl() {
   const today = new Date();
+  today.setDate(1);
   today.setMonth(today.getMonth() + 1);
 
   return {
