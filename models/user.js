@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const subscriberSchema = new Schema({
+const userSchema = new Schema({
   email: {
     type: String,
     unique: true,
@@ -26,8 +26,10 @@ const subscriberSchema = new Schema({
   fullName: { type: String, default: null },
   address: { type: String, default: null },
   confirmedEmail: { type: Boolean, default: false },
+  plan: { type: String, default: 'free' },
+  planUpdatedAt:  { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: null }
+  updatedAt: { type: Date, default: null },
 });
 
-module.exports = mongoose.model('Subscriber', subscriberSchema);
+module.exports = mongoose.model('User', userSchema);

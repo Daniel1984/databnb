@@ -4,7 +4,6 @@ const Neighborhood = require('../models/neighborhood');
 const Listing = require('../models/listing');
 const scrapeListings = require('../scripts/listingInfoScraper');
 const getListingStartDate = require('../scripts/reviewsScraper');
-const ListingAvailability = require('../models/listingAvailability');
 const persistListingAvailabilities = require('../routes/pricePrediction/helpers/persistListingAvailabilities');
 const { getAvailabilityUrl } = require('../scripts/utils');
 const getListingAvailabilities = require('../scripts/listingAvailabilityScraper');

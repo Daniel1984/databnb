@@ -112,7 +112,7 @@ module.exports = async ({ listings, neighborhoodId }) => {
       nativeCurrency,
       availabilities,
     } = agregatedAvailability;
-
+    console.log(availabilities)
     const listingWithAvailability = {
       bedrooms,
       reviews_count,

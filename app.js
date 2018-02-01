@@ -8,9 +8,11 @@ const cors = require('cors');
 const bugsnag = require("bugsnag");
 const config = require('./config');
 const robots = require('./routes/robots/robots');
-const scraper = require('./routes/scraper/scraper');
 const pricePrediction = require('./routes/pricePrediction/pricePrediction');
 const subscribe = require('./routes/subscribe/subscribe');
+const registrationHandler = require('./routes/registrationHandler/registrationHandler');
+const loginHandler = require('./routes/loginHandler/loginHandler');
+const meHandler = require('./routes/meHandler/meHandler');
 
 bugsnag.register('6ecefaae2b572d031cc92c700088245a');
 
@@ -29,12 +31,14 @@ app.set('view engine', 'pug');
 
 app.use(cors());
 app.use(logger('dev'));
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use('/robots.txt', robots);
-app.use('/1984', scraper);
+app.use('/register', registrationHandler);
+app.use('/login', loginHandler);
+app.use('/me', meHandler);
 app.use('/price-prediction', pricePrediction);
 app.use('/subscribe', subscribe);
 
