@@ -75,5 +75,5 @@ function getYearAndMonthForAirbnbUrl() {
 
   console.log('Done!');
   await mongoose.disconnect();
-  process.exit(0);
+  // process.exit(0);
 })()
