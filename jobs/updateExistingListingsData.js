@@ -25,13 +25,13 @@ function getYearAndMonthForAirbnbUrl() {
 }
 
 (async () => {
-  const neighborhoods = await Neighborhood
-    .find({
-      $or: [
-        { listingsScrapedAt: { $lte: setDate(new Date(), (new Date()).getDate() - 7) } },
-        { listingsScrapedAt: { $eq: null } }
-      ]
-    });
+  const neighborhoods = await Neighborhood.find();
+    // .find({
+    //   $or: [
+    //     { listingsScrapedAt: { $lte: setDate(new Date(), (new Date()).getDate() - 7) } },
+    //     { listingsScrapedAt: { $eq: null } }
+    //   ]
+    // });
 
   while (neighborhoods.length) {
     const neighborhood = neighborhoods.shift();
