@@ -41,7 +41,7 @@ function getYearAndMonthForAirbnbUrl() {
       const listing = listings.shift();
       const availabilityUrl = getAvailabilityUrl({ listingId: listing.id, ...getYearAndMonthForAirbnbUrl() });
 
-      console.log(`Updating listing: ${listing._id}`);
+      console.log(`Updating listing: ${listing._id}, neighborhoods left: ${neighborhoods.length}`);
 
       try {
         const availabilities = await getListingAvailabilities(availabilityUrl);

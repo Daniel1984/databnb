@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
       { expiresIn: 86400 } // expires in 24 hours
     );
 
-    res.status(200).json({ auth: true, token });
+    res.status(200).json({ token });
   } catch (error) {
     res.status(500).send({ err: 'server error' });
   }
