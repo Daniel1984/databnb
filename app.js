@@ -10,6 +10,7 @@ const config = require('./config');
 const robots = require('./routes/robots/robots');
 const pricePrediction = require('./routes/pricePrediction/pricePrediction');
 const subscribe = require('./routes/subscribe/subscribe');
+const subscribeConfirmHandler = require('./routes/subscribeConfirmHandler/subscribeConfirmHandler');
 const registrationHandler = require('./routes/registrationHandler/registrationHandler');
 const loginHandler = require('./routes/loginHandler/loginHandler');
 const meHandler = require('./routes/meHandler/meHandler');
@@ -41,6 +42,7 @@ app.use('/login', loginHandler);
 app.use('/me', meHandler);
 app.use('/price-prediction', pricePrediction);
 app.use('/subscribe', subscribe);
+app.use('/confirm-subscriber', subscribeConfirmHandler);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
