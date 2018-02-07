@@ -23,6 +23,10 @@ router.post('/', async (req, res, nex) => {
     return res.status(403).json({ err: 'All fields required' });
   }
 
+  if (password.length < 6) {
+    return res.status(404).json({ err: 'Password must contain at least 6 characters' });
+  }
+
   const persistedUser = await User.findOne({ email });
   if (persistedUser) {
     return res.status(403).json({ err: `User with ${persistedUser.email} email address is already registered.`});
@@ -31,7 +35,7 @@ router.post('/', async (req, res, nex) => {
   const hashedPassword = bcrypt.hashSync(password, 8);
 
   try {
-    const user = await User.create({ email, password : hashedPassword });
+    const user = await User.create({ email, password: hashedPassword });
     emailVerificationRequest({ to: user.email, url: `${apiUrl}/confirm-user/${user._id}` });
     res.status(200).json({ msg: 'OK' });
   } catch (error) {

@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../../models/user');
-const sendEmail = require('../../services/mailgun');
 const { clientUrl } = require('../../config');
 
 router.get('/', (req, res) => {
