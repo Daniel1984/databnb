@@ -15,6 +15,7 @@ const registerConfirmHandler = require('./routes/registerConfirmHandler/register
 const registrationHandler = require('./routes/registrationHandler/registrationHandler');
 const loginHandler = require('./routes/loginHandler/loginHandler');
 const meHandler = require('./routes/meHandler/meHandler');
+const requestPasswordResetHandler = require('./routes/requestPasswordResetHandler/requestPasswordResetHandler');
 
 bugsnag.register('6ecefaae2b572d031cc92c700088245a');
 
@@ -45,6 +46,7 @@ app.use('/price-prediction', pricePrediction);
 app.use('/subscribe', subscribe);
 app.use('/confirm-subscriber', subscribeConfirmHandler);
 app.use('/confirm-user', registerConfirmHandler);
+app.use('/request-password-reset', requestPasswordResetHandler);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

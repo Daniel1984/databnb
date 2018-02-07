@@ -15,12 +15,16 @@ router.post('/', async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({ auth: false, token: null });
+      return res.status(401).json({ token: null });
+    }
+
+    if (!user.confirmedEmail) {
+      return res.status(403).json({ err: 'You must first confirm your email address' });
     }
 
     const validPassword = bcrypt.compareSync(password, user.password);
     if (!validPassword) {
-      return res.status(401).json({ auth: false, token: null });
+      return res.status(401).json({ token: null });
     }
 
     const token = jwt.sign(
