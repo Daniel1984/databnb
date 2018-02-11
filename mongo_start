@@ -1,3 +1,3 @@
 #!/bin/bash
-mkdir -p /Volumes/FLASH/data
+mkdir -p ./data
 mongod --config ./mongod.conf
