@@ -30,14 +30,19 @@
 4. Install `pm2`
 5. Start your app automatically when server restarts - `pm2 startup` and follow instructions
 
+## Setup locales
+- https://github.com/certbot/certbot/issues/2883#issuecomment-216427925
+
 ## Instal letsencrypt
 1. `sudo apt-get install bc`
 2. `sudo git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt`
 3. Make sure you have your domain pointing to right ip by running `dig +short your.domain.com`
 
 ## Generate SSL certificates
-1. `cd /opt/letsencrypt`
-2. `./certbot-auto certonly --standalone`
+1. `sudo systemctl stop apache2.service`
+2. `sudo systemctl stop nginx`
+3. `cd /opt/letsencrypt`
+4. `sudo ./certbot-auto certonly --standalone`
 
 ## Setup auto cert renewal
 1. `sudo crontab -e` - this will open cron config. At the bottom enter following: `00 1 * * 1 /opt/letsencrypt/certbot-auto renew >> /var/log/letsencrypt-renewal.log` and `30 1 * * 1 /bin/systemctl reload nginx`. This will try to renew certificates every monday 1am and restart nginx
