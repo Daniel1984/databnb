@@ -30,6 +30,7 @@ const userSchema = new Schema({
   planUpdatedAt:  { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: null },
+  activeAccount: { type: Boolean, default: true },
 });
 
 module.exports = mongoose.model('User', userSchema);

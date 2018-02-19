@@ -15,6 +15,7 @@ const registerConfirmHandler = require('./routes/registerConfirmHandler/register
 const registrationHandler = require('./routes/registrationHandler/registrationHandler');
 const loginHandler = require('./routes/loginHandler/loginHandler');
 const meHandler = require('./routes/meHandler/meHandler');
+const deactivateUserHandler = require('./routes/deactivateUserHandler/deactivateUserHandler');
 const requestPasswordResetHandler = require('./routes/requestPasswordResetHandler/requestPasswordResetHandler');
 const changePasswordHandler = require('./routes/changePasswordHandler/changePasswordHandler');
 
@@ -49,6 +50,7 @@ app.use('/confirm-subscriber', subscribeConfirmHandler);
 app.use('/confirm-user', registerConfirmHandler);
 app.use('/request-password-reset', requestPasswordResetHandler);
 app.use('/change-password', changePasswordHandler);
+app.use('/deactivate-account', deactivateUserHandler);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
