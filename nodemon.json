@@ -1,8 +1,8 @@
 {
   "verbose": true,
   "ignore": [
+    "mongodb",
     "node_modules",
-    "mongologs",
-    "data"
+    "mongologs"
   ]
 }

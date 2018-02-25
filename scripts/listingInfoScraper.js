@@ -1,3 +1,4 @@
+const includes = require('lodash/includes');
 const { promisify } = require('util');
 const request = require('request');
 const requestPromise = promisify(request);
@@ -11,31 +12,35 @@ function getListingsInfoUrl({ suburb }) {
 
   return [
     'https://www.airbnb.com/api/v2/explore_tabs',
-    '?version=1.3.2',
+    '?version=1.3.4',
     '&_format=for_explore_search_web',
     '&experiences_per_grid=20',
-    '&items_per_grid=50',
-    '&guidebooks_per_grid=0',
-    '&auto_ib=true',
+    '&items_per_grid=18',
+    '&guidebooks_per_grid=20',
+    '&auto_ib=false',
     '&fetch_filters=true',
-    '&is_guided_search=false',
-    '&is_new_trips_cards_experiment=true',
-    '&is_new_homes_cards_experiment=false',
+    '&has_zero_guest_treatment=false',
+    '&is_guided_search=true',
+    '&is_new_cards_experiment=true',
     '&luxury_pre_launch=false',
-    '&screen_size=large',
-    '&show_groupings=false',
+    '&query_understanding_enabled=true',
+    '&show_groupings=true',
     '&supports_for_you_v3=true',
     '&timezone_offset=120',
     '&metadata_only=false',
     '&is_standard_search=true',
-    '&selected_tab_id=all_tab',
-    '&tab_id=home_tab',
-    `&location=${location}`,
-    '&federated_search_session_id=e30fad3d-4dfd-4348-b72a-bb2d1f53ca0c',
+    '&tab_id=all_tab',
+    '&refinement_paths%5B%5D=%2Fhomes',
+    '&allow_override%5B%5D=',
+    '&min_beds=0',
+    '&min_bedrooms=1',
+    '&s_tag=7XYmZYoy',
+    '&last_search_session_id=',
+    '&screen_size=medium',
+    `&query=${location}`,
     '&_intents=p1',
-    '&screen_size=large',
     '&key=d306zoyjsyarp7ifhu67rjxn52tv0t20',
-    '&currency=USD',
+    '&currency=EUR',
     '&locale=en'
   ].join('');
 }
@@ -43,10 +48,10 @@ function getListingsInfoUrl({ suburb }) {
 const headers = {
   'authority': 'www.airbnb.com',
   'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
-  'x-csrf-token': 'V4$.airbnb.com$HxMVGU-RyKM$1Zwcm1JOrU3Tn0Y8oRrvN3Hc67ZQSbOKVnMjCRtZPzQ=',
+  'x-csrf-token': 'V4$.airbnb.com$VYhiIxA5BBE$iaoQiR0y-UkJXacLBo-WHgKkTpI2ntrIwruMInr1yQI=',
 };
 
-module.exports = async function scrapeListings({ suburb, socket, bedrooms = null }) {
+module.exports = async function scrapeListings({ suburb, socket, bedrooms = null, persistedListingsIds }) {
   let hasMoreListingsToFetch = true;
   let sectionOffset = 0
   let foundListings = [];
@@ -77,10 +82,20 @@ module.exports = async function scrapeListings({ suburb, socket, bedrooms = null
 
       const {
         sections,
-        pagination_metadata: { has_next_page, section_offset },
-      } = explore_tabs.filter(tab => (tab.tab_id === 'home_tab' || tab.tab_name === 'Homes'))[0];
+        pagination_metadata: { has_next_page },
+      } = explore_tabs.filter(({ tab_id, tab_name }) => (
+        tab_id === 'home_tab' || tab_name === 'Homes' || tab_id === 'all_tab'
+      ))[0];
 
-      let { listings = [] } = sections[0];
+      let listings = [];
+
+      sections.forEach((section) => {
+        listings = [...listings, ...(section.listings || [])];
+      });
+
+      if (persistedListingsIds.length) {
+        listings = listings.filter(({ listing: { id } }) => !includes(persistedListingsIds, id));
+      }
 
       scannedProperties += listings.length;
 
@@ -94,12 +109,12 @@ module.exports = async function scrapeListings({ suburb, socket, bedrooms = null
 
       if (socket) {
         socket.emit('getListings:loadingInfo', {
-          msg: !foundListings.length ? `Scanned ${scannedProperties} properties in area` : `Found ${foundListings.length} properties`,
+          msg: 'Scanning area for properties',
         });
       }
 
       hasMoreListingsToFetch = has_next_page || false;
-      sectionOffset = section_offset;
+      sectionOffset += 1;
 
       if (foundListings.length > MAX_LISTINGS_PER_LOCATION) {
         hasMoreListingsToFetch = false;
