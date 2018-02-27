@@ -29,7 +29,7 @@ function getListingsInfoUrl({ suburb }) {
     '&timezone_offset=120',
     '&metadata_only=false',
     '&is_standard_search=true',
-    '&tab_id=all_tab',
+    '&tab_id=home_tab',
     '&refinement_paths%5B%5D=%2Fhomes',
     '&allow_override%5B%5D=',
     '&min_beds=0',
@@ -39,6 +39,7 @@ function getListingsInfoUrl({ suburb }) {
     '&screen_size=medium',
     `&query=${location}`,
     '&_intents=p1',
+    '&federated_search_session_id=a50200a5-ac1b-4f52-8070-acd28ecdc3fb',
     '&key=d306zoyjsyarp7ifhu67rjxn52tv0t20',
     '&currency=EUR',
     '&locale=en'
@@ -56,7 +57,6 @@ module.exports = async function scrapeListings({ suburb, socket, bedrooms = null
   let sectionOffset = 0
   let foundListings = [];
   let scrapeAttempt = 0;
-  let scannedProperties = 0;
 
   while (hasMoreListingsToFetch) {
     const listingsInfoUrl = getListingsInfoUrl({ suburb });
@@ -96,8 +96,6 @@ module.exports = async function scrapeListings({ suburb, socket, bedrooms = null
       if (persistedListingsIds.length) {
         listings = listings.filter(({ listing: { id } }) => !includes(persistedListingsIds, id));
       }
-
-      scannedProperties += listings.length;
 
       if (bedrooms !== null) {
         listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
