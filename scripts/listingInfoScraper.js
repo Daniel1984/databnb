@@ -93,7 +93,7 @@ module.exports = async function scrapeListings({ suburb, socket, bedrooms = null
         listings = [...listings, ...(section.listings || [])];
       });
 
-      if (persistedListingsIds.length) {
+      if (persistedListingsIds && persistedListingsIds.length) {
         listings = listings.filter(({ listing: { id } }) => !includes(persistedListingsIds, id));
       }
 

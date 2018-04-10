@@ -22,7 +22,7 @@ router.get('/', verifyToken, async (req, res, next) => {
 
 router.put('/:id', verifyToken, async (req, res, next) => {
   try {
-    const user = await User.findByIdAndUpdate(req.userId, { ...req.body }).select('-password -__v');
+    const user = await User.findByIdAndUpdate(req.userId, { ...req.body }, { runValidators: true }).select('-password -__v');
 
     if (!user) {
       return res.status(404).json({ err: 'user not found' });
