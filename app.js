@@ -23,7 +23,7 @@ bugsnag.register('6ecefaae2b572d031cc92c700088245a');
 
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect(config.dbUri, { useMongoClient: true })
+mongoose.connect(config.dbUri)
   .then(() => console.log('SUCCESS'))
   .catch(err => console.log(err));
 

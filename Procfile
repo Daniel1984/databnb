@@ -1,2 +1,2 @@
-databnb: nodemon ./bin/www
+databnb: nodemon ./bin/www --config nodemon.json
 mongo: ./mongo_start
