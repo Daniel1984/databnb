@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const bugsnag = require("bugsnag");
 const config = require('./config');
-const robots = require('./routes/robots/robots');
 const pricePrediction = require('./routes/pricePrediction/pricePrediction');
 const subscribe = require('./routes/subscribe/subscribe');
 const subscribeConfirmHandler = require('./routes/subscribeConfirmHandler/subscribeConfirmHandler');
@@ -18,6 +17,7 @@ const meHandler = require('./routes/meHandler/meHandler');
 const deactivateUserHandler = require('./routes/deactivateUserHandler/deactivateUserHandler');
 const requestPasswordResetHandler = require('./routes/requestPasswordResetHandler/requestPasswordResetHandler');
 const changePasswordHandler = require('./routes/changePasswordHandler/changePasswordHandler');
+const airbnbPropertyHandler = require('./routes/airbnbPropertyHandler/airbnbPropertyHandler');
 
 bugsnag.register('6ecefaae2b572d031cc92c700088245a');
 
@@ -36,7 +36,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use('/robots.txt', robots);
 app.use('/register', registrationHandler);
 app.use('/login', loginHandler);
 app.use('/me', meHandler);
@@ -47,6 +46,7 @@ app.use('/confirm-user', registerConfirmHandler);
 app.use('/request-password-reset', requestPasswordResetHandler);
 app.use('/change-password', changePasswordHandler);
 app.use('/deactivate-account', deactivateUserHandler);
+app.use('/property', airbnbPropertyHandler);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

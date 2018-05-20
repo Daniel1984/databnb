@@ -23,6 +23,7 @@ const listingSchema = new Schema({
   listing_start_date: { type: Date, default: null },
   availability_checked_at: { type: Date, default: null },
   neighborhood_id: { type: Schema.Types.ObjectId, ref: 'Neighborhood' },
+  user_id: { type: Schema.Types.ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: null },
 });
