@@ -5,24 +5,13 @@ const Neighborhood = require('../models/neighborhood');
 const Listing = require('../models/listing');
 const ListingAvailability = require('../models/listingAvailability');
 const persistListingAvailabilities = require('../routes/pricePrediction/helpers/persistListingAvailabilities');
-const { getAvailabilityUrl } = require('../scripts/utils');
+const { getAvailabilityUrl, getYearAndMonthForAirbnbUrl} = require('../scripts/utils');
 const getListingAvailabilities = require('../scripts/listingAvailabilityScraper');
 
 mongoose.Promise = require('bluebird');
 mongoose.connect(config.dbUri, { useMongoClient: true })
   .then(() => console.log('SUCCESS'))
   .catch(err => console.log(err));
-
-function getYearAndMonthForAirbnbUrl() {
-  const today = new Date();
-  today.setDate(1);
-  today.setMonth(today.getMonth() + 1);
-
-  return {
-    year: today.getFullYear(),
-    month: today.getMonth(),
-  };
-}
 
 (async () => {
   const neighborhoods = await Neighborhood.find();

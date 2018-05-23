@@ -1,19 +1,8 @@
 const format = require('date-fns/format');
 const uniqBy = require('lodash/uniqBy');
-const { getAvailabilityUrl } = require('../../../scripts/utils');
+const { getAvailabilityUrl, getYearAndMonthForAirbnbUrl } = require('../../../scripts/utils');
 const getListingAvailabilities = require('../../../scripts/listingAvailabilityScraper');
 const ListingAvailability = require('../../../models/listingAvailability');
-
-function getYearAndMonthForAirbnbUrl() {
-  const today = new Date();
-  today.setDate(1);
-  today.setMonth(today.getMonth() + 1);
-
-  return {
-    year: today.getFullYear(),
-    month: today.getMonth(),
-  };
-}
 
 function getAgregatedAvailabilities(availabilities) {
   return availabilities.reduce((accumulator, { date, available, price }) => {

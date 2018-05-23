@@ -1,20 +1,9 @@
 const getListingStartDate = require('../../../scripts/reviewsScraper');
-const { getAvailabilityUrl } = require('../../../scripts/utils');
+const { getAvailabilityUrl, getYearAndMonthForAirbnbUrl } = require('../../../scripts/utils');
 const getListingAvailabilities = require('../../../scripts/listingAvailabilityScraper');
 const createOrUpdateListing = require('./createOrUpdateListing');
 const persistListingAvailabilities = require('./persistListingAvailabilities');
 const getListingsWithAvailabilities = require('./getListingsWithAvailabilities');
-
-function getYearAndMonthForAirbnbUrl() {
-  const today = new Date();
-  today.setDate(1);
-  today.setMonth(today.getMonth() + 1);
-
-  return {
-    year: today.getFullYear(),
-    month: today.getMonth(),
-  };
-}
 
 module.exports = function persistListingsWithAvailabilities({ listings, neighborhood, socket }) {
   return new Promise(async (resolve, reject) => {
