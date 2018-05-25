@@ -1,7 +1,7 @@
 const express = require('express');
 const Listing = require('../../models/listing');
 const verifyToken = require('../../middleware/verifyToken');
-const getOrScrapeProperty = require('./helpers/getOrScrapeProperty');
+const getOrScrapeProperty = require('./helpers/getOrScrapeListing');
 
 const router = express.Router();
 
@@ -25,11 +25,8 @@ router.get('/:listingId', verifyToken, async (req, res, next) => {
 
 router.post('/', verifyToken, async (req, res, next) => {
   try  {
-    // will not work
-    // need form with address, store property as separate fro airbnb entity
-    // let ser insert bedroom count, star rating
-    await getOrScrapeProperty({ listingId: req.body.propertyId, userId: req.userId });
-    res.status(200).json({});
+    const listing = await getOrScrapeProperty({ listingId: req.body.propertyId, userId: req.userId });
+    res.status(200).json(listing);
   } catch (error) {
     res.status(400).json({ err: true, error });
   }
