@@ -21,6 +21,8 @@ module.exports = async function scrapeListingInfo(listingId) {
                 person_capacity,
                 bed_label,
                 bedroom_label,
+                name,
+                photos,
                 p3_event_data_logging: {
                   picture_count,
                   room_type,
@@ -42,6 +44,8 @@ module.exports = async function scrapeListingInfo(listingId) {
       person_capacity,
       picture_count,
       room_type,
+      name,
+      picture_url: !!photos.length ? photos[0].large : '',
       bedrooms: parseFloat(bedroom_label),
       beds: parseInt(bed_label),
     };
