@@ -12,12 +12,12 @@ mongoose.connect(process.env.DB_URI, { useMongoClient: true })
 
 (async () => {
   const neighborhoods = await Neighborhood.find();
-    // .find({
-    //   $or: [
-    //     { listingsScrapedAt: { $lte: setDate(new Date(), (new Date()).getDate() - 7) } },
-    //     { listingsScrapedAt: { $eq: null } }
-    //   ]
-    // });
+  // .find({
+  //   $or: [
+  //     { listingsScrapedAt: { $lte: setDate(new Date(), (new Date()).getDate() - 7) } },
+  //     { listingsScrapedAt: { $eq: null } }
+  //   ]
+  // });
 
   while (neighborhoods.length) {
     const neighborhood = neighborhoods.shift();

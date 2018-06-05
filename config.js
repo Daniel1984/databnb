@@ -1,18 +1,25 @@
-const DEFAULT_ENV = 'local';
+require('dotenv').config();
 
 module.exports = {
-  local: {
-    dbUri: 'mongodb://localhost/metabnb-local',
-    apiUrl: 'http://localhost:3030',
-    clientUrl: 'http://localhost:8080',
-    mailgunUri: 'https://api:key-29f9230764201880aab439c452999cca@api.mailgun.net/v3/sandboxbbdfc55446de44ce825880d5ec3f07c1.mailgun.org/messages',
-    tokenKey: '4e04432ac8f5f37fd91aecce7c3a989de5f46ba847a2157cd527c50c5d83ebaf',
+  mongodb: {
+    // TODO Change (or review) the url to your MongoDB:
+    url: process.env.DB_URL,
+
+    // TODO Change this to your database name:
+    databaseName: process.env.DB_NAME,
+
+    // uncomment and edit to specify Mongo client connect options (eg. increase the timeouts)
+    // see https://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html
+    //
+    // options: {
+    //   connectTimeoutMS: 3600000, // 1 hour
+    //   socketTimeoutMS: 3600000, // 1 hour
+    // }
   },
-  production: {
-    dbUri: 'mongodb://daniel:DSvr!l4ezv@94.130.183.7:27017/metabnb',
-    clientUrl: 'https://metabnb.com',
-    apiUrl: 'https://api.metabnb.com',
-    mailgunUri: 'https://api:key-29f9230764201880aab439c452999cca@api.mailgun.net/v3/api.mailgun.net/v3/mg.metabnb.com/messages',
-    tokenKey: '4e04432ac8f5f37fd91aecce7c3a989de5f46ba847a2157cd527c50c5d83ebaf',
-  },
-}[process.env.NODE_ENV || DEFAULT_ENV];
+
+  // The migrations dir, can be an relative or absolute path. Only edit this when really necessary.
+  migrationsDir: 'migrations',
+
+  // The mongodb collection where the applied changes are stored. Only edit this when really necessary.
+  changelogCollectionName: 'changelog',
+};
