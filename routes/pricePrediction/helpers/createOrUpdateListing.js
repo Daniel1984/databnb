@@ -12,6 +12,7 @@ module.exports = async function createOrUpdateListing({ listing, listingStartDat
   if (!persistedListing) {
     persistedListing = await Listing.create({
       ...listing,
+      // geo: [listing.lat, listing.lng],
       neighborhood_id: suburbId,
       listing_start_date: listingStartDate,
       availability_checked_at: Date.now(),

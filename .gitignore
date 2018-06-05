@@ -4,3 +4,4 @@ mongologs
 mongologs
 data
 mongodb
+.env

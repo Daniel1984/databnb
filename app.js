@@ -5,8 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const bugsnag = require("bugsnag");
-const config = require('./config');
+const bugsnag = require('bugsnag');
 const pricePrediction = require('./routes/pricePrediction/pricePrediction');
 const subscribe = require('./routes/subscribe/subscribe');
 const subscribeConfirmHandler = require('./routes/subscribeConfirmHandler/subscribeConfirmHandler');
@@ -19,11 +18,13 @@ const requestPasswordResetHandler = require('./routes/requestPasswordResetHandle
 const changePasswordHandler = require('./routes/changePasswordHandler/changePasswordHandler');
 const airbnbPropertyHandler = require('./routes/airbnbPropertyHandler/airbnbPropertyHandler');
 
+require('dotenv').config();
+
 bugsnag.register('6ecefaae2b572d031cc92c700088245a');
 
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect(config.dbUri)
+mongoose.connect(process.env.DB_URI)
   .then(() => console.log('SUCCESS'))
   .catch(err => console.log(err));
 

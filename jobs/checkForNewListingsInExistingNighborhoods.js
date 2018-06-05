@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const config = require('../config');
 const Neighborhood = require('../models/neighborhood');
 const Listing = require('../models/listing');
 const scrapeListings = require('../scripts/listingInfoScraper');
@@ -9,7 +8,7 @@ const { getAvailabilityUrl, getYearAndMonthForAirbnbUrl } = require('../scripts/
 const getListingAvailabilities = require('../scripts/listingAvailabilityScraper');
 
 mongoose.Promise = require('bluebird');
-mongoose.connect(config.dbUri, { useMongoClient: true })
+mongoose.connect(process.env.DB_URI, { useMongoClient: true })
   .then(() => console.log('SUCCESS'))
   .catch(err => console.log(err));
 
@@ -65,4 +64,4 @@ mongoose.connect(config.dbUri, { useMongoClient: true })
   console.log('Done!');
   await mongoose.disconnect();
   // process.exit(0);
-})()
+})();

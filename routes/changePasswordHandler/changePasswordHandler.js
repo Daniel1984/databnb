@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
-const { apiUrl, clientUrl, tokenKey } = require('../../config');
 
 const router = express.Router();
 
@@ -19,7 +18,7 @@ router.post('/', async (req, res) => {
 
   jwt.verify(
     token,
-    tokenKey,
+    process.env.TOKEN_KEY,
     async (err, { email }) => {
       if (err) {
         return res.status(500).send({ err: 'Expired token, please try resetting your password again' });

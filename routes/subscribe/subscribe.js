@@ -3,7 +3,6 @@ const RateLimit = require('express-rate-limit');
 const router = express.Router();
 const Subscriber = require('../../models/subscriber');
 const sendEmail = require('../../services/mailgun');
-const { apiUrl } = require('../../config');
 
 const createSubscriberReqLimiter = new RateLimit({
   windowMs: 60*60*1000, // 1 hour window
@@ -26,7 +25,7 @@ function emailVerificationRequest({ to, url }) {
 async function handleSubscriber(req, res, next) {
   try {
     const subscriber = await Subscriber.create(req.body);
-    const subscribeUrl = `${apiUrl}/confirm-subscriber/${subscriber._id}`;
+    const subscribeUrl = `${process.env.API_URL}/confirm-subscriber/${subscriber._id}`;
 
     emailVerificationRequest({ to: subscriber.email, url: subscribeUrl });
 

@@ -1,7 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const { tokenKey } = require('../../config');
 const User = require('../../models/user');
 
 const router = express.Router();
@@ -31,7 +30,7 @@ router.post('/', async (req, res) => {
 
     const token = jwt.sign(
       { id: user._id },
-      tokenKey,
+      process.env.TOKEN_KEY,
       { expiresIn: 86400 } // expires in 24 hours
     );
 

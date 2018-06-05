@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
 const sendEmail = require('../../services/mailgun');
-const { apiUrl, clientUrl, tokenKey } = require('../../config');
 
 const router = express.Router();
 
@@ -20,8 +19,8 @@ router.post('/', async (req, res) => {
     return res.status(404).json({ err: 'User not found' });
   }
 
-  const token = jwt.sign({ email: persistedUser.email }, tokenKey, { expiresIn: 86400 });
-  const resetPasswordUrl = `${clientUrl}/change-password?token=${token}`;
+  const token = jwt.sign({ email: persistedUser.email }, process.env.TOKEN_KEY, { expiresIn: 86400 });
+  const resetPasswordUrl = `${process.env.CLIENT_URL}/change-password?token=${token}`;
 
   sendEmail({
     to: persistedUser.email,

@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const User = require('../../models/user');
 const sendEmail = require('../../services/mailgun');
-const { apiUrl } = require('../../config');
 
 const router = express.Router();
 
@@ -36,7 +35,7 @@ router.post('/', async (req, res, nex) => {
 
   try {
     const user = await User.create({ email, password: hashedPassword });
-    emailVerificationRequest({ to: user.email, url: `${apiUrl}/confirm-user/${user._id}` });
+    emailVerificationRequest({ to: user.email, url: `${process.env.API_URL}/confirm-user/${user._id}` });
     res.status(200).json({ msg: 'OK' });
   } catch (error) {
     res.status(500).json({ err: error.errors.email.message });

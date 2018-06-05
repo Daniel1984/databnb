@@ -12,7 +12,7 @@ const listingSchema = new Schema({
   localized_city: { type: String, default: null },
   localized_neighborhood: { type: String, default: null },
   name: { type: String, default: null },
-  neighborhood: { type: String, default: null },
+  // neighborhood: { type: String, default: null },
   person_capacity: { type: Number, default: null },
   picture_url: { type: String, default: null },
   picture_count: { type: Number, default: null },
@@ -26,6 +26,10 @@ const listingSchema = new Schema({
   user_id: { type: Schema.Types.ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: null },
+  // geo: {
+  //   type: [Number],
+  //   index: '2d'
+  // }
 });
 
 module.exports = mongoose.model('Listing', listingSchema);

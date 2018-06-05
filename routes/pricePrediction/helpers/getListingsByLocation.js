@@ -14,6 +14,7 @@ module.exports = function getListingsByLocation({ lat, lng, bedrooms }) {
   const { maxLat, minLat, maxLng, minLng } = getPoitsWithDelta(0.006);
 
   return Listing
+    // .geoSearch({ bedrooms }, { near: [lat, lng], maxDistance: 5 })
     .where('bedrooms').equals(bedrooms)
     .where('lat').gte(minLat).lte(maxLat)
     .where('lng').gte(minLng).lte(maxLng)

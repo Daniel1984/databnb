@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Subscriber = require('../../models/subscriber');
 const sendEmail = require('../../services/mailgun');
-const { apiUrl } = require('../../config');
 
 router.get('/', (req, res) => {
   res.status(404).send('Malformed url, please try again later');
