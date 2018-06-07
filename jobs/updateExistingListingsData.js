@@ -36,7 +36,7 @@ mongoose.connect(process.env.DB_URI, { useMongoClient: true })
           await persistListingAvailabilities({
             availabilities,
             listingId: listing._id,
-            neighborhoodId: listing.neighborhood_id
+            neighborhoodId: listing.neighborhood_id,
           });
         } catch (error) {
           console.log(`persistListingsWithAvailabilities.js:persistListingAvailabilities: ${error}`);

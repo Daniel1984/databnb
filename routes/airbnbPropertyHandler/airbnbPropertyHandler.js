@@ -5,7 +5,7 @@ const getOrScrapeProperty = require('./helpers/getOrScrapeListing');
 
 const router = express.Router();
 
-router.get('/', verifyToken, async (req, res, next) => {
+router.get('/', verifyToken, async (req, res) => {
   try {
     const listings = await Listing.find({ user_id: req.userId });
     res.status(200).json(listings);
@@ -14,7 +14,7 @@ router.get('/', verifyToken, async (req, res, next) => {
   }
 });
 
-router.get('/:listingId', verifyToken, async (req, res, next) => {
+router.get('/:listingId', verifyToken, async (req, res) => {
   try {
     const listing = await Listing.findById(req.params.listingId);
     res.status(200).json(listing);
@@ -23,8 +23,8 @@ router.get('/:listingId', verifyToken, async (req, res, next) => {
   }
 });
 
-router.post('/', verifyToken, async (req, res, next) => {
-  try  {
+router.post('/', verifyToken, async (req, res) => {
+  try {
     const listing = await getOrScrapeProperty({ listingId: req.body.propertyId, userId: req.userId });
     res.status(200).json(listing);
   } catch (error) {
