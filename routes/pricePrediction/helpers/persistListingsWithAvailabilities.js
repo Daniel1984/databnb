@@ -6,10 +6,10 @@ const persistListingAvailabilities = require('./persistListingAvailabilities');
 const getListingsWithAvailabilities = require('./getListingsWithAvailabilities');
 
 module.exports = function persistListingsWithAvailabilities({ listings, neighborhood, socket }) {
-  return new Promise(async (resolve) => {
+  return new Promise(async (resolve, reject) => {
     const listingsWithAvailabilities = [];
     let analyzedProperties = 0;
-    const totalProperties = listings.length;
+    let totalProperties = listings.length;
 
     while (listings.length) {
       socket.emit('getListings:loadingInfo', {
@@ -45,7 +45,7 @@ module.exports = function persistListingsWithAvailabilities({ listings, neighbor
         await persistListingAvailabilities({
           availabilities,
           listingId: persistedListing._id,
-          neighborhoodId: persistedListing.neighborhood_id,
+          neighborhoodId: persistedListing.neighborhood_id
         });
       } catch (error) {
         console.log(`persistListingsWithAvailabilities.js:persistListingAvailabilities: ${error}`);

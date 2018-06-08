@@ -35,10 +35,6 @@ mongoose.connect(process.env.DB_URI, { useMongoClient: true })
 
         const persistedListing = await Listing.create({
           ...listing,
-          geo: {
-            type: 'Point',
-            coordinates: [listing.lat, listing.lng],
-          },
           neighborhood_id: neighborhood._id,
           listing_start_date: listingStartDate,
           availability_checked_at: new Date(),
@@ -53,7 +49,7 @@ mongoose.connect(process.env.DB_URI, { useMongoClient: true })
             await persistListingAvailabilities({
               availabilities,
               listingId: persistedListing._id,
-              neighborhoodId: neighborhood._id,
+              neighborhoodId: neighborhood._id
             });
           } catch (error) {
             console.log(`checkForNewListingsInExistingNighborhoods.js:persistListingAvailabilities: ${error}`);

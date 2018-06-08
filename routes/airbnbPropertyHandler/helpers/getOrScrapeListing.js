@@ -10,15 +10,7 @@ module.exports = async function getOrScrapeProperty({ listingId, userId }) {
   if (!persistedListing) {
     try {
       const listingData = await scrapeListingInfo(listingId);
-      persistedListing = await Listing.create({
-        ...listingData,
-        id: listingId,
-        user_id: userId,
-        geo: {
-          type: 'Point',
-          coordinates: [listingData.lat, listingData.lng],
-        },
-      });
+      persistedListing = await Listing.create({ id: listingId, ...listingData, user_id: userId });
     } catch (error) {
       persistedListing = await Listing.create({ id: listingId, user_id: userId });
     }
@@ -34,7 +26,7 @@ module.exports = async function getOrScrapeProperty({ listingId, userId }) {
   }
 
   while (availabilities.length) {
-    const { days = [] } = availabilities.shift();
+    let { days = [] } = availabilities.shift();
 
     while (days.length) {
       const day = days.shift();

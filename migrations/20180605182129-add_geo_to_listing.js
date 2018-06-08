@@ -9,14 +9,14 @@ module.exports = {
         {
           $set: {
             geo: {
-              type: 'Point',
-              coordinates: [listing.lat, listing.lng],
+              type: [listing.lat, listing.lng],
+              index: '2d',
             },
           },
+          $unset: { lat: 1, lng: 1 },
         }
       );
     }
-    await db.collection('listings').createIndex({ geo: '2dsphere' });
     next();
   },
 
@@ -28,11 +28,11 @@ module.exports = {
       await db.collection('listings').findOneAndUpdate(
         { id: listing.id },
         {
+          $set: { lat: listing.geo.type[0], lng: listing.geo.type[1] },
           $unset: { geo: 1 },
         }
       );
     }
-    await db.collection('listings').dropIndex({ geo: '2dsphere' });
     next();
   },
 };

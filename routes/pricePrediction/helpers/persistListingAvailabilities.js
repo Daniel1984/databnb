@@ -2,7 +2,7 @@ const ListingAvailability = require('../../../models/listingAvailability');
 
 module.exports = async function persistListingAvailabilities({ availabilities, listingId, neighborhoodId }) {
   while (availabilities.length) {
-    const { days = [] } = availabilities.shift();
+    let { days = [] } = availabilities.shift();
 
     while (days.length) {
       const day = days.shift();
@@ -21,7 +21,7 @@ module.exports = async function persistListingAvailabilities({ availabilities, l
           await ListingAvailability.create({
             ...day,
             listing_id: listingId,
-            neighborhood_id: neighborhoodId,
+            neighborhood_id: neighborhoodId
           });
         }
       } catch (error) {
