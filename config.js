@@ -12,9 +12,14 @@ module.exports = {
     // see https://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html
     //
     // options: {
-    //   connectTimeoutMS: 3600000, // 1 hour
-    //   socketTimeoutMS: 3600000, // 1 hour
-    // }
+    //   // connectTimeoutMS: 3600000, // 1 hour
+    //   // socketTimeoutMS: 3600000, // 1 hour
+    //   authSource: 'metabnb',
+    //   auth: {
+    //     user: process.env.DB_USER,
+    //     password: process.env.DB_PASS,
+    //   },
+    // },
   },
 
   // The migrations dir, can be an relative or absolute path. Only edit this when really necessary.
