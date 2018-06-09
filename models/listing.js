@@ -26,10 +26,19 @@ const listingSchema = new Schema({
   user_id: { type: Schema.Types.ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: null },
-  // geo: {
-  //   type: [Number],
-  //   index: '2d'
-  // }
+  geo: {
+    type: {
+      type: String,
+      enum: ['Point', 'LineString', 'Polygon'],
+      default: 'Point',
+    },
+    coordinates: {
+      type: Schema.Types.Mixed,
+      default: [0, 0],
+    },
+  },
 });
+
+listingSchema.index({ geo: '2dsphere' });
 
 module.exports = mongoose.model('Listing', listingSchema);

@@ -9,18 +9,19 @@ module.exports = {
         {
           $set: {
             geo: {
-              type: [listing.lat, listing.lng],
-              index: '2d',
+              type: 'Point',
+              coordinates: [listing.lng, listing.lat],
             },
           },
-          $unset: { lat: 1, lng: 1 },
         }
       );
     }
+    await db.collection('listings').createIndex({ geo: '2dsphere' });
     next();
   },
 
   down: async (db, next) => {
+    await db.collection('listings').dropIndex({ geo: '2dsphere' });
     const listings = await db.collection('listings').find().toArray();
 
     while (listings.length) {
@@ -28,7 +29,6 @@ module.exports = {
       await db.collection('listings').findOneAndUpdate(
         { id: listing.id },
         {
-          $set: { lat: listing.geo.type[0], lng: listing.geo.type[1] },
           $unset: { geo: 1 },
         }
       );

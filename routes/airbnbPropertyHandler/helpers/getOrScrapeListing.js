@@ -10,9 +10,14 @@ module.exports = async function getOrScrapeProperty({ listingId, userId }) {
   if (!persistedListing) {
     try {
       const listingData = await scrapeListingInfo(listingId);
-      persistedListing = await Listing.create({ id: listingId, ...listingData, user_id: userId });
+      persistedListing = await Listing.create({
+        ...listingData,
+        id: listingId,
+        user_id: userId,
+      });
     } catch (error) {
-      persistedListing = await Listing.create({ id: listingId, user_id: userId });
+      console.log(`getOrScrapeListing: ${error}`);
+      throw error;
     }
   }
 
@@ -22,11 +27,12 @@ module.exports = async function getOrScrapeProperty({ listingId, userId }) {
   try {
     availabilities = await getListingAvailabilities(availabilityUrl);
   } catch (error) {
-    console.log(`persistListingsWithAvailabilities.js:getListingAvailabilities: ${error}`);
+    console.log(`getOrScrapeListing:getListingAvailabilities: ${error}`);
+    throw error;
   }
 
   while (availabilities.length) {
-    let { days = [] } = availabilities.shift();
+    const { days = [] } = availabilities.shift();
 
     while (days.length) {
       const day = days.shift();
@@ -37,10 +43,10 @@ module.exports = async function getOrScrapeProperty({ listingId, userId }) {
           listing_id: persistedListing._id,
         });
       } catch (error) {
-        console.log(`persistListingAvailabilities.js:availability:crud: ${error}`);
+        console.log(`getOrScrapeListing:availability:crud: ${error}`);
       }
     }
   }
 
   return persistedListing;
-}
+};

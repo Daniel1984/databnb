@@ -26,30 +26,33 @@ module.exports = async function scrapeListingInfo(listingId) {
                 p3_event_data_logging: {
                   picture_count,
                   room_type,
-                }
-              }
-            }
-          }
-        }
-      }
+                },
+              },
+            },
+          },
+        },
+      },
     } = json;
 
     return {
       star_rating,
       localized_city,
+      geo: {
+        type: 'Point',
+        coordinates: [lng, lat],
+      },
       lat,
       lng,
       visible_review_count,
       person_capacity,
-      person_capacity,
       picture_count,
       room_type,
       name,
-      picture_url: !!photos.length ? photos[0].large : '',
+      picture_url: photos.length ? photos[0].large : '',
       bedrooms: parseFloat(bedroom_label),
-      beds: parseInt(bed_label),
+      beds: parseInt(bed_label, 10),
     };
   } catch (error) {
     throw error;
   }
-}
+};

@@ -35,12 +35,19 @@ mongoose.connect(process.env.DB_URI, { useMongoClient: true })
 
         const persistedListing = await Listing.create({
           ...listing,
+          geo: {
+            type: 'Point',
+            coordinates: [listing.lng, listing.lat],
+          },
           neighborhood_id: neighborhood._id,
           listing_start_date: listingStartDate,
           availability_checked_at: new Date(),
         });
 
-        const availabilityUrl = getAvailabilityUrl({ listingId: persistedListing.id, ...getYearAndMonthForAirbnbUrl() });
+        const availabilityUrl = getAvailabilityUrl({
+          listingId: persistedListing.id,
+          ...getYearAndMonthForAirbnbUrl(),
+        });
 
         try {
           const availabilities = await getListingAvailabilities(availabilityUrl);
