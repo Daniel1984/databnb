@@ -2,7 +2,7 @@ const addMonths = require('date-fns/add_months');
 const request = require('request');
 const { getReviewsUrl } = require('./utils');
 
-let today = new Date();
+const today = new Date();
 today.setDate(1);
 const MONTH_AGO = addMonths(today, -1);
 
@@ -10,7 +10,7 @@ module.exports = ({ listingId }) => {
   const options = {
     url: getReviewsUrl({ listingId }),
     headers: {
-      'authority': 'www.airbnb.com',
+      authority: 'www.airbnb.com',
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
       'x-csrf-token': 'V4$.airbnb.com$HxMVGU-RyKM$1Zwcm1JOrU3Tn0Y8oRrvN3Hc67ZQSbOKVnMjCRtZPzQ=',
     }

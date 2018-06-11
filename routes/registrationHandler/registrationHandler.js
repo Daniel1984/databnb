@@ -15,7 +15,7 @@ function emailVerificationRequest({ to, url }) {
   });
 }
 
-router.post('/', async (req, res, nex) => {
+router.post('/', async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -28,7 +28,7 @@ router.post('/', async (req, res, nex) => {
 
   const persistedUser = await User.findOne({ email });
   if (persistedUser) {
-    return res.status(403).json({ err: `User with ${persistedUser.email} email address is already registered.`});
+    return res.status(403).json({ err: `User with ${persistedUser.email} email address is already registered.` });
   }
 
   const hashedPassword = bcrypt.hashSync(password, 8);

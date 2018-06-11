@@ -1,5 +1,4 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../../models/user');
 const sendEmail = require('../../services/mailgun');
@@ -26,7 +25,8 @@ router.post('/', async (req, res) => {
     to: persistedUser.email,
     subject: 'Password Reset',
     html: `
-      You can change your password by clicking on this link <a href="${resetPasswordUrl}" target="_blank">${resetPasswordUrl}</a>
+      You can change your password by clicking on this link
+      <a href="${resetPasswordUrl}" target="_blank"> ${resetPasswordUrl}</a>
     `,
   });
 

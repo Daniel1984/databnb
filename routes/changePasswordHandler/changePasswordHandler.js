@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
       }
 
       const hashedPassword = bcrypt.hashSync(password, 8);
-      const user = await User.findOneAndUpdate({ email }, { password: hashedPassword });
+      await User.findOneAndUpdate({ email }, { password: hashedPassword });
       res.status(200).json({ email });
     }
   );

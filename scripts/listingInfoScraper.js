@@ -118,7 +118,9 @@ module.exports = async function scrapeListings({ suburb, socket, bedrooms = null
         hasMoreListingsToFetch = false;
       }
 
-      if (++scrapeAttempt > MAX_SCRAPING_ATTEMPTS) {
+      scrapeAttempt += 1;
+
+      if (scrapeAttempt > MAX_SCRAPING_ATTEMPTS) {
         hasMoreListingsToFetch = false;
       }
     } catch (error) {

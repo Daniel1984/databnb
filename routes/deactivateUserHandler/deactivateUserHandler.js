@@ -4,7 +4,7 @@ const verifyToken = require('../../middleware/verifyToken');
 
 const router = express.Router();
 
-router.post('/', verifyToken, async (req, res, next) => {
+router.post('/', verifyToken, async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.userId, { activeAccount: false });
 

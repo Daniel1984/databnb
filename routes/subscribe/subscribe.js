@@ -5,11 +5,11 @@ const Subscriber = require('../../models/subscriber');
 const sendEmail = require('../../services/mailgun');
 
 const createSubscriberReqLimiter = new RateLimit({
-  windowMs: 60*60*1000, // 1 hour window
+  windowMs: 60 * 60 * 1000, // 1 hour window
   delayAfter: 3, // begin slowing down responses after the first request
-  delayMs: 5*1000, // slow down subsequent responses by 3 seconds per request
+  delayMs: 5 * 1000, // slow down subsequent responses by 3 seconds per request
   max: 6, // start blocking after 5 requests
-  message: "Too many subscriptions created from this IP, please try again after an hour"
+  message: 'Too many subscriptions created from this IP, please try again after an hour',
 });
 
 function emailVerificationRequest({ to, url }) {
@@ -22,7 +22,7 @@ function emailVerificationRequest({ to, url }) {
   });
 }
 
-async function handleSubscriber(req, res, next) {
+async function handleSubscriber(req, res) {
   try {
     const subscriber = await Subscriber.create(req.body);
     const subscribeUrl = `${process.env.API_URL}/confirm-subscriber/${subscriber._id}`;
@@ -31,7 +31,7 @@ async function handleSubscriber(req, res, next) {
 
     res.status(200).json({ msg: 'subscriber added' });
   } catch (error) {
-    res.status(400).json(error)
+    res.status(400).json(error);
   }
 }
 
