@@ -6,7 +6,13 @@ const getListingsByNeighborhood = require('./helpers/getListingsByNeighborhood')
 const persistListingsWithAvailabilities = require('./helpers/persistListingsWithAvailabilities');
 const getOrCreateNeighborhood = require('./helpers/getOrCreateNeighborhood');
 
-module.exports = async function pricePrediction({ lat, lng, bedrooms, address, socket }) {
+module.exports = async function pricePrediction({
+  lat,
+  lng,
+  bedrooms,
+  address,
+  socket,
+}) {
   let neighborhood;
 
   try {
@@ -33,7 +39,10 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
   const persistedListingsIds = persistedListings.map(({ id }) => id);
   if (persistedListings.length) {
     try {
-      const listingsWithAvailabilities = await getListingsWithAvailabilities({ listings: persistedListings, neighborhoodId: neighborhood._id });
+      const listingsWithAvailabilities = await getListingsWithAvailabilities({
+        listings: persistedListings,
+        neighborhoodId: neighborhood._id,
+      });
       socket.emit('listings', { listings: listingsWithAvailabilities });
     } catch (error) {
       console.log(`pricePrediction.js:getListingsWithAvailabilities: ${error}`);
@@ -42,7 +51,12 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
 
   let freshlyScrapedListings = [];
   try {
-    freshlyScrapedListings = await scrapeListingsInfo({ suburb: neighborhood.name, socket, bedrooms, persistedListingsIds });
+    freshlyScrapedListings = await scrapeListingsInfo({
+      suburb: neighborhood.name,
+      socket,
+      bedrooms,
+      persistedListingsIds,
+    });
   } catch (error) {
     console.log(`pricePrediction.js:scrapeListingsInfo: ${error}`);
   }
@@ -54,7 +68,6 @@ module.exports = async function pricePrediction({ lat, lng, bedrooms, address, s
       console.log(`pricePrediction.js:persistListingsWithAvailabilities: ${error}`);
     }
   }
-
 
   socket.emit('reenableForm', true);
 };

@@ -41,7 +41,7 @@ module.exports = async ({ listings, neighborhoodId }) => {
     return [];
   }
 
-  let listingsWithAvailabilities = [];
+  const listingsWithAvailabilities = [];
 
   while (listings.length) {
     const {
@@ -69,7 +69,7 @@ module.exports = async ({ listings, neighborhoodId }) => {
 
         availabilities = availabilities.reduce((acc, { days = [] }) => {
           const amendedDays = days.map(day => ({ ...day, listing_id: _id, neighborhood_id: neighborhoodId }));
-          acc = [...acc, ...amendedDays]
+          acc = [...acc, ...amendedDays];
           return acc;
         }, []);
 
@@ -95,13 +95,7 @@ module.exports = async ({ listings, neighborhoodId }) => {
       continue;
     }
 
-    const {
-      nativeAdjustedPriceTotal,
-      nativePriceTotal,
-      nativeCurrency,
-      availabilities,
-    } = agregatedAvailability;
-
+    const { nativeCurrency, availabilities } = agregatedAvailability;
     const listingWithAvailability = {
       bedrooms,
       reviews_count,
@@ -117,7 +111,7 @@ module.exports = async ({ listings, neighborhoodId }) => {
     };
 
     listingsWithAvailabilities.push(listingWithAvailability);
-  };
+  }
 
   return listingsWithAvailabilities;
-}
+};

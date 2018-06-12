@@ -1,6 +1,7 @@
 const includes = require('lodash/includes');
 const { promisify } = require('util');
 const request = require('request');
+const constants = require('../constants.json');
 const requestPromise = promisify(request);
 
 // safety switch as sometimes it goes into infinite count
@@ -42,19 +43,13 @@ function getListingsInfoUrl({ suburb }) {
     '&federated_search_session_id=a50200a5-ac1b-4f52-8070-acd28ecdc3fb',
     '&key=d306zoyjsyarp7ifhu67rjxn52tv0t20',
     '&currency=EUR',
-    '&locale=en'
+    '&locale=en',
   ].join('');
 }
 
-const headers = {
-  authority: 'www.airbnb.com',
-  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
-  'x-csrf-token': 'V4$.airbnb.com$VYhiIxA5BBE$iaoQiR0y-UkJXacLBo-WHgKkTpI2ntrIwruMInr1yQI=',
-};
-
 module.exports = async function scrapeListings({ suburb, socket, bedrooms = null, persistedListingsIds }) {
   let hasMoreListingsToFetch = true;
-  let sectionOffset = 0
+  let sectionOffset = 0;
   let foundListings = [];
   let scrapeAttempt = 0;
 
@@ -64,7 +59,7 @@ module.exports = async function scrapeListings({ suburb, socket, bedrooms = null
     let body;
 
     try {
-      const res = await requestPromise({ url, headers });
+      const res = await requestPromise({ url, headers: constants.airbnbHeaders });
       body = res.body;
       hasMoreListingsToFetch = res.statusCode < 400;
 
@@ -130,4 +125,4 @@ module.exports = async function scrapeListings({ suburb, socket, bedrooms = null
   }
 
   return foundListings;
-}
+};

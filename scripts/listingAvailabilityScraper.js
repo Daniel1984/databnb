@@ -1,15 +1,9 @@
 const request = require('request');
 const format = require('date-fns/format');
+const constants = require('../constants.json');
 
 module.exports = async (url) => {
-  const options = {
-    url,
-    headers: {
-      authority: 'www.airbnb.com',
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
-      'x-csrf-token': 'V4$.airbnb.com$xBp27wugDFc$rr7NeRdApi5UCVMMsCPyQ2ulkwJ2MHJ1xxq7hv1Fkn8=',
-    },
-  };
+  const options = { url, headers: constants.airbnbHeaders };
 
   return new Promise((resolve) => {
     request(options, (err, res, body) => {

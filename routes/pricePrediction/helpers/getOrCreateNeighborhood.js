@@ -8,4 +8,4 @@ module.exports = async function getOrCreateNeighborhood(name) {
   }
 
   return neighborhood;
-}
+};
