@@ -1,19 +1,11 @@
-const addMonths = require('date-fns/add_months');
-const formatDate = require('date-fns/format');
-const addYears = require('date-fns/add_years')
-const differenceInMonths = require('date-fns/difference_in_months')
-
-// default for range of scraping start from same day last month until today
-const MONTH_AGO = addMonths(new Date(), -1);
-
 module.exports = {
   getNumericValue(str) {
     return Number(`${str}`.split('').filter(n => /^\d+$/.test(n)).join(''));
   },
 
-  getReviewsUrl({ listingId }) {
-    return `https://www.airbnb.com/api/v2/reviews?key=d306zoyjsyarp7ifhu67rjxn52tv0t20&currency=USD&locale=en&listing_id=${listingId}&role=guest&_format=for_p3&_limit=0&_offset=1&_order=language_country`;
-  },
+  getReviewsUrl: ({ listingId }) => (
+    `https://www.airbnb.com/api/v2/reviews?key=d306zoyjsyarp7ifhu67rjxn52tv0t20&currency=USD&locale=en&listing_id=${listingId}&role=guest&_format=for_p3&_limit=0&_offset=1&_order=language_country`
+  ),
 
   getAvailabilityUrl({ listingId, year, month }) {
     month = !month ? 1 : month;
