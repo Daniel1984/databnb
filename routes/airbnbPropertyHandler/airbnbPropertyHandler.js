@@ -24,7 +24,7 @@ router.get('/:listingId', verifyToken, async (req, res, next) => {
 });
 
 router.post('/', verifyToken, async (req, res, next) => {
-  try  {
+  try {
     const listing = await getOrScrapeProperty({ listingId: req.body.propertyId, userId: req.userId });
     res.status(200).json(listing);
   } catch (error) {

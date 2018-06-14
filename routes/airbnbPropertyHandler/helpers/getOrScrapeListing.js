@@ -5,7 +5,7 @@ const ListingAvailability = require('../../../models/listingAvailability');
 const scrapeListingInfo = require('./scrapeListingInfo');
 
 module.exports = async function getOrScrapeProperty({ listingId, userId }) {
-  let persistedListing = await Listing.findOne({ id: listingId });
+  let persistedListing = await Listing.findOneAndUpdate({ id: listingId }, { user_id: userId });
 
   if (!persistedListing) {
     try {

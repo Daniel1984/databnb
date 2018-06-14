@@ -54,6 +54,7 @@ module.exports = async ({ listings, neighborhoodId }) => {
       lat,
       lng,
       listing_start_date,
+      picture_url,
     } = listings.shift();
 
     let listingAvailabilities = await ListingAvailability
@@ -105,6 +106,7 @@ module.exports = async ({ listings, neighborhoodId }) => {
       lng,
       id,
       listing_start_date,
+      picture_url,
       currentDayPrice: getCurrentDayPrice(availabilities),
       currency: nativeCurrency,
       availability: agregatedAvailabilities,
