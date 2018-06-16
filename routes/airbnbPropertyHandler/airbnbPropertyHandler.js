@@ -32,4 +32,13 @@ router.post('/', verifyToken, async (req, res, next) => {
   }
 });
 
+router.put('/removeUser/:listingId', verifyToken, async (req, res) => {
+  try {
+    const listing = await Listing.findByIdAndUpdate(req.params.listingId, { user_id: null });
+    res.status(200).json(listing);
+  } catch (error) {
+    res.status(400).json({ err: true, error });
+  }
+});
+
 module.exports = router;
