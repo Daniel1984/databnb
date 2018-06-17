@@ -7,6 +7,10 @@ const scrapeListingInfo = require('./scrapeListingInfo');
 module.exports = async function getOrScrapeProperty({ listingId, userId }) {
   let persistedListing = await Listing.findOneAndUpdate({ id: listingId }, { user_id: userId });
 
+  if (persistedListing && persistedListing.user_id) {
+    throw new Error('this property is assigned to user');
+  }
+
   if (!persistedListing) {
     try {
       const listingData = await scrapeListingInfo(listingId);
