@@ -5,7 +5,7 @@ const getOrScrapeProperty = require('./helpers/getOrScrapeListing');
 
 const router = express.Router();
 
-router.get('/', verifyToken, async (req, res, next) => {
+router.get('/', verifyToken, async (req, res) => {
   try {
     const listings = await Listing.find({ user_id: req.userId });
     res.status(200).json(listings);
@@ -14,16 +14,28 @@ router.get('/', verifyToken, async (req, res, next) => {
   }
 });
 
-router.get('/:listingId', verifyToken, async (req, res, next) => {
+router.get('/:listingId', verifyToken, async (req, res) => {
   try {
     const listing = await Listing.findById(req.params.listingId);
-    res.status(200).json(listing);
+    const [lng, lat] = listing.geo.coordinates;
+    const nearbyListings = await Listing
+      .where('bedrooms')
+      .equals(listing.bedrooms)
+      .where('geo')
+      .near({
+        center: {
+          type: 'Point',
+          coordinates: [lng, lat],
+        },
+        maxDistance: 500, // maxDinstance is in meters :O
+      });
+    res.status(200).json({ listing, nearbyListings });
   } catch (error) {
     res.status(500).json({ err: 'server error', error });
   }
 });
 
-router.post('/', verifyToken, async (req, res, next) => {
+router.post('/', verifyToken, async (req, res) => {
   try {
     const listing = await getOrScrapeProperty({ listingId: req.body.propertyId, userId: req.userId });
     res.status(200).json(listing);

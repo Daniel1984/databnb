@@ -124,6 +124,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 # Setup mongo:
 > Follow steps from - https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-mongodb-on-ubuntu-16-04
+https://websiteforstudents.com/install-mongodb-on-ubuntu-18-04-lts-beta-server/
 
 1. Ssh into droplet and create new user - `adduser username`
 2. Give user sudo permission - `usermod -aG sudo userName`
