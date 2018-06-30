@@ -1,5 +1,9 @@
 const express = require('express');
+const endOfDay = require('date-fns/end_of_day');
+const startOfDay = require('date-fns/start_of_day');
+const addDays = require('date-fns/add_days');
 const Listing = require('../../models/listing');
+const ListingAvailability = require('../../models/listingAvailability');
 const verifyToken = require('../../middleware/verifyToken');
 const getOrScrapeProperty = require('./helpers/getOrScrapeListing');
 
@@ -15,9 +19,22 @@ router.get('/', verifyToken, async (req, res) => {
 });
 
 router.get('/:listingId', verifyToken, async (req, res) => {
+  function getListingsAvailabilities(nearbyListings) {
+    return Promise.all(nearbyListings.map(({ _id }) => {
+      const today = new Date();
+      return ListingAvailability.find({
+        listing_id: _id,
+        date: {
+          $gte: startOfDay(today),
+          $lte: endOfDay(addDays(today, 5)),
+        },
+      });
+    }));
+  }
+
   try {
     const listing = await Listing.findById(req.params.listingId);
-    const [lng, lat] = listing.geo.coordinates;
+
     const nearbyListings = await Listing
       .where('bedrooms')
       .equals(listing.bedrooms)
@@ -25,11 +42,18 @@ router.get('/:listingId', verifyToken, async (req, res) => {
       .near({
         center: {
           type: 'Point',
-          coordinates: [lng, lat],
+          coordinates: listing.geo.coordinates,
         },
-        maxDistance: 500, // maxDinstance is in meters :O
+        maxDistance: 1000, // maxDinstance is in meters :O
       });
-    res.status(200).json({ listing, nearbyListings });
+
+    const listingAvailabilities = await getListingsAvailabilities(nearbyListings);
+
+    res.status(200).json({
+      listing,
+      nearbyListings,
+      listingAvailabilities,
+    });
   } catch (error) {
     res.status(500).json({ err: 'server error', error });
   }

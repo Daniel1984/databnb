@@ -5,56 +5,39 @@ const persistListingAvailabilities = require('../routes/pricePrediction/helpers/
 const { getAvailabilityUrl, getYearAndMonthForAirbnbUrl } = require('../scripts/utils');
 const getListingAvailabilities = require('../scripts/listingAvailabilityScraper');
 
+require('dotenv').config();
+
 mongoose.Promise = require('bluebird');
-mongoose.connect(process.env.DB_URI, { useMongoClient: true })
+mongoose.connect(process.env.DB_URI)
   .then(() => console.log('SUCCESS'))
   .catch(err => console.log(err));
 
 (async () => {
-  const neighborhoods = await Neighborhood.find();
-  // .find({
-  //   $or: [
-  //     { listingsScrapedAt: { $lte: setDate(new Date(), (new Date()).getDate() - 7) } },
-  //     { listingsScrapedAt: { $eq: null } }
-  //   ]
-  // });
+  const listings = await Listing.find({});
 
-  while (neighborhoods.length) {
-    const neighborhood = neighborhoods.shift();
-    const listings = await Listing.find({ neighborhood_id: neighborhood._id });
+  while (listings.length) {
+    const listing = listings.shift();
+    const availabilityUrl = getAvailabilityUrl({ listingId: listing.id, ...getYearAndMonthForAirbnbUrl() });
 
-    while (listings.length) {
-      const listing = listings.shift();
-      const availabilityUrl = getAvailabilityUrl({ listingId: listing.id, ...getYearAndMonthForAirbnbUrl() });
-
-      console.log(`Updating listing: ${listing._id}, neighborhoods left: ${neighborhoods.length}`);
-
-      try {
-        const availabilities = await getListingAvailabilities(availabilityUrl);
-
-        try {
-          await persistListingAvailabilities({
-            availabilities,
-            listingId: listing._id,
-            neighborhoodId: listing.neighborhood_id
-          });
-        } catch (error) {
-          console.log(`persistListingsWithAvailabilities.js:persistListingAvailabilities: ${error}`);
-        }
-      } catch (error) {
-        console.log(`updateExistingListingsData.js:getListingAvailabilities: ${error}`);
-      }
-    }
+    console.log(`Updating listing: ${listing._id}`);
 
     try {
-      console.log(`Updating neighborhood: ${neighborhood._id}`);
-      await Neighborhood.findByIdAndUpdate(neighborhood._id, { listingsScrapedAt: new Date() });
+      const availabilities = await getListingAvailabilities(availabilityUrl);
+
+      try {
+        await persistListingAvailabilities({
+          availabilities,
+          listingId: listing._id,
+        });
+      } catch (error) {
+        console.log(`persistListingsWithAvailabilities.js:persistListingAvailabilities: ${error}`);
+      }
     } catch (error) {
-      console.log(`persistListingsWithAvailabilities.js:findByIdAndUpdate: ${error}`);
+      console.log(`updateExistingListingsData.js:getListingAvailabilities: ${error}`);
     }
   }
 
   await mongoose.disconnect();
   console.log('DONE!');
-  // process.exit(0);
+// process.exit(0);
 })();
