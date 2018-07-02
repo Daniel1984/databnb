@@ -5,14 +5,17 @@ const listingSchema = new Schema({
   id: { type: Number, default: null },
   is_new_listing: { type: Boolean, default: null },
   is_superhost: { type: Boolean, default: null },
-  lat: { type: Number, default: null, index: true  },
-  lng: { type: Number, default: null, index: true  },
+  lat: { type: Number, default: null, index: true },
+  lng: { type: Number, default: null, index: true },
   bedrooms: { type: Number, default: null },
   beds: { type: Number, default: null },
   localized_city: { type: String, default: null },
   localized_neighborhood: { type: String, default: null },
   name: { type: String, default: null },
-  // neighborhood: { type: String, default: null },
+  // neighborhood: { type: String, default: null }, // needs migration
+
+  location_title: { type: String, default: null }, // need migration
+
   person_capacity: { type: Number, default: null },
   picture_url: { type: String, default: null },
   picture_count: { type: Number, default: null },
@@ -22,7 +25,7 @@ const listingSchema = new Schema({
   star_rating: { type: Number, default: null },
   listing_start_date: { type: Date, default: null },
   availability_checked_at: { type: Date, default: null },
-  neighborhood_id: { type: Schema.Types.ObjectId, ref: 'Neighborhood' },
+  // neighborhood_id: { type: Schema.Types.ObjectId, ref: 'Neighborhood' }, // needs remomving
   user_id: { type: Schema.Types.ObjectId, ref: 'User' },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: null },

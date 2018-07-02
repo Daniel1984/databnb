@@ -1,4 +1,4 @@
-const { getAvailabilityUrl, getYearAndMonthForAirbnbUrl } = require('../../../scripts/utils');
+const { getAvailabilityUrl } = require('../../../scripts/utils');
 const getListingAvailabilities = require('../../../scripts/listingAvailabilityScraper');
 const Listing = require('../../../models/listing');
 const ListingAvailability = require('../../../models/listingAvailability');
@@ -25,7 +25,7 @@ module.exports = async function getOrScrapeProperty({ listingId, userId }) {
     }
   }
 
-  const availabilityUrl = getAvailabilityUrl({ listingId, ...getYearAndMonthForAirbnbUrl() });
+  const availabilityUrl = getAvailabilityUrl({ listingId });
 
   let availabilities;
   try {

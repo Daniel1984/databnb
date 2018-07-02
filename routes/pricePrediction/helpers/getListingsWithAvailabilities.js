@@ -1,6 +1,6 @@
 const format = require('date-fns/format');
 const uniqBy = require('lodash/uniqBy');
-const { getAvailabilityUrl, getYearAndMonthForAirbnbUrl } = require('../../../scripts/utils');
+const { getAvailabilityUrl } = require('../../../scripts/utils');
 const getListingAvailabilities = require('../../../scripts/listingAvailabilityScraper');
 const ListingAvailability = require('../../../models/listingAvailability');
 
@@ -36,7 +36,7 @@ function getCurrentDayPrice(availabilities) {
   }, 0);
 }
 
-module.exports = async ({ listings, neighborhoodId }) => {
+module.exports = async ({ listings }) => {
   if (!listings.length) {
     return [];
   }
@@ -63,13 +63,13 @@ module.exports = async ({ listings, neighborhoodId }) => {
       .select('available date price -_id');
 
     if (!listingAvailabilities || !listingAvailabilities.length) {
-      const availabilityUrl = getAvailabilityUrl({ listingId: id, ...getYearAndMonthForAirbnbUrl() });
+      const availabilityUrl = getAvailabilityUrl({ listingId: id });
 
       try {
         let availabilities = await getListingAvailabilities(availabilityUrl);
 
         availabilities = availabilities.reduce((acc, { days = [] }) => {
-          const amendedDays = days.map(day => ({ ...day, listing_id: _id, neighborhood_id: neighborhoodId }));
+          const amendedDays = days.map(day => ({ ...day, listing_id: _id }));
           acc = [...acc, ...amendedDays];
           return acc;
         }, []);

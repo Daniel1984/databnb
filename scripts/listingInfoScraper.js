@@ -47,7 +47,12 @@ function getListingsInfoUrl({ suburb }) {
   ].join('');
 }
 
-module.exports = async function scrapeListings({ suburb, socket, bedrooms = null, persistedListingsIds }) {
+module.exports = async function scrapeListings({
+  suburb,
+  socket,
+  bedrooms = null,
+  persistedListingsIds = [],
+}) {
   let hasMoreListingsToFetch = true;
   let sectionOffset = 0;
   let foundListings = [];

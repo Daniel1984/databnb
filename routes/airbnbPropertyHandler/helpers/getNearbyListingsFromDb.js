@@ -1,21 +1,21 @@
 const Listing = require('../../../models/listing');
 
-module.exports = async function getListingsByLocation({ lat, lng, bedrooms }) {
+module.exports = async ({ bedrooms, geo: { coordinates } }) => {
   try {
-    const listings = await Listing
+    const nearbyListings = await Listing
       .where('bedrooms')
       .equals(bedrooms)
       .where('geo')
       .near({
         center: {
           type: 'Point',
-          coordinates: [lng, lat],
+          coordinates,
         },
-        maxDistance: 1000,
+        maxDistance: 1000, // maxDinstance is in meters :O
       });
-    return listings;
+
+    return nearbyListings;
   } catch (error) {
-    console.log('getListingsByLocation.js', error);
     return [];
   }
 };

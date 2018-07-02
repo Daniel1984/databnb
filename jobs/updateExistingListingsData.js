@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const Neighborhood = require('../models/neighborhood');
 const Listing = require('../models/listing');
 const persistListingAvailabilities = require('../routes/pricePrediction/helpers/persistListingAvailabilities');
-const { getAvailabilityUrl, getYearAndMonthForAirbnbUrl } = require('../scripts/utils');
+const { getAvailabilityUrl } = require('../scripts/utils');
 const getListingAvailabilities = require('../scripts/listingAvailabilityScraper');
 
 require('dotenv').config();
@@ -17,7 +16,7 @@ mongoose.connect(process.env.DB_URI)
 
   while (listings.length) {
     const listing = listings.shift();
-    const availabilityUrl = getAvailabilityUrl({ listingId: listing.id, ...getYearAndMonthForAirbnbUrl() });
+    const availabilityUrl = getAvailabilityUrl({ listingId: listing.id });
 
     console.log(`Updating listing: ${listing._id}`);
 

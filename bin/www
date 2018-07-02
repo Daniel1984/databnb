@@ -2,7 +2,7 @@
 
 const http = require('http');
 const app = require('../app');
-const getListingsSummary = require('../routes/pricePrediction/pricePrediction');
+const pricePrediction = require('../routes/pricePrediction/pricePrediction');
 
 const port = process.env.PORT || 3000;
 app.set('port', port);
@@ -12,7 +12,7 @@ const socket = require('socket.io')(server);
 
 socket.on('connection', (io) => {
   io.on('getListings', (params) => {
-    getListingsSummary({ ...params, socket: io });
+    pricePrediction({ ...params, socket: io });
   });
 });
 

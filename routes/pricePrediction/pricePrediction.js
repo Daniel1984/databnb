@@ -1,8 +1,6 @@
-const uniqBy = require('lodash/uniqBy');
 const scrapeListingsInfo = require('../../scripts/listingInfoScraper');
 const getListingsWithAvailabilities = require('./helpers/getListingsWithAvailabilities');
 const getListingsByLocation = require('./helpers/getListingsByLocation');
-const getListingsByNeighborhood = require('./helpers/getListingsByNeighborhood');
 const persistListingsWithAvailabilities = require('./helpers/persistListingsWithAvailabilities');
 const getOrCreateNeighborhood = require('./helpers/getOrCreateNeighborhood');
 
@@ -13,36 +11,13 @@ module.exports = async function pricePrediction({
   address,
   socket,
 }) {
-  let neighborhood;
+  const neighborhood = await getOrCreateNeighborhood(address);
+  const listings = await getListingsByLocation({ lat, lng, bedrooms });
+  const persistedListingsIds = listings.map(({ id }) => id);
 
-  try {
-    neighborhood = await getOrCreateNeighborhood(address);
-  } catch (error) {
-    console.log(`pricePrediction.js:getOrCreateNeighborhood: ${error}`);
-  }
-
-  let listingsByNeighborhood = [];
-  try {
-    listingsByNeighborhood = await getListingsByNeighborhood({ neighborhoodId: neighborhood._id, bedrooms });
-  } catch (error) {
-    console.log(`pricePrediction.js:getListingsByNeighborhood: ${error}`);
-  }
-
-  let listingsByLocation = [];
-  try {
-    listingsByLocation = await getListingsByLocation({ lat, lng, bedrooms });
-  } catch (error) {
-    console.log(`pricePrediction.js:getListingsByLocation: ${error}`);
-  }
-
-  const persistedListings = uniqBy([...listingsByNeighborhood, ...listingsByLocation], 'id');
-  const persistedListingsIds = persistedListings.map(({ id }) => id);
-  if (persistedListings.length) {
+  if (listings.length) {
     try {
-      const listingsWithAvailabilities = await getListingsWithAvailabilities({
-        listings: persistedListings,
-        neighborhoodId: neighborhood._id,
-      });
+      const listingsWithAvailabilities = await getListingsWithAvailabilities({ listings });
       socket.emit('listings', { listings: listingsWithAvailabilities });
     } catch (error) {
       console.log(`pricePrediction.js:getListingsWithAvailabilities: ${error}`);
@@ -63,7 +38,7 @@ module.exports = async function pricePrediction({
 
   if (freshlyScrapedListings.length) {
     try {
-      await persistListingsWithAvailabilities({ listings: freshlyScrapedListings, neighborhood, socket });
+      await persistListingsWithAvailabilities({ listings: freshlyScrapedListings, socket });
     } catch (error) {
       console.log(`pricePrediction.js:persistListingsWithAvailabilities: ${error}`);
     }

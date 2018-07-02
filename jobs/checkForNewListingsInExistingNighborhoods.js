@@ -4,11 +4,13 @@ const Listing = require('../models/listing');
 const scrapeListings = require('../scripts/listingInfoScraper');
 const getListingStartDate = require('../scripts/reviewsScraper');
 const persistListingAvailabilities = require('../routes/pricePrediction/helpers/persistListingAvailabilities');
-const { getAvailabilityUrl, getYearAndMonthForAirbnbUrl } = require('../scripts/utils');
+const { getAvailabilityUrl } = require('../scripts/utils');
 const getListingAvailabilities = require('../scripts/listingAvailabilityScraper');
 
+require('dotenv').config();
+
 mongoose.Promise = require('bluebird');
-mongoose.connect(process.env.DB_URI, { useMongoClient: true })
+mongoose.connect(process.env.DB_URI)
   .then(() => console.log('SUCCESS'))
   .catch(err => console.log(err));
 
@@ -39,16 +41,11 @@ mongoose.connect(process.env.DB_URI, { useMongoClient: true })
             type: 'Point',
             coordinates: [listing.lng, listing.lat],
           },
-          neighborhood_id: neighborhood._id,
           listing_start_date: listingStartDate,
           availability_checked_at: new Date(),
         });
 
-        const availabilityUrl = getAvailabilityUrl({
-          listingId: persistedListing.id,
-          ...getYearAndMonthForAirbnbUrl(),
-        });
-
+        const availabilityUrl = getAvailabilityUrl({ listingId: persistedListing.id });
         try {
           const availabilities = await getListingAvailabilities(availabilityUrl);
 
@@ -56,7 +53,6 @@ mongoose.connect(process.env.DB_URI, { useMongoClient: true })
             await persistListingAvailabilities({
               availabilities,
               listingId: persistedListing._id,
-              neighborhoodId: neighborhood._id,
             });
           } catch (error) {
             console.log(`checkForNewListingsInExistingNighborhoods.js:persistListingAvailabilities: ${error}`);

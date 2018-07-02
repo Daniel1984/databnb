@@ -6,6 +6,7 @@ const Listing = require('../../models/listing');
 const ListingAvailability = require('../../models/listingAvailability');
 const verifyToken = require('../../middleware/verifyToken');
 const getOrScrapeProperty = require('./helpers/getOrScrapeListing');
+const getNearbyListingsFromDb = require('./helpers/getNearbyListingsFromDb');
 
 const router = express.Router();
 
@@ -35,17 +36,8 @@ router.get('/:listingId', verifyToken, async (req, res) => {
   try {
     const listing = await Listing.findById(req.params.listingId);
 
-    const nearbyListings = await Listing
-      .where('bedrooms')
-      .equals(listing.bedrooms)
-      .where('geo')
-      .near({
-        center: {
-          type: 'Point',
-          coordinates: listing.geo.coordinates,
-        },
-        maxDistance: 1000, // maxDinstance is in meters :O
-      });
+    let nearbyListings = await getNearbyListingsFromDb(listing);
+    nearbyListings = nearbyListings.filter(({ id }) => listing.id !== id);
 
     const listingAvailabilities = await getListingsAvailabilities(nearbyListings);
 

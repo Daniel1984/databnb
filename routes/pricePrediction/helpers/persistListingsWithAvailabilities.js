@@ -1,11 +1,11 @@
 const getListingStartDate = require('../../../scripts/reviewsScraper');
-const { getAvailabilityUrl, getYearAndMonthForAirbnbUrl } = require('../../../scripts/utils');
+const { getAvailabilityUrl } = require('../../../scripts/utils');
 const getListingAvailabilities = require('../../../scripts/listingAvailabilityScraper');
 const createOrUpdateListing = require('./createOrUpdateListing');
 const persistListingAvailabilities = require('./persistListingAvailabilities');
 const getListingsWithAvailabilities = require('./getListingsWithAvailabilities');
 
-module.exports = async function persistListingsWithAvailabilities({ listings, neighborhood, socket }) {
+module.exports = async function persistListingsWithAvailabilities({ listings, socket }) {
   const listingsWithAvailabilities = [];
   let analyzedProperties = 0;
   const totalProperties = listings.length;
@@ -26,12 +26,12 @@ module.exports = async function persistListingsWithAvailabilities({ listings, ne
 
     let persistedListing;
     try {
-      persistedListing = await createOrUpdateListing({ listing, listingStartDate, suburbId: neighborhood._id });
+      persistedListing = await createOrUpdateListing({ listing, listingStartDate });
     } catch (error) {
       console.log(`persistListingsWithAvailabilities.js:createOrUpdateListing: ${error}`);
     }
 
-    const availabilityUrl = getAvailabilityUrl({ listingId: persistedListing.id, ...getYearAndMonthForAirbnbUrl() });
+    const availabilityUrl = getAvailabilityUrl({ listingId: persistedListing.id });
 
     let availabilities;
     try {
@@ -44,7 +44,6 @@ module.exports = async function persistListingsWithAvailabilities({ listings, ne
       await persistListingAvailabilities({
         availabilities,
         listingId: persistedListing._id,
-        neighborhoodId: persistedListing.neighborhood_id,
       });
     } catch (error) {
       console.log(`persistListingsWithAvailabilities.js:persistListingAvailabilities: ${error}`);
