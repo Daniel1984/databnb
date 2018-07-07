@@ -1,4 +1,5 @@
 const Listing = require('../../../models/listing');
+const constants = require('../../../constants.json');
 
 module.exports = async function getListingsByLocation({ lat, lng, bedrooms }) {
   try {
@@ -11,7 +12,7 @@ module.exports = async function getListingsByLocation({ lat, lng, bedrooms }) {
           type: 'Point',
           coordinates: [lng, lat],
         },
-        maxDistance: 1000,
+        maxDistance: constants.searchRadius,
       });
     return listings;
   } catch (error) {

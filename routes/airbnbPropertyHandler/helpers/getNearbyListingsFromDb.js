@@ -1,17 +1,16 @@
 const Listing = require('../../../models/listing');
+const constants = require('../../../constants.json');
 
-module.exports = async ({ bedrooms, geo: { coordinates } }) => {
+module.exports = async ({ geo: { coordinates } }) => {
   try {
     const nearbyListings = await Listing
-      .where('bedrooms')
-      .equals(bedrooms)
       .where('geo')
       .near({
         center: {
           type: 'Point',
           coordinates,
         },
-        maxDistance: 1000, // maxDinstance is in meters :O
+        maxDistance: constants.searchRadius, // maxDinstance is in meters :O
       });
 
     return nearbyListings;

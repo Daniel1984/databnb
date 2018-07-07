@@ -97,8 +97,8 @@ module.exports = async function scrapeListings({
         listings = listings.filter(({ listing: { id } }) => !includes(persistedListingsIds, id));
       }
 
-      if (bedrooms !== null) {
-        listings = listings.filter(({ listing }) => listing.bedrooms == bedrooms);
+      if (bedrooms) {
+        listings = listings.filter(({ listing }) => listing.bedrooms === bedrooms);
       }
 
       foundListings = [...foundListings, ...listings];
