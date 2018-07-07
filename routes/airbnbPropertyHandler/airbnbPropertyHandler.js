@@ -20,8 +20,13 @@ router.get('/', verifyToken, async (req, res) => {
 });
 
 router.get('/:listingId', verifyToken, async (req, res) => {
-  function getListingsAvailabilities(nearbyListings) {
-    return Promise.all(nearbyListings.map(({ _id }) => {
+  try {
+    const listing = await Listing.findById(req.params.listingId);
+
+    let nearbyListings = await getNearbyListingsFromDb(listing);
+    nearbyListings = nearbyListings.filter(({ id }) => listing.id !== id);
+
+    const listingAvailabilities = await Promise.all(nearbyListings.map(({ _id }) => {
       const today = new Date();
       return ListingAvailability.find({
         listing_id: _id,
@@ -31,15 +36,6 @@ router.get('/:listingId', verifyToken, async (req, res) => {
         },
       });
     }));
-  }
-
-  try {
-    const listing = await Listing.findById(req.params.listingId);
-
-    let nearbyListings = await getNearbyListingsFromDb(listing);
-    nearbyListings = nearbyListings.filter(({ id }) => listing.id !== id);
-
-    const listingAvailabilities = await getListingsAvailabilities(nearbyListings);
 
     res.status(200).json({
       listing,

@@ -3,6 +3,7 @@
 const http = require('http');
 const app = require('../app');
 const pricePrediction = require('../routes/pricePrediction/pricePrediction');
+const scrapeNearbyListings = require('../routes/airbnbPropertyHandler/helpers/scrapeNearbyListings');
 
 const port = process.env.PORT || 3000;
 app.set('port', port);
@@ -13,6 +14,10 @@ const socket = require('socket.io')(server);
 socket.on('connection', (io) => {
   io.on('getListings', (params) => {
     pricePrediction({ ...params, socket: io });
+  });
+
+  io.on('getNearbyListings', (props) => {
+    scrapeNearbyListings({ ...props, socket: io });
   });
 });
 
