@@ -12,3 +12,7 @@ as soon as listing found - find availability and save! also keep updating progre
 only use  it for when someone looking for properties from home page,
 do not store neighborhood id in listing model or any other places
 should only be used for fetching new properties in existing neighborhoods
+
+## IDEAS for titles
+1. Automate your market monitoring
+2. metabnb - your airbnb market monitoring tool

@@ -21,9 +21,9 @@ module.exports = async (url) => {
             airbnb mixes dates from previous and next months into current one
             for date picker purpose I guess but that breaks our logic so need to filter
           */
-          calendarMonth.days = days.filter(({ date }) => {
-            return format(date, 'YYYY-MM') === format([year, month], 'YYYY-MM');
-          });
+          calendarMonth.days = days.filter(({ date }) => (
+            format(date, 'YYYY-MM') === format([year, month], 'YYYY-MM')
+          ));
 
           return calendarMonth;
         });
@@ -35,4 +35,4 @@ module.exports = async (url) => {
       }
     });
   });
-}
+};

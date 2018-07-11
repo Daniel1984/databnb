@@ -15,7 +15,7 @@ module.exports = async function persistListingsWithAvailabilities({ listings, so
       msg: `Analyzing ${analyzedProperties += 1}/${totalProperties} properties`,
     });
 
-    const { listing } = listings.shift();
+    const listing = listings.shift();
 
     let listingStartDate;
     try {
