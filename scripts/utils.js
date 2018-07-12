@@ -14,7 +14,7 @@ module.exports = {
     return Number(`${str}`.split('').filter(n => /^\d+$/.test(n)).join(''));
   },
 
-  getReviewsUrl({ listingId }) {
+  getReviewsUrl(listingId) {
     return [
       'https://www.airbnb.com/api/v2/reviews',
       '?key=d306zoyjsyarp7ifhu67rjxn52tv0t20',
@@ -26,7 +26,7 @@ module.exports = {
       '&_limit=0',
       '&_offset=1',
       '&_order=language_country',
-    ];
+    ].join('');
   },
 
   getAvailabilityUrl({ listingId }) {

@@ -1,42 +1,26 @@
 const addMonths = require('date-fns/add_months');
-const request = require('request');
+const axios = require('axios');
 const { getReviewsUrl } = require('./utils');
-const constants = require('../constants.json');
 
-const today = new Date();
-today.setDate(1);
-const MONTH_AGO = addMonths(today, -1);
+module.exports = async ({ listingId }) => {
+  const today = new Date();
+  today.setDate(1);
+  const defaultListingStartDate = addMonths(today, -1);
 
-module.exports = ({ listingId }) => {
-  const options = {
-    url: getReviewsUrl({ listingId }),
-    headers: constants.airbnbHeaders,
-  };
+  try {
+    const { data: { reviews } } = await axios.get(getReviewsUrl(listingId));
 
-  const defaultListingStartDate = MONTH_AGO;
+    if (!reviews || !reviews.length) {
+      return defaultListingStartDate;
+    }
 
-  return new Promise((resolve) => {
-    request(options, (err, res, body) => {
-      if (err || res.statusCode >= 400 || !body) {
-        resolve(defaultListingStartDate);
-      }
+    const { created_at } = reviews.pop();
 
-      try {
-        const responseReviews = JSON.parse(body);
-
-        if (!responseReviews.reviews.length) {
-          resolve(defaultListingStartDate);
-          return;
-        }
-
-        const { created_at } = responseReviews.reviews.pop();
-
-        const startDate = new Date(created_at);
-        startDate.setDate(1);
-        resolve(startDate);
-      } catch (error) {
-        resolve(defaultListingStartDate);
-      }
-    });
-  });
+    const startDate = new Date(created_at);
+    startDate.setDate(1);
+    return startDate;
+  } catch (error) {
+    console.log(error);
+    return defaultListingStartDate;
+  }
 };
