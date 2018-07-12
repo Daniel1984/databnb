@@ -3,10 +3,10 @@ const flow = require('lodash/fp/flow');
 const pick = require('lodash/fp/pick');
 const filter = require('lodash/fp/filter');
 const map = require('lodash/fp/map');
+const compact = require('lodash/fp/compact');
+const first = require('lodash/fp/first');
 const includes = require('lodash/fp/includes');
 const flatten = require('lodash/fp/flatten');
-const values = require('lodash/fp/values');
-const first = require('lodash/fp/first');
 
 // safety switch as sometimes it goes into infinite count
 const MAX_LISTINGS_PER_LOCATION = 300;
@@ -40,7 +40,7 @@ function getListingsInfoUrl({ suburb, bedrooms }) {
     '&selected_tab_id=home_tab',
     '&place_id=ChIJa3z2sROU3UYRQUVFTI3RACY',
     '&allow_override%5B%5D=',
-    bedrooms ? '&min_bedrooms=3' : '',
+    bedrooms ? `&min_bedrooms=${bedrooms}` : '',
     '&federated_search_session_id=dffe3799-b4c6-4775-a91f-f54baaa2e162',
     '&screen_size=medium',
     `&query=${location}`,
@@ -57,19 +57,17 @@ const getMandatoryDataSet = ({ tab_id, tab_name }) => (
 
 const extractListings = dataset => ({
   listings: flow(
-    pick('sections'),
-    values,
-    flatten,
     map(({ listings }) => listings),
     flatten,
+    compact,
     map(({ listing }) => listing)
-  )(dataset),
+  )(dataset.sections),
   hasNextPage: dataset.pagination_metadata.has_next_page,
-})
+});
 
 const skipPersistedListings = ({ dataset, persistedListingsIds }) => ({
   ...dataset,
-  listings: filter(({ id }) => !includes(persistedListingsIds, id))(dataset.listings),
+  listings: filter(({ id }) => !includes(id, persistedListingsIds))(dataset.listings),
 });
 
 const filterByBedrooms = ({ dataset, bedrooms }) => ({
