@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nf start -p 3030"
+    "dev": "nf start -p 3030",
+    "migrate-up": "migrate-mongo up",
+    "migrate-down": "migrate-mongo down"
   },
   "dependencies": {
     "axios": "^0.18.0",
