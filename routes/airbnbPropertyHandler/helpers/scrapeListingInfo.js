@@ -9,6 +9,7 @@ module.exports = async function scrapeListingInfo(listingId) {
     const json = JSON.parse(dataString.replace(/<!--|-->/g, '').trim());
     const {
       bootstrapData: {
+        query: { location },
         reduxData: {
           homePDP: {
             listingInfo: {
@@ -23,7 +24,6 @@ module.exports = async function scrapeListingInfo(listingId) {
                 bedroom_label,
                 name,
                 photos,
-                location_title,
                 p3_event_data_logging: {
                   picture_count,
                   room_type,
@@ -47,8 +47,8 @@ module.exports = async function scrapeListingInfo(listingId) {
       visible_review_count,
       person_capacity,
       picture_count,
-      location_title,
       room_type,
+      location,
       name,
       picture_url: photos.length ? photos[0].large : '',
       bedrooms: parseFloat(bedroom_label),

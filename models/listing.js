@@ -12,9 +12,9 @@ const listingSchema = new Schema({
   localized_city: { type: String, default: null },
   localized_neighborhood: { type: String, default: null },
   name: { type: String, default: null },
-  // neighborhood: { type: String, default: null }, // needs migration
+  // neighborhood: { type: String, default: null }, // needs migration to remove
 
-  location_title: { type: String, default: null }, // need migration
+  location: { type: String, default: null }, // need migration to add
 
   person_capacity: { type: Number, default: null },
   picture_url: { type: String, default: null },
