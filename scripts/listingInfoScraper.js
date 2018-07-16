@@ -7,6 +7,7 @@ const compact = require('lodash/fp/compact');
 const first = require('lodash/fp/first');
 const includes = require('lodash/fp/includes');
 const flatten = require('lodash/fp/flatten');
+const constants = require('../constants.json');
 
 // safety switch as sometimes it goes into infinite count
 const MAX_LISTINGS_PER_LOCATION = 300;
@@ -91,7 +92,7 @@ module.exports = async function scrapeListings({
     const url = sectionOffset ? `${listingsInfoUrl}&section_offset=${sectionOffset}` : listingsInfoUrl;
 
     try {
-      const { data: { explore_tabs } } = await axios.get(url);
+      const { data: { explore_tabs } } = await axios.get(url, { headers: constants.airbnbHeaders });
       const { listings, hasNextPage } = flow(
         filter(getMandatoryDataSet),
         first,
@@ -124,7 +125,7 @@ module.exports = async function scrapeListings({
         hasMoreListingsToFetch = false;
       }
     } catch (error) {
-      console.log(`requestPromise: ${error}`);
+      console.log(`listingInfoScraper.js: ${error}`);
     }
   }
 

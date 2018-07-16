@@ -1,6 +1,7 @@
 const addMonths = require('date-fns/add_months');
 const axios = require('axios');
 const { getReviewsUrl } = require('./utils');
+const constants = require('../constants.json');
 
 module.exports = async ({ listingId }) => {
   const today = new Date();
@@ -8,7 +9,11 @@ module.exports = async ({ listingId }) => {
   const defaultListingStartDate = addMonths(today, -1);
 
   try {
-    const { data: { reviews } } = await axios.get(getReviewsUrl(listingId));
+    const {
+      data: {
+        reviews,
+      },
+    } = await axios.get(getReviewsUrl(listingId), { headers: constants.airbnbHeaders });
 
     if (!reviews || !reviews.length) {
       return defaultListingStartDate;
@@ -20,7 +25,7 @@ module.exports = async ({ listingId }) => {
     startDate.setDate(1);
     return startDate;
   } catch (error) {
-    console.log(error);
+    console.log(`reviewsScraper.js: ${error}`);
     return defaultListingStartDate;
   }
 };
