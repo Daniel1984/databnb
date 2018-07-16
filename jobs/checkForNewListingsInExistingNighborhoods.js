@@ -22,7 +22,7 @@ mongoose.connect(process.env.DB_URI)
     const listings = await scrapeListings({ suburb: neighborhood.name });
 
     while (listings.length) {
-      const { listing } = listings.shift();
+      const listing = listings.shift();
       const persistedListing = await Listing.findOne({ id: listing.id });
 
       if (!persistedListing) {
