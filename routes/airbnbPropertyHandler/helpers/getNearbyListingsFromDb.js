@@ -1,5 +1,5 @@
 const Listing = require('../../../models/listing');
-const constants = require('../../../constants.json');
+const constants = require('../../../constants');
 
 module.exports = async ({ geo: { coordinates } }) => {
   try {

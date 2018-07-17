@@ -1,7 +1,7 @@
 const addMonths = require('date-fns/add_months');
 const axios = require('axios');
 const { getReviewsUrl } = require('./utils');
-const constants = require('../constants.json');
+const constants = require('../constants');
 
 module.exports = async ({ listingId }) => {
   const today = new Date();
@@ -13,7 +13,7 @@ module.exports = async ({ listingId }) => {
       data: {
         reviews,
       },
-    } = await axios.get(getReviewsUrl(listingId), { headers: constants.airbnbHeaders });
+    } = await axios.get(getReviewsUrl(listingId), { headers: constants.getAirbnbHeaders() });
 
     if (!reviews || !reviews.length) {
       return defaultListingStartDate;

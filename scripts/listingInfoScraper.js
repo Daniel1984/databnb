@@ -7,7 +7,7 @@ const compact = require('lodash/fp/compact');
 const first = require('lodash/fp/first');
 const includes = require('lodash/fp/includes');
 const flatten = require('lodash/fp/flatten');
-const constants = require('../constants.json');
+const constants = require('../constants');
 
 // safety switch as sometimes it goes into infinite count
 const MAX_LISTINGS_PER_LOCATION = 300;
@@ -34,7 +34,7 @@ function getListingsInfoUrl({ suburb, bedrooms }) {
     '&show_groupings=true',
     '&supports_for_you_v3=true',
     '&timezone_offset=120',
-    '&client_session_id=32af46c5-0211-4e67-99c1-c08d1c6ed015',
+    '&client_session_id=c2102072-77fe-4663-8006-97eb739901ae',
     '&metadata_only=false',
     '&is_standard_search=true',
     '&refinement_paths%5B%5D=%2Fhomes',
@@ -42,7 +42,6 @@ function getListingsInfoUrl({ suburb, bedrooms }) {
     '&place_id=ChIJa3z2sROU3UYRQUVFTI3RACY',
     '&allow_override%5B%5D=',
     bedrooms ? `&min_bedrooms=${bedrooms}` : '',
-    '&federated_search_session_id=dffe3799-b4c6-4775-a91f-f54baaa2e162',
     '&screen_size=medium',
     `&query=${location}`,
     '&_intents=p1',
@@ -92,7 +91,7 @@ module.exports = async function scrapeListings({
     const url = sectionOffset ? `${listingsInfoUrl}&section_offset=${sectionOffset}` : listingsInfoUrl;
 
     try {
-      const { data: { explore_tabs } } = await axios.get(url, { headers: constants.airbnbHeaders });
+      const { data: { explore_tabs } } = await axios.get(url, { headers: constants.getAirbnbHeaders() });
       const { listings, hasNextPage } = flow(
         filter(getMandatoryDataSet),
         first,

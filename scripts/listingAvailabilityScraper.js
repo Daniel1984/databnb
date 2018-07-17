@@ -1,6 +1,6 @@
 const axios = require('axios');
 const format = require('date-fns/format');
-const constants = require('../constants.json');
+const constants = require('../constants');
 
 module.exports = async (url) => {
   try {
@@ -8,7 +8,7 @@ module.exports = async (url) => {
       data: {
         calendar_months,
       },
-    } = await axios.get(url, { headers: constants.airbnbHeaders });
+    } = await axios.get(url, { headers: constants.getAirbnbHeaders() });
 
     const filteredDays = calendar_months.map((calendarMonth) => {
       const { year, month, days } = calendarMonth;
