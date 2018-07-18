@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Neighborhood = require('../models/neighborhood');
 const Listing = require('../models/listing');
-const scrapeListings = require('../scripts/listingInfoScraper');
+const scrapeListings = require('../scripts/allListingsInfoScraper');
 const getListingStartDate = require('../scripts/reviewsScraper');
 
 require('dotenv').config();
@@ -16,7 +16,7 @@ mongoose.connect(process.env.DB_URI)
 
   while (neighborhoods.length) {
     const neighborhood = neighborhoods.shift();
-    const listings = await scrapeListings({ suburb: neighborhood.name });
+    const listings = await scrapeListings(neighborhood.name);
 
     while (listings.length) {
       const listing = listings.shift();
@@ -37,7 +37,7 @@ mongoose.connect(process.env.DB_URI)
         try {
           listingStartDate = await getListingStartDate({ listingId: listing.id });
         } catch (error) {
-          console.log(`persistListingsWithAvailabilities.js:getListingStartDate: ${error}`);
+          console.log(`checkForNewListings:getListingStartDate: ${error}`);
         }
 
         console.log(`Found new listing: ${listing.id}`);
