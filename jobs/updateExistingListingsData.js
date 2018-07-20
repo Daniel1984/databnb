@@ -18,7 +18,7 @@ mongoose.connect(process.env.DB_URI)
     const listing = listings.shift();
     const availabilityUrl = getAvailabilityUrl({ listingId: listing.id });
 
-    console.log(`Updating listing: ${listing._id}`);
+    console.log(`Updating listing: ${listing._id}, ${listings.length} left`);
 
     try {
       const availabilities = await getListingAvailabilities(availabilityUrl);
