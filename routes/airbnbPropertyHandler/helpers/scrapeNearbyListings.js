@@ -18,7 +18,7 @@ module.exports = async ({ location, socket }) => {
 
 /*
  *
- * might neew to consider filter by bedrooms as takes too long
+ * might need to consider filter by bedrooms as takes too long
  *
  * filterlistings so that params bedrooms count are first in the list
  */
