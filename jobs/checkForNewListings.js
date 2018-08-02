@@ -15,6 +15,7 @@ mongoose.connect(process.env.DB_URI)
 
   while (neighborhoods.length) {
     const neighborhood = neighborhoods.shift();
+    console.log(`neighborhoods ${neighborhoods.length} left`);
     const listings = await scrapeListings(neighborhood.name);
 
     while (listings.length) {
