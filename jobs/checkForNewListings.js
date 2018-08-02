@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Neighborhood = require('../models/neighborhood');
 const Listing = require('../models/listing');
 const scrapeListings = require('../scripts/allListingsInfoScraper');
-const getListingStartDate = require('../scripts/reviewsScraper');
 
 require('dotenv').config();
 
@@ -33,13 +32,6 @@ mongoose.connect(process.env.DB_URI)
       );
 
       if (!persistedListing) {
-        let listingStartDate;
-        try {
-          listingStartDate = await getListingStartDate({ listingId: listing.id });
-        } catch (error) {
-          console.log(`checkForNewListings:getListingStartDate: ${error}`);
-        }
-
         console.log(`Found new listing: ${listing.id}`);
 
         await Listing.create({
@@ -48,8 +40,6 @@ mongoose.connect(process.env.DB_URI)
             type: 'Point',
             coordinates: [listing.lng, listing.lat],
           },
-          listing_start_date: listingStartDate,
-          availability_checked_at: new Date(),
         });
       } else {
         console.log(`updating listing: ${persistedListing.id}`);
@@ -57,7 +47,7 @@ mongoose.connect(process.env.DB_URI)
     }
   }
 
-  console.log('Done!');
+  console.log('Done looking for new listings!');
   await mongoose.disconnect();
   // process.exit(0);
 })();
