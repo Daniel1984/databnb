@@ -5,8 +5,6 @@ const listingSchema = new Schema({
   id: { type: Number, default: null },
   is_new_listing: { type: Boolean, default: null },
   is_superhost: { type: Boolean, default: null },
-  lat: { type: Number, default: null, index: true },
-  lng: { type: Number, default: null, index: true },
   bedrooms: { type: Number, default: null },
   beds: { type: Number, default: null },
   localized_city: { type: String, default: null },

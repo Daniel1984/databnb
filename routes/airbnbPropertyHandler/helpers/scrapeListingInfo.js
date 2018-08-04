@@ -42,8 +42,6 @@ module.exports = async function scrapeListingInfo(listingId) {
         type: 'Point',
         coordinates: [lng, lat],
       },
-      lat,
-      lng,
       visible_review_count,
       person_capacity,
       picture_count,
