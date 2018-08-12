@@ -15,6 +15,7 @@ const deactivateUserHandler = require('./routes/deactivateUserHandler/deactivate
 const requestPasswordResetHandler = require('./routes/requestPasswordResetHandler/requestPasswordResetHandler');
 const changePasswordHandler = require('./routes/changePasswordHandler/changePasswordHandler');
 const airbnbPropertyHandler = require('./routes/airbnbPropertyHandler/airbnbPropertyHandler');
+const streetNamesToUpdateHandler = require('./routes/streetNamesToUpdateHandler/streetNamesToUpdateHandler');
 
 require('dotenv').config();
 
@@ -46,6 +47,7 @@ app.use('/request-password-reset', requestPasswordResetHandler);
 app.use('/change-password', changePasswordHandler);
 app.use('/deactivate-account', deactivateUserHandler);
 app.use('/properties', airbnbPropertyHandler);
+app.use('/street-names-to-update', streetNamesToUpdateHandler);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
