@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
     res.status(200).json((
       neighborhoods
-        .map(({ name }) => name)
+        .map(({ name, _id }) => ({ name, _id }))
         .filter(name => !!name)
     ));
   } catch (error) {
