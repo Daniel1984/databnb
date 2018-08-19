@@ -6,13 +6,7 @@ const router = express.Router();
 router.post('/', async (req, res) => {
   try {
     const transformedListingsPayload = req.body.map(({ listing }) => {
-      const {
-        lat,
-        lng,
-        bedroom_label,
-        bed_label,
-        ...rest
-      } = listing;
+      const { lat, lng, ...rest } = listing;
 
       return {
         ...rest,
