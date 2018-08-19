@@ -16,6 +16,7 @@ const requestPasswordResetHandler = require('./routes/requestPasswordResetHandle
 const changePasswordHandler = require('./routes/changePasswordHandler/changePasswordHandler');
 const airbnbPropertyHandler = require('./routes/airbnbPropertyHandler/airbnbPropertyHandler');
 const streetNamesToUpdateHandler = require('./routes/streetNamesToUpdateHandler/streetNamesToUpdateHandler');
+const persistListings = require('./routes/persistListings/persistListings');
 
 require('dotenv').config();
 
@@ -47,7 +48,10 @@ app.use('/request-password-reset', requestPasswordResetHandler);
 app.use('/change-password', changePasswordHandler);
 app.use('/deactivate-account', deactivateUserHandler);
 app.use('/properties', airbnbPropertyHandler);
+
+// below needs some secret token to validate and give access to. Used by go
 app.use('/street-names-to-update', streetNamesToUpdateHandler);
+app.use('/persist-listings', persistListings);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
