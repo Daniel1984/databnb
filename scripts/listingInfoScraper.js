@@ -10,7 +10,7 @@ const flatten = require('lodash/fp/flatten');
 const constants = require('../constants');
 
 // safety switch as sometimes it goes into infinite count
-const MAX_LISTINGS_PER_LOCATION = 300;
+const MAX_LISTINGS_PER_LOCATION = 400;
 const MAX_SCRAPING_ATTEMPTS = 6;
 
 const WANTED_TAB_IDS = ['home_tab', 'all_tab'];
