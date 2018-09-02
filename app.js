@@ -17,6 +17,7 @@ const changePasswordHandler = require('./routes/changePasswordHandler/changePass
 const airbnbPropertyHandler = require('./routes/airbnbPropertyHandler/airbnbPropertyHandler');
 const streetNamesToUpdateHandler = require('./routes/streetNamesToUpdateHandler/streetNamesToUpdateHandler');
 const listingsToUpdate = require('./routes/listingsToUpdate/listingsToUpdate');
+const updateAvailabilities = require('./routes/updateAvailabilities/updateAvailabilities');
 const persistListings = require('./routes/persistListings/persistListings');
 const updateStreet = require('./routes/updateStreet/updateStreet');
 
@@ -56,6 +57,7 @@ app.use('/street-names-to-update', streetNamesToUpdateHandler);
 app.use('/persist-listings', persistListings);
 app.use('/update-street', updateStreet);
 app.use('/listings-to-update', listingsToUpdate);
+app.use('/update-availabilities', updateAvailabilities);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
