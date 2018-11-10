@@ -1,38 +1,42 @@
 const express = require('express');
 const ListingAvailability = require('../../models/listingAvailability');
+const Listing = require('../../models/listing');
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
   const { availabilities = [], listingId } = req.body;
 
-  while (availabilities.length) {
-    const { days = [] } = availabilities.shift();
+  try {
+    const listing = await Listing.findOne({ id: listingId });
 
-    while (days.length) {
-      const day = days.shift();
+    while (listing && availabilities.length) {
+      const availability = availabilities.shift();
 
       try {
         const persistedAvailability = await ListingAvailability.findOneAndUpdate({
-          id: listingId,
-          date: day.date,
+          listing_id: listing._id,
+          date: availability.date,
         }, {
-          ...day,
+          ...availability,
           updatedAt: new Date(),
         });
 
         if (!persistedAvailability) {
           await ListingAvailability.create({
-            ...day,
-            id: listingId,
+            ...availability,
+            listing_id: listing._id,
           });
         }
-        res.status(200).json({ status: 'ok' });
       } catch (error) {
-        res.status(500).json({ error, status: 'error' });
+        console.log('Create availability - ', error);
       }
     }
+  } catch (error) {
+    console.log('Find listing - ', error);
   }
+
+  res.status(200).json({ status: 'done saving' });
 });
 
 
