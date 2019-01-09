@@ -6,7 +6,7 @@ const pricePrediction = require('../routes/pricePrediction/pricePrediction');
 const scrapeNearbyListings = require('../routes/airbnbPropertyHandler/helpers/scrapeNearbyListings');
 
 const server = http.Server(app);
-const socket = require('socket.io')(server);
+const socket = require('socket.io')(server, { origins: '*:*' });
 
 server.listen(process.env.PORT || 3000, () => {
   console.log('Server started');
